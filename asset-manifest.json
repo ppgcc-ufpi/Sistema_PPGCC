@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/Sistema_PPGCC/static/css/main.5f5cd51a.css",
+    "main.js": "/Sistema_PPGCC/static/js/main.475566d3.js",
+    "static/media/brasao_ufpi.png": "/Sistema_PPGCC/static/media/brasao_ufpi.28f234a8cc0be64b1c85.png",
+    "static/media/person_two.jpg": "/Sistema_PPGCC/static/media/person_two.348b2fcc3bf8c629eea7.jpg",
+    "static/media/person_four.jpg": "/Sistema_PPGCC/static/media/person_four.dcc4b73631cb58bf3f0e.jpg",
+    "static/media/person_three.jpg": "/Sistema_PPGCC/static/media/person_three.de2b26eaa2ee890243cb.jpg",
+    "static/media/person_one.jpg": "/Sistema_PPGCC/static/media/person_one.cff9fc4c871ef770de92.jpg",
+    "static/media/home.svg": "/Sistema_PPGCC/static/media/home.f9303d1a1eeb61e6d1f38f31dd625bf5.svg",
+    "static/media/alert.svg": "/Sistema_PPGCC/static/media/alert.ee17e522263241b97d882b0e00c6adba.svg",
+    "static/media/budget.svg": "/Sistema_PPGCC/static/media/budget.505dddf5c7243f6d0e91efb7727cb438.svg",
+    "static/media/wealth.svg": "/Sistema_PPGCC/static/media/wealth.243e296d34e4b342c5886e547e442388.svg",
+    "static/media/gears.svg": "/Sistema_PPGCC/static/media/gears.a6648f06885d01d0723fe84f2f9fc15a.svg",
+    "static/media/bills.svg": "/Sistema_PPGCC/static/media/bills.4e4e4f3908cd5074cd5508a4cbf251f3.svg",
+    "index.html": "/Sistema_PPGCC/index.html",
+    "static/media/report.svg": "/Sistema_PPGCC/static/media/report.8a7cdf496382e0f771a29d2f9ac1b647.svg",
+    "static/media/card.svg": "/Sistema_PPGCC/static/media/card.82fefee0b647631dc4bedbe90f060697.svg",
+    "static/media/check.svg": "/Sistema_PPGCC/static/media/check.47640311089135a3c5307aa2e3cdedb2.svg",
+    "static/media/search.svg": "/Sistema_PPGCC/static/media/search.b9edbe38d2a2abdb22992a4bae495846.svg",
+    "static/media/wallet.svg": "/Sistema_PPGCC/static/media/wallet.be73d135e4632c6df5ccd4b260a2e15c.svg",
+    "static/media/bell.svg": "/Sistema_PPGCC/static/media/bell.1362b91a4e9f3af2e1bf55a5b13d3b74.svg",
+    "static/media/user.svg": "/Sistema_PPGCC/static/media/user.003b2f49d15b27c3cce9d0ecdb55ded1.svg",
+    "static/media/plane.svg": "/Sistema_PPGCC/static/media/plane.42b7328c8f0e962e615f6ec83835d211.svg",
+    "static/media/empty_check.svg": "/Sistema_PPGCC/static/media/empty_check.c56bc89b4c93779d47300fa3506fbe6d.svg",
+    "static/media/plus.svg": "/Sistema_PPGCC/static/media/plus.d596a11e5eb4d14415112c474078cb31.svg",
+    "static/media/chart.svg": "/Sistema_PPGCC/static/media/chart.eaa7970dcc3680ece0e812a425cdcc0f.svg",
+    "static/media/menu.svg": "/Sistema_PPGCC/static/media/menu.671405f9050c951365cbfaf9273aadc7.svg",
+    "main.5f5cd51a.css.map": "/Sistema_PPGCC/static/css/main.5f5cd51a.css.map",
+    "main.475566d3.js.map": "/Sistema_PPGCC/static/js/main.475566d3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5f5cd51a.css",
+    "static/js/main.475566d3.js"
+  ]
+}
