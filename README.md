@@ -51,6 +51,10 @@ http://localhost:3000
 
 https://ppgcc-ufpi.github.io/Sistema_PPGCC/
 
+## Documentação
+
+https://docs.google.com/document/d/1deNa1YNQ8SEjwDKelbMKZa0UOKSOIdVHRRcC-tJHM5I/edit?usp=sharing
+
 ## Contribuição
 
 Contribuições são bem-vindas! Se encontrar problemas ou tiver sugestões, sinta-se à vontade para criar uma issue ou um pull request.
