@@ -24,6 +24,7 @@ const CurriculoDocente = () => {
   const [producoesPorAno, setProducoesPorAno] = useState({});
   const [orientacoesPorAno, setOrientacoesPorAno] = useState({});
   const [projetosPorAno, setProjetosPorAno] = useState({});
+  const [formacao, setFormacao] = useState([]);
 
   // Carrega dados do JSON ao montar o componente
   useEffect(() => {
@@ -62,6 +63,7 @@ const CurriculoDocente = () => {
       setProducoesPorAno({});
       setOrientacoesPorAno({});
       setProjetosPorAno({});
+      setFormacao([]);
       return;
     }
 
@@ -81,6 +83,9 @@ const CurriculoDocente = () => {
       // Processa produções
       const prods = processProducoes(info.producoes);
       setProducoesPorAno(prods);
+
+      // Processa formação
+      setFormacao(Array.isArray(info.formacao) ? info.formacao : []);
 
       // Processa orientações
       const ors = processOrientacoes(info.orientacoes);
@@ -178,6 +183,36 @@ const CurriculoDocente = () => {
         <div className="curriculo-content">
           <div className="curriculo-info">
             <h2>{selectedDocente.label}</h2>
+
+            <div className="formacao-section">
+              <h3>Formação</h3>
+
+              {formacao.length > 0 ? (
+                <ul className="formacao-list">
+                  {formacao.map((item, index) => {
+                    const nivel = item['nível'] || item.nivel || 'Formação';
+                    const instituicao = item['instituição'] || item.instituicao || 'Instituição não informada';
+                    const anoInicio = item.ano_inicio;
+                    const anoConclusao = item.ano_conclusao;
+
+                    let periodo = 'Período não informado';
+                    if (anoInicio && anoConclusao) periodo = `${anoInicio} - ${anoConclusao}`;
+                    else if (anoInicio) periodo = `Início: ${anoInicio}`;
+                    else if (anoConclusao) periodo = `Conclusão: ${anoConclusao}`;
+
+                    return (
+                      <li className="formacao-item" key={`${selectedDocente.id}-formacao-${index}`}>
+                        <div className="formacao-nivel">{nivel}</div>
+                        <div className="formacao-instituicao">{instituicao}</div>
+                        <div className="formacao-periodo">{periodo}</div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : (
+                <p className="formacao-empty">Formação não informada no currículo.</p>
+              )}
+            </div>
           </div>
 
           <div className="charts-grid">

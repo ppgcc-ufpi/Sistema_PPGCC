@@ -207,6 +207,7 @@ export const getDocenteInfo = (docente) => {
   
   return {
     nome: docente.docente || lattes.docente?.nome || 'Desconhecido',
+    formacao: lattes.formacao || [],
     producoes: lattes.producoes || [],
     orientacoes: lattes.orientacoes || {},
     projetos: lattes.projetos || []
