@@ -1,4 +1,5 @@
 // Funções para processar dados do JSON de Lattes
+import lattesData from '../data/lattes_sucupira_integrado.json';
 
 /**
  * Processa produções agrupadas por ano
@@ -218,9 +219,8 @@ export const getDocenteInfo = (docente) => {
  */
 export const loadLattesData = async () => {
   try {
-    const response = await fetch('/Sistema_PPGCC/lattes_sucupira_integrado.json');
-    const data = await response.json();
-    return data;
+    // Retorna os dados importados diretamente
+    return lattesData;
   } catch (error) {
     console.error('Erro ao carregar dados de Lattes:', error);
     return null;
@@ -234,11 +234,15 @@ export const loadLattesData = async () => {
  */
 export const getListaDocentes = (data) => {
   if (!data || !Array.isArray(data.registros)) return [];
-  return data.registros.map(reg => ({
+  
+  const docentes = data.registros.map(reg => ({
     id: reg.docente,
     nome: reg.docente,
     label: reg.docente
   }));
+  
+  // Ordena alfabeticamente por nome
+  return docentes.sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
 };
 
 /**

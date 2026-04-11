@@ -100,12 +100,12 @@ const CurriculoDocente = () => {
   const customSelectStyles = {
     control: (provided) => ({
       ...provided,
-      backgroundColor: '#1a1f3a',
-      borderColor: '#444',
+      backgroundColor: 'rgba(0, 0, 0, 0.3)',
+      borderColor: 'rgba(255, 255, 255, 0.1)',
       color: '#fff',
       cursor: 'pointer',
       '&:hover': {
-        borderColor: '#666',
+        borderColor: 'rgba(255, 255, 255, 0.2)',
       },
     }),
     input: (provided) => ({
@@ -118,16 +118,16 @@ const CurriculoDocente = () => {
     }),
     menu: (provided) => ({
       ...provided,
-      backgroundColor: '#1a1f3a',
-      borderColor: '#444',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      borderColor: 'rgba(255, 255, 255, 0.1)',
     }),
     option: (provided, state) => ({
       ...provided,
-      backgroundColor: state.isSelected ? '#6366F1' : state.isFocused ? '#2a3050' : '#1a1f3a',
+      backgroundColor: state.isSelected ? 'var(--clr-pumpkin)' : state.isFocused ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.5)',
       color: '#fff',
       cursor: 'pointer',
       '&:active': {
-        backgroundColor: '#6366F1',
+        backgroundColor: 'var(--clr-pumpkin)',
       },
     }),
   };

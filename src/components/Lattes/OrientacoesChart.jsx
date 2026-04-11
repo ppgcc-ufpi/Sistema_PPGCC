@@ -16,6 +16,7 @@ const OrientacoesChart = ({ orientacoesPorAno, chartName = "Orientações por An
 
   const ativoData = anos.map(ano => orientacoesPorAno[ano]?.ativo || 0);
   const concluidoData = anos.map(ano => orientacoesPorAno[ano]?.concluido || 0);
+  const totalData = anos.map((_, index) => ativoData[index] + concluidoData[index]);
 
   const options = {
     chart: {
@@ -37,6 +38,10 @@ const OrientacoesChart = ({ orientacoesPorAno, chartName = "Orientações por An
     dataLabels: {
       enabled: true,
       offsetY: -20,
+      formatter: (value, opts) => {
+        const isLastSeries = opts.seriesIndex === opts.w.config.series.length - 1;
+        return isLastSeries ? totalData[opts.dataPointIndex] : '';
+      },
       style: {
         fontSize: '12px',
         colors: ['#fff'],

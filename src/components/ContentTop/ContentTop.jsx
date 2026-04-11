@@ -16,7 +16,7 @@ const ContentTop = ({ showSearchButton = true }) => {
           case '/graficos':
             return 'Gráficos';
           default:
-            return 'Título Padrão';
+            return 'Currículos';
         }
       };
 

@@ -37,7 +37,7 @@ const ProducoesChart = ({ producoesPorAno, chartName = "Produções por Ano" }) 
       offsetY: -20,
       style: {
         fontSize: '12px',
-        colors: ['#304758'],
+        colors: ['#fff'],
       },
     },
     stroke: {

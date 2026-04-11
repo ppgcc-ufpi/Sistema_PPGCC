@@ -1,28 +1,30 @@
 .curriculo-container {
+  width: 100%;
   padding: 20px;
-  background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 100%);
-  min-height: 100vh;
+  background: transparent;
+  min-height: auto;
 }
 
 .curriculo-header {
   margin-bottom: 30px;
-  color: #fff;
+  color: var(--clr-white);
 }
 
 .curriculo-header h1 {
   font-size: 28px;
   margin-bottom: 10px;
-  color: #e0e7ff;
+  color: var(--clr-white);
+  font-weight: 600;
 }
 
 .curriculo-header p {
   font-size: 14px;
-  color: #94a3b8;
+  color: var(--clr-silver);
 }
 
 .curriculo-selector {
-  background: #1a1f3a;
-  border: 1px solid #333;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 30px;
@@ -31,7 +33,7 @@
 .curriculo-selector label {
   display: block;
   margin-bottom: 10px;
-  color: #e0e7ff;
+  color: var(--clr-white);
   font-weight: 500;
   font-size: 14px;
 }
@@ -56,17 +58,18 @@
 }
 
 .curriculo-info {
-  background: #1a1f3a;
-  border: 1px solid #333;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 30px;
 }
 
 .curriculo-info h2 {
-  color: #e0e7ff;
+  color: var(--clr-white);
   font-size: 22px;
   margin: 0;
+  font-weight: 600;
 }
 
 .charts-grid {
@@ -77,17 +80,17 @@
 }
 
 .chart-container {
-  background: #1a1f3a;
-  border: 1px solid #333;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   padding: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
 
 .chart-container:hover {
-  border-color: #444;
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
 }
 
 .statistics {
@@ -98,7 +101,7 @@
 }
 
 .stat-card {
-  background: linear-gradient(135deg, #6366F1 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, var(--clr-pumpkin) 0%, #6366F1 100%);
   border-radius: 8px;
   padding: 20px;
   text-align: center;
@@ -117,12 +120,13 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .stat-value {
   font-size: 32px;
-  font-weight: bold;
-  color: #fff;
+  font-weight: 700;
+  color: var(--clr-white);
 }
 
 .loading,
@@ -135,15 +139,15 @@
 }
 
 .loading {
-  color: #e0e7ff;
-  background: #1a1f3a;
+  color: var(--clr-white);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .error,
 .error-message {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid #EF4444;
-  color: #FCA5A5;
+  background: rgba(254, 30, 0, 0.1);
+  border: 1px solid var(--clr-scarlet);
+  color: rgba(254, 30, 0, 0.8);
 }
 
 .error-message {

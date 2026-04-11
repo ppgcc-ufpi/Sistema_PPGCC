@@ -16,6 +16,7 @@ const ProjetosChart = ({ projetosPorAno, chartName = "Projetos por Ano" }) => {
 
   const ativoData = anos.map(ano => projetosPorAno[ano]?.ativo || 0);
   const concluidoData = anos.map(ano => projetosPorAno[ano]?.concluido || 0);
+  const totalData = anos.map((_, index) => ativoData[index] + concluidoData[index]);
 
   const options = {
     chart: {
@@ -37,6 +38,22 @@ const ProjetosChart = ({ projetosPorAno, chartName = "Projetos por Ano" }) => {
     dataLabels: {
       enabled: true,
       offsetY: -20,
+      formatter: (value, opts) => {
+        const dataPointIndex = opts.dataPointIndex;
+        const seriesIndex = opts.seriesIndex;
+        const lastSeriesIndex = opts.w.config.series.length - 1;
+        const lastSeriesValue = opts.w.config.series[lastSeriesIndex].data[dataPointIndex] || 0;
+        const total = totalData[dataPointIndex] || 0;
+
+        if (total === 0) return '';
+
+        // Regra: mostra o total na série do topo;
+        // se a série do topo for 0, mostra na série imediatamente abaixo.
+        if (seriesIndex === lastSeriesIndex) return total;
+        if (lastSeriesValue === 0 && seriesIndex === lastSeriesIndex - 1) return total;
+
+        return '';
+      },
       style: {
         fontSize: '12px',
         colors: ['#fff'],
@@ -84,6 +101,9 @@ const ProjetosChart = ({ projetosPorAno, chartName = "Projetos por Ano" }) => {
       theme: 'dark',
       style: {
         fontSize: '12px',
+      },
+      y: {
+        formatter: (val) => Math.round(val),
       },
     },
   };
