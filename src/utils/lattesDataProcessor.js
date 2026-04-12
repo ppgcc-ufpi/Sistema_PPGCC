@@ -284,3 +284,184 @@ export const findDocente = (data, nome) => {
   if (!data || !Array.isArray(data.registros)) return null;
   return data.registros.find(reg => reg.docente === nome);
 };
+
+/**
+ * Obtém todos os anos de produção disponíveis no dataset
+ * @param {Object} data - Dados do JSON
+ * @returns {number[]} Anos ordenados de forma crescente
+ */
+export const getAnosProducoes = (data) => {
+  if (!data || !Array.isArray(data.registros)) return [];
+
+  const anos = new Set();
+
+  data.registros.forEach((registro) => {
+    const producoes = registro?.lattes?.producoes;
+    if (!Array.isArray(producoes)) return;
+
+    producoes.forEach((producao) => {
+      const ano = Number.parseInt(producao?.ano, 10);
+      if (Number.isFinite(ano)) {
+        anos.add(ano);
+      }
+    });
+  });
+
+  return Array.from(anos).sort((a, b) => a - b);
+};
+
+/**
+ * Obtém os anos iniciais de quadriênios possíveis
+ * @param {number[]} anos - Lista de anos disponíveis
+ * @param {number|null} limiteInicio - Ano mínimo permitido para início do quadriênio
+ * @param {number|null} limiteFim - Ano máximo permitido para fim do quadriênio
+ * @returns {number[]} Anos iniciais ordenados
+ */
+export const getQuadrieniosDisponiveis = (anos, limiteInicio = null, limiteFim = null) => {
+  if (!Array.isArray(anos) || anos.length < 4) return [];
+
+  const minAno = Math.min(...anos);
+  const maxAno = Math.max(...anos);
+
+  const minPermitido = Number.isFinite(Number.parseInt(limiteInicio, 10))
+    ? Number.parseInt(limiteInicio, 10)
+    : minAno;
+
+  const maxPermitido = Number.isFinite(Number.parseInt(limiteFim, 10))
+    ? Number.parseInt(limiteFim, 10)
+    : maxAno;
+
+  const inicioFaixa = Math.max(minAno, minPermitido);
+  const fimFaixa = Math.min(maxAno, maxPermitido);
+
+  if (inicioFaixa > fimFaixa || inicioFaixa + 3 > fimFaixa) return [];
+
+  const quadrienios = [];
+
+  for (let ano = inicioFaixa; ano <= fimFaixa - 3; ano += 1) {
+    quadrienios.push(ano);
+  }
+
+  return quadrienios;
+};
+
+/**
+ * Processa produções por docente em um quadriênio para barras empilhadas
+ * @param {Object} data - Dados do JSON
+ * @param {number} anoInicio - Ano inicial do quadriênio
+ * @returns {{categories: string[], series: Array<{name: string, data: number[]}>, anos: number[], totalProducoes: number, docentesAtivos: number}}
+ */
+export const processProducoesPorDocenteQuadrienio = (data, anoInicio) => {
+  const anoInicial = Number.parseInt(anoInicio, 10);
+
+  if (!data || !Array.isArray(data.registros) || !Number.isFinite(anoInicial)) {
+    return {
+      categories: [],
+      series: [],
+      anos: [],
+      totalProducoes: 0,
+      docentesAtivos: 0,
+    };
+  }
+
+  const anos = [anoInicial, anoInicial + 1, anoInicial + 2, anoInicial + 3];
+
+  const docentes = data.registros.map((registro) => {
+    const nome = registro?.docente || registro?.lattes?.docente?.nome || 'Docente não informado';
+    const counts = anos.reduce((acc, ano) => ({ ...acc, [ano]: 0 }), {});
+
+    const producoes = registro?.lattes?.producoes;
+    if (Array.isArray(producoes)) {
+      producoes.forEach((producao) => {
+        const ano = Number.parseInt(producao?.ano, 10);
+        if (anos.includes(ano)) {
+          counts[ano] += 1;
+        }
+      });
+    }
+
+    const total = anos.reduce((sum, ano) => sum + counts[ano], 0);
+
+    return {
+      nome,
+      counts,
+      total,
+    };
+  });
+
+  docentes.sort((a, b) => b.total - a.total || a.nome.localeCompare(b.nome, 'pt-BR'));
+
+  const categories = docentes.map((docente) => docente.nome);
+  const series = anos.map((ano) => ({
+    name: `${ano}`,
+    data: docentes.map((docente) => docente.counts[ano] || 0),
+  }));
+
+  return {
+    categories,
+    series,
+    anos,
+    totalProducoes: docentes.reduce((sum, docente) => sum + docente.total, 0),
+    docentesAtivos: docentes.filter((docente) => docente.total > 0).length,
+  };
+};
+
+/**
+ * Processa dados para curva de Pareto da produção por docente no quadriênio
+ * @param {Object} data - Dados do JSON
+ * @param {number} anoInicio - Ano inicial do quadriênio
+ * @returns {{categories: string[], producoes: number[], acumuladoPercentual: number[], totalProducoes: number, docentesAtivos: number, docentesPareto80: number}}
+ */
+export const processParetoProducoesPorDocenteQuadrienio = (data, anoInicio) => {
+  const base = processProducoesPorDocenteQuadrienio(data, anoInicio);
+
+  if (!base.categories.length || !base.series.length) {
+    return {
+      categories: [],
+      producoes: [],
+      acumuladoPercentual: [],
+      totalProducoes: 0,
+      docentesAtivos: 0,
+      docentesPareto80: 0,
+    };
+  }
+
+  const docentes = base.categories.map((nome, index) => {
+    const total = base.series.reduce((sum, serie) => sum + (serie.data[index] || 0), 0);
+    return { nome, total };
+  }).filter((docente) => docente.total > 0);
+
+  const totalProducoes = docentes.reduce((sum, docente) => sum + docente.total, 0);
+
+  if (totalProducoes === 0) {
+    return {
+      categories: [],
+      producoes: [],
+      acumuladoPercentual: [],
+      totalProducoes: 0,
+      docentesAtivos: 0,
+      docentesPareto80: 0,
+    };
+  }
+
+  let acumulado = 0;
+  let docentesPareto80 = 0;
+
+  const acumuladoPercentual = docentes.map((docente, index) => {
+    acumulado += docente.total;
+    const percentual = Number(((acumulado / totalProducoes) * 100).toFixed(2));
+    if (percentual <= 80 || (percentual > 80 && docentesPareto80 === index)) {
+      docentesPareto80 = index + 1;
+    }
+    return percentual;
+  });
+
+  return {
+    categories: docentes.map((docente) => docente.nome),
+    producoes: docentes.map((docente) => docente.total),
+    acumuladoPercentual,
+    totalProducoes,
+    docentesAtivos: docentes.length,
+    docentesPareto80,
+  };
+};
