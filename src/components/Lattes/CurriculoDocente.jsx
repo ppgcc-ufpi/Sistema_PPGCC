@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import ProducoesChart from './ProducoesChart';
+import ProducoesSerieTemporalChart from './ProducoesSerieTemporalChart';
 import OrientacoesChart from './OrientacoesChart';
 import ProjetosChart from './ProjetosChart';
 import {
@@ -9,6 +10,7 @@ import {
   findDocente,
   getDocenteInfo,
   processProducoes,
+  processProducoesPorAnoETipo,
   processOrientacoes,
   processProjectos,
 } from '../../utils/lattesDataProcessor';
@@ -22,6 +24,7 @@ const CurriculoDocente = () => {
   const [error, setError] = useState(null);
 
   const [producoesPorAno, setProducoesPorAno] = useState({});
+  const [producoesPorAnoTipo, setProducoesPorAnoTipo] = useState({});
   const [orientacoesPorAno, setOrientacoesPorAno] = useState({});
   const [projetosPorAno, setProjetosPorAno] = useState({});
   const [formacao, setFormacao] = useState([]);
@@ -61,6 +64,7 @@ const CurriculoDocente = () => {
   useEffect(() => {
     if (!selectedDocente || !data) {
       setProducoesPorAno({});
+      setProducoesPorAnoTipo({});
       setOrientacoesPorAno({});
       setProjetosPorAno({});
       setFormacao([]);
@@ -83,6 +87,10 @@ const CurriculoDocente = () => {
       // Processa produções
       const prods = processProducoes(info.producoes);
       setProducoesPorAno(prods);
+
+      // Processa série temporal de produções por tipo
+      const prodsPorTipo = processProducoesPorAnoETipo(info.producoes);
+      setProducoesPorAnoTipo(prodsPorTipo);
 
       // Processa formação
       setFormacao(Array.isArray(info.formacao) ? info.formacao : []);
@@ -220,6 +228,13 @@ const CurriculoDocente = () => {
               <ProducoesChart 
                 producoesPorAno={producoesPorAno}
                 chartName="Produções por Ano"
+              />
+            </div>
+
+            <div className="chart-container">
+              <ProducoesSerieTemporalChart
+                producoesPorAnoTipo={producoesPorAnoTipo}
+                chartName="Série Temporal de Produção por Ano e Tipo"
               />
             </div>
 

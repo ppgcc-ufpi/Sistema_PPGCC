@@ -23,6 +23,34 @@ export const processProducoes = (producoes) => {
 };
 
 /**
+ * Processa produções agrupadas por ano e tipo
+ * @param {Array} producoes - Lista de produções
+ * @returns {Object} Dados no formato { [ano]: { [tipo]: quantidade } }
+ */
+export const processProducoesPorAnoETipo = (producoes) => {
+  const grouped = {};
+
+  if (!Array.isArray(producoes)) return grouped;
+
+  producoes.forEach((prod) => {
+    const ano = prod.ano || new Date().getFullYear();
+    const tipo = prod.tipo || 'Tipo não informado';
+
+    if (!grouped[ano]) {
+      grouped[ano] = {};
+    }
+
+    if (!grouped[ano][tipo]) {
+      grouped[ano][tipo] = 0;
+    }
+
+    grouped[ano][tipo] += 1;
+  });
+
+  return grouped;
+};
+
+/**
  * Processa orientações por nível e ano
  * @param {Object} orientacoes - Objeto com orientações por nível
  * @returns {Object} Dados processados

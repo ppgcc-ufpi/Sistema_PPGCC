@@ -17,6 +17,14 @@ const ProjetosChart = ({ projetosPorAno, chartName = "Projetos por Ano" }) => {
   const ativoData = anos.map(ano => projetosPorAno[ano]?.ativo || 0);
   const concluidoData = anos.map(ano => projetosPorAno[ano]?.concluido || 0);
   const totalData = anos.map((_, index) => ativoData[index] + concluidoData[index]);
+  const maxY = Math.max(...totalData, 0);
+  const maxYCeil = Math.max(1, Math.ceil(maxY));
+  const desiredTickCount = 6;
+  const useCompactTicks = maxYCeil > desiredTickCount;
+  const yTickAmount = useCompactTicks ? desiredTickCount : maxYCeil;
+  const yStep = useCompactTicks ? Math.ceil(maxYCeil / desiredTickCount) : 1;
+  const yMax = yStep * yTickAmount;
+  const showDataLabels = anos.length <= 12;
 
   const options = {
     chart: {
@@ -36,7 +44,7 @@ const ProjetosChart = ({ projetosPorAno, chartName = "Projetos por Ano" }) => {
       },
     },
     dataLabels: {
-      enabled: true,
+      enabled: showDataLabels,
       offsetY: -20,
       formatter: (value, opts) => {
         const dataPointIndex = opts.dataPointIndex;
@@ -73,7 +81,13 @@ const ProjetosChart = ({ projetosPorAno, chartName = "Projetos por Ano" }) => {
       },
     },
     yaxis: {
+      min: 0,
+      max: yMax,
+      tickAmount: yTickAmount,
+      forceNiceScale: false,
+      decimalsInFloat: 0,
       labels: {
+        formatter: (val) => `${Math.round(val)}`,
         style: {
           colors: '#B0C4DE',
         },

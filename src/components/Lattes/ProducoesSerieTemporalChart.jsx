@@ -1,60 +1,75 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 
-const ProducoesChart = ({ producoesPorAno, chartName = "Produções por Ano" }) => {
-  const anos = Object.keys(producoesPorAno)
-    .map(a => parseInt(a))
+const ProducoesSerieTemporalChart = ({ producoesPorAnoTipo, chartName = 'Série Temporal de Produção por Tipo' }) => {
+  const anos = Object.keys(producoesPorAnoTipo)
+    .map((a) => parseInt(a, 10))
     .sort((a, b) => a - b);
 
   if (anos.length === 0) {
     return (
       <div style={{ padding: '20px', textAlign: 'center', color: '#999' }}>
-        Sem dados de produções disponíveis
+        Sem dados de produções por tipo disponíveis
       </div>
     );
   }
 
-  const data = anos.map(ano => producoesPorAno[ano]?.length || 0);
-  const maxY = Math.max(...data, 0);
+  const tipos = Array.from(
+    new Set(
+      anos.flatMap((ano) => Object.keys(producoesPorAnoTipo[ano] || {}))
+    )
+  ).sort((a, b) => a.localeCompare(b, 'pt-BR'));
+
+  const series = tipos.map((tipo) => ({
+    name: tipo,
+    data: anos.map((ano) => producoesPorAnoTipo[ano]?.[tipo] || 0),
+  }));
+  const maxY = Math.max(
+    0,
+    ...series.flatMap((serie) => serie.data)
+  );
   const maxYCeil = Math.max(1, Math.ceil(maxY));
   const desiredTickCount = 6;
   const useCompactTicks = maxYCeil > desiredTickCount;
   const yTickAmount = useCompactTicks ? desiredTickCount : maxYCeil;
   const yStep = useCompactTicks ? Math.ceil(maxYCeil / desiredTickCount) : 1;
   const yMax = yStep * yTickAmount;
-  const showDataLabels = anos.length <= 12;
 
   const options = {
     chart: {
-      type: 'bar',
+      type: 'line',
       height: 350,
       zoom: {
         enabled: true,
+        type: 'x',
+        autoScaleYaxis: true,
       },
-    },
-    plotOptions: {
-      bar: {
-        borderRadius: 4,
-        dataLabels: {
-          position: 'top',
+      toolbar: {
+        show: true,
+        autoSelected: 'pan',
+        tools: {
+          selection: false,
+          pan: true,
+          download: true,
+          zoom: false,
+          zoomin: true,
+          zoomout: true,
+          reset: true,
         },
       },
     },
-    dataLabels: {
-      enabled: showDataLabels,
-      offsetY: -20,
-      style: {
-        fontSize: '12px',
-        colors: ['#fff'],
+    stroke: {
+      curve: 'smooth',
+      width: 2,
+    },
+    markers: {
+      size: 3,
+      hover: {
+        size: 5,
       },
     },
-    stroke: {
-      show: true,
-      width: 1,
-      colors: ['#e0e0e0'],
-    },
     xaxis: {
-      categories: anos.map(a => a.toString()),
+      categories: anos.map((a) => a.toString()),
       labels: {
         style: {
           colors: '#B0C4DE',
@@ -74,10 +89,6 @@ const ProducoesChart = ({ producoesPorAno, chartName = "Produções por Ano" }) 
         },
       },
     },
-    fill: {
-      opacity: 1,
-      colors: ['#6366F1'],
-    },
     title: {
       text: chartName,
       align: 'left',
@@ -87,8 +98,16 @@ const ProducoesChart = ({ producoesPorAno, chartName = "Produções por Ano" }) 
         fontWeight: 'bold',
       },
     },
+    legend: {
+      position: 'bottom',
+      labels: {
+        colors: '#B0C4DE',
+      },
+    },
     tooltip: {
       theme: 'dark',
+      shared: true,
+      intersect: false,
       style: {
         fontSize: '12px',
       },
@@ -96,20 +115,17 @@ const ProducoesChart = ({ producoesPorAno, chartName = "Produções por Ano" }) 
         formatter: (val) => Math.round(val),
       },
     },
-  };
-
-  const series = [
-    {
-      name: 'Produções',
-      data: data,
+    grid: {
+      borderColor: 'rgba(176, 196, 222, 0.2)',
+      strokeDashArray: 4,
     },
-  ];
+  };
 
   return (
     <div style={{ width: '100%', height: '400px', background: '#1a1f3a', borderRadius: '8px', padding: '20px' }}>
-      <Chart options={options} series={series} type="bar" height={350} />
+      <Chart options={options} series={series} type="line" height={350} />
     </div>
   );
 };
 
-export default ProducoesChart;
+export default ProducoesSerieTemporalChart;

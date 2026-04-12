@@ -17,6 +17,14 @@ const OrientacoesChart = ({ orientacoesPorAno, chartName = "Orientações por An
   const ativoData = anos.map(ano => orientacoesPorAno[ano]?.ativo || 0);
   const concluidoData = anos.map(ano => orientacoesPorAno[ano]?.concluido || 0);
   const totalData = anos.map((_, index) => ativoData[index] + concluidoData[index]);
+  const maxY = Math.max(...totalData, 0);
+  const maxYCeil = Math.max(1, Math.ceil(maxY));
+  const desiredTickCount = 6;
+  const useCompactTicks = maxYCeil > desiredTickCount;
+  const yTickAmount = useCompactTicks ? desiredTickCount : maxYCeil;
+  const yStep = useCompactTicks ? Math.ceil(maxYCeil / desiredTickCount) : 1;
+  const yMax = yStep * yTickAmount;
+  const showDataLabels = anos.length <= 12;
 
   const options = {
     chart: {
@@ -36,7 +44,7 @@ const OrientacoesChart = ({ orientacoesPorAno, chartName = "Orientações por An
       },
     },
     dataLabels: {
-      enabled: true,
+      enabled: showDataLabels,
       offsetY: -20,
       formatter: (value, opts) => {
         const isLastSeries = opts.seriesIndex === opts.w.config.series.length - 1;
@@ -61,7 +69,13 @@ const OrientacoesChart = ({ orientacoesPorAno, chartName = "Orientações por An
       },
     },
     yaxis: {
+      min: 0,
+      max: yMax,
+      tickAmount: yTickAmount,
+      forceNiceScale: false,
+      decimalsInFloat: 0,
       labels: {
+        formatter: (val) => `${Math.round(val)}`,
         style: {
           colors: '#B0C4DE',
         },
@@ -89,6 +103,9 @@ const OrientacoesChart = ({ orientacoesPorAno, chartName = "Orientações por An
       theme: 'dark',
       style: {
         fontSize: '12px',
+      },
+      y: {
+        formatter: (val) => Math.round(val),
       },
     },
   };
