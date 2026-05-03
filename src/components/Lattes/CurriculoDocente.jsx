@@ -3,6 +3,7 @@ import Select from 'react-select';
 import ProducoesChart from './ProducoesChart';
 import ProducoesSerieTemporalChart from './ProducoesSerieTemporalChart';
 import OrientacoesChart from './OrientacoesChart';
+import OrientacoesNivelChart from './OrientacoesNivelChart';
 import ProjetosChart from './ProjetosChart';
 import ProducoesDocenteQuadrienioChart from './ProducoesDocenteQuadrienioChart';
 import ProducoesParetoDocenteChart from './ProducoesParetoDocenteChart';
@@ -14,6 +15,7 @@ import {
   processProducoes,
   processProducoesPorAnoETipo,
   processOrientacoes,
+  processOrientacoesPorNivel,
   processProjectos,
   getAnosProducoes,
   getQuadrieniosDisponiveis,
@@ -32,6 +34,7 @@ const CurriculoDocente = () => {
   const [producoesPorAno, setProducoesPorAno] = useState({});
   const [producoesPorAnoTipo, setProducoesPorAnoTipo] = useState({});
   const [orientacoesPorAno, setOrientacoesPorAno] = useState({});
+  const [orientacoesPorNivel, setOrientacoesPorNivel] = useState({});
   const [projetosPorAno, setProjetosPorAno] = useState({});
   const [formacao, setFormacao] = useState([]);
   const [modoVisualizacao, setModoVisualizacao] = useState('docente');
@@ -133,6 +136,9 @@ const CurriculoDocente = () => {
       // Processa orientações
       const ors = processOrientacoes(info.orientacoes);
       setOrientacoesPorAno(ors);
+      // Processa orientações por nível (barras)
+      const orsPorNivel = processOrientacoesPorNivel(info.orientacoes);
+      setOrientacoesPorNivel(orsPorNivel);
 
       // Processa projetos
       const projs = processProjectos(info.projetos);
@@ -409,6 +415,13 @@ const CurriculoDocente = () => {
               <OrientacoesChart
                 orientacoesPorAno={orientacoesPorAno}
                 chartName="Orientações por Ano"
+              />
+            </div>
+
+            <div className="chart-container">
+              <OrientacoesNivelChart
+                orientacoesPorNivel={orientacoesPorNivel}
+                chartName="Orientações por Nível"
               />
             </div>
 

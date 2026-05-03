@@ -224,6 +224,75 @@ export const prepareDadosProjetos = (projetosPorAno) => {
 };
 
 /**
+ * Processa orientações por nível (contagens por situação)
+ * @param {Object} orientacoes - Objeto com chaves por nível contendo arrays de orientações
+ * @returns {Object} Objeto com estrutura { [nivel]: { ativo: number, concluido: number, total: number } }
+ */
+export const processOrientacoesPorNivel = (orientacoes) => {
+  const result = {};
+  if (!orientacoes || typeof orientacoes !== 'object') return result;
+
+  const niveis = ['mestrado', 'doutorado', 'pos_doutorado', 'iniciacao_cientifica', 'outras'];
+
+  niveis.forEach((nivel) => {
+    result[nivel] = { ativo: 0, concluido: 0, total: 0 };
+    const list = orientacoes[nivel] || [];
+    if (!Array.isArray(list)) return;
+
+    list.forEach((orient) => {
+      const situacao = (orient.situacao || orient.status || 'Concluído').toString().toLowerCase();
+      result[nivel].total += 1;
+      if (situacao.includes('andamento') || situacao.includes('em-andamento') || situacao.includes('em andamento')) {
+        result[nivel].ativo += 1;
+      } else {
+        result[nivel].concluido += 1;
+      }
+    });
+  });
+
+  return result;
+};
+
+/**
+ * Prepara dados para gráfico de orientações por nível (barras empilhadas)
+ * @param {Object} orientacoesPorNivel - Resultado de `processOrientacoesPorNivel`
+ * @returns {Object} { series: [ {name, data} ], categories: [labels] }
+ */
+export const prepareDadosOrientacoesPorNivel = (orientacoesPorNivel) => {
+  const nivelLabels = {
+    mestrado: 'Mestrado',
+    doutorado: 'Doutorado',
+    pos_doutorado: 'Pós-doutorado',
+    iniciacao_cientifica: 'Iniciação Científica',
+    outras: 'Outras',
+  };
+
+  const niveis = Object.keys(nivelLabels);
+
+  if (!orientacoesPorNivel || typeof orientacoesPorNivel !== 'object') {
+    return {
+      series: [
+        { name: 'Em Andamento', data: [] },
+        { name: 'Concluído', data: [] },
+      ],
+      categories: [],
+    };
+  }
+
+  const ativoData = niveis.map((n) => (orientacoesPorNivel[n]?.ativo || 0));
+  const concluidoData = niveis.map((n) => (orientacoesPorNivel[n]?.concluido || 0));
+  const categories = niveis.map((n) => nivelLabels[n]);
+
+  return {
+    series: [
+      { name: 'Em Andamento', data: ativoData },
+      { name: 'Concluído', data: concluidoData },
+    ],
+    categories,
+  };
+};
+
+/**
  * Obtém informações do docente
  * @param {Object} docente - Objeto do docente
  * @returns {Object} Informações processadas
