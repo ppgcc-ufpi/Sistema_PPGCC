@@ -7,6 +7,7 @@ import OrientacoesNivelChart from './OrientacoesNivelChart';
 import ProjetosChart from './ProjetosChart';
 import ProducoesDocenteQuadrienioChart from './ProducoesDocenteQuadrienioChart';
 import ProducoesParetoDocenteChart from './ProducoesParetoDocenteChart';
+import ProducaoOrientacoesScatterChart from './ProducaoOrientacoesScatterChart';
 import {
   loadLattesData,
   getListaDocentes,
@@ -21,6 +22,7 @@ import {
   getQuadrieniosDisponiveis,
   processProducoesPorDocenteQuadrienio,
   processParetoProducoesPorDocenteQuadrienio,
+  processProducaoOrientacoesDocenteScatter,
 } from '../../utils/lattesDataProcessor';
 import './CurriculoDocente.css';
 
@@ -54,6 +56,12 @@ const CurriculoDocente = () => {
     totalProducoes: 0,
     docentesAtivos: 0,
     docentesPareto80: 0,
+  });
+  const [producaoOrientacoesScatter, setProducaoOrientacoesScatter] = useState({
+    docenteData: [],
+    maxProducoes: 0,
+    maxOrientacoes: 0,
+    nome: 'Docente',
   });
 
   // Carrega dados do JSON ao montar o componente
@@ -106,6 +114,12 @@ const CurriculoDocente = () => {
       setOrientacoesPorAno({});
       setProjetosPorAno({});
       setFormacao([]);
+      setProducaoOrientacoesScatter({
+        docenteData: [],
+        maxProducoes: 0,
+        maxOrientacoes: 0,
+        nome: 'Docente',
+      });
       return;
     }
 
@@ -143,6 +157,10 @@ const CurriculoDocente = () => {
       // Processa projetos
       const projs = processProjectos(info.projetos);
       setProjetosPorAno(projs);
+
+      // Processa scatter plot produção × orientações concluídas
+      const scatterData = processProducaoOrientacoesDocenteScatter(docente);
+      setProducaoOrientacoesScatter(scatterData);
 
       setError(null);
     } catch (err) {
@@ -430,9 +448,19 @@ const CurriculoDocente = () => {
                 projetosPorAno={projetosPorAno}
                 chartName="Projetos por Ano"
               />
-            </div>
-          </div>
 
+              </div>
+
+              <div className="chart-container">
+                <ProducaoOrientacoesScatterChart
+                  docenteData={producaoOrientacoesScatter.docenteData}
+                  maxProducoes={producaoOrientacoesScatter.maxProducoes}
+                  maxOrientacoes={producaoOrientacoesScatter.maxOrientacoes}
+                  docente={producaoOrientacoesScatter.nome}
+                  chartName="Produção × Orientações Concluídas"
+                />
+              </div>
+            </div>
           <div className="statistics">
             <div className="stat-card">
               <div className="stat-label">Total de Produções</div>

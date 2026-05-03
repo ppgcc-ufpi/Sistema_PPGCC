@@ -534,3 +534,152 @@ export const processParetoProducoesPorDocenteQuadrienio = (data, anoInicio) => {
     docentesPareto80,
   };
 };
+
+/**
+ * Processa dados para scatter plot de produção × orientações concluídas
+ * @param {Object} data - Dados do JSON com todos os docentes
+ * @returns {Object} Dados processados com { docentesData: Array, maxProducoes, maxOrientacoes }
+ */
+export const processProducaoOrientacoesScatter = (data) => {
+  if (!data || !Array.isArray(data.registros)) {
+    return {
+      docentesData: [],
+      maxProducoes: 0,
+      maxOrientacoes: 0,
+      totalDocentes: 0,
+      docentesComDados: 0,
+    };
+  }
+
+  const docentesData = data.registros.map((reg) => {
+    const docente = findDocente(data, reg.docente);
+    if (!docente) {
+      return null;
+    }
+
+    const info = getDocenteInfo(docente);
+    if (!info) {
+      return null;
+    }
+
+    // Contabiliza total de produções
+    const totalProducoes = Array.isArray(info.producoes) ? info.producoes.length : 0;
+
+    // Contabiliza total de orientações concluídas
+    let totalOrientacoesConcluidas = 0;
+    if (info.orientacoes && typeof info.orientacoes === 'object') {
+      const niveis = ['mestrado', 'doutorado', 'pos_doutorado', 'iniciacao_cientifica', 'outras'];
+      niveis.forEach((nivel) => {
+        const list = info.orientacoes[nivel] || [];
+        if (Array.isArray(list)) {
+          list.forEach((orient) => {
+            const situacao = (orient.situacao || orient.status || 'Concluído').toString().toLowerCase();
+            if (
+              !situacao.includes('andamento') &&
+              !situacao.includes('em-andamento') &&
+              !situacao.includes('em andamento')
+            ) {
+              totalOrientacoesConcluidas += 1;
+            }
+          });
+        }
+      });
+    }
+
+    return {
+      nome: reg.docente,
+      producoes: totalProducoes,
+      orientacoes: totalOrientacoesConcluidas,
+    };
+  }).filter((item) => item !== null && (item.producoes > 0 || item.orientacoes > 0));
+
+  const maxProducoes = docentesData.length > 0 ? Math.max(...docentesData.map((d) => d.producoes), 0) : 0;
+  const maxOrientacoes = docentesData.length > 0 ? Math.max(...docentesData.map((d) => d.orientacoes), 0) : 0;
+
+  return {
+    docentesData,
+    maxProducoes,
+    maxOrientacoes,
+    totalDocentes: data.registros.length,
+    docentesComDados: docentesData.length,
+  };
+};
+
+/**
+ * Processa dados para scatter plot de um docente específico: produção por ano × orientações concluídas por ano
+ * @param {Object} docente - Objeto do docente
+ * @returns {Object} Dados processados com { docenteData: Array, maxProducoes, maxOrientacoes }
+ */
+export const processProducaoOrientacoesDocenteScatter = (docente) => {
+  if (!docente || !docente.lattes) {
+    return {
+      docenteData: [],
+      maxProducoes: 0,
+      maxOrientacoes: 0,
+      nome: 'Desconhecido',
+    };
+  }
+
+  const info = getDocenteInfo(docente);
+  if (!info) {
+    return {
+      docenteData: [],
+      maxProducoes: 0,
+      maxOrientacoes: 0,
+      nome: 'Desconhecido',
+    };
+  }
+
+  // Agrupa produções por ano
+  const producoesPorAno = {};
+  if (Array.isArray(info.producoes)) {
+    info.producoes.forEach((prod) => {
+      const ano = prod.ano || new Date().getFullYear();
+      producoesPorAno[ano] = (producoesPorAno[ano] || 0) + 1;
+    });
+  }
+
+  // Agrupa orientações concluídas por ano
+  const orientacoesConcluiPorAno = {};
+  if (info.orientacoes && typeof info.orientacoes === 'object') {
+    const niveis = ['mestrado', 'doutorado', 'pos_doutorado', 'iniciacao_cientifica', 'outras'];
+    niveis.forEach((nivel) => {
+      const list = info.orientacoes[nivel] || [];
+      if (Array.isArray(list)) {
+        list.forEach((orient) => {
+          const situacao = (orient.situacao || orient.status || 'Concluído').toString().toLowerCase();
+          if (
+            !situacao.includes('andamento') &&
+            !situacao.includes('em-andamento') &&
+            !situacao.includes('em andamento')
+          ) {
+            const ano = orient.ano || orient.ano_fim || new Date().getFullYear();
+            orientacoesConcluiPorAno[ano] = (orientacoesConcluiPorAno[ano] || 0) + 1;
+          }
+        });
+      }
+    });
+  }
+
+  // Combina anos para garantir que temos dados para ambos
+  const todosAnosSet = new Set([...Object.keys(producoesPorAno), ...Object.keys(orientacoesConcluiPorAno)]);
+  const todosAnos = Array.from(todosAnosSet).map((a) => parseInt(a)).sort((a, b) => a - b);
+
+  const docenteData = todosAnos
+    .map((ano) => ({
+      x: producoesPorAno[ano] || 0,
+      y: orientacoesConcluiPorAno[ano] || 0,
+      ano,
+    }))
+    .filter((item) => item.x > 0 || item.y > 0); // Remove anos sem dados
+
+  const maxProducoes = docenteData.length > 0 ? Math.max(...docenteData.map((d) => d.x), 0) : 0;
+  const maxOrientacoes = docenteData.length > 0 ? Math.max(...docenteData.map((d) => d.y), 0) : 0;
+
+  return {
+    docenteData,
+    maxProducoes,
+    maxOrientacoes,
+    nome: info.nome,
+  };
+};
