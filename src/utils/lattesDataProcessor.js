@@ -254,7 +254,7 @@ export const processOrientacoesPorNivel = (orientacoes) => {
 };
 
 /**
- * Prepara dados para gráfico de orientações por nível (barras empilhadas)
+ * Prepara dados para gráfico de orientações por nível
  * @param {Object} orientacoesPorNivel - Resultado de `processOrientacoesPorNivel`
  * @returns {Object} { series: [ {name, data} ], categories: [labels] }
  */
@@ -262,7 +262,6 @@ export const prepareDadosOrientacoesPorNivel = (orientacoesPorNivel) => {
   const nivelLabels = {
     mestrado: 'Mestrado',
     doutorado: 'Doutorado',
-    pos_doutorado: 'Pós-doutorado',
     iniciacao_cientifica: 'Iniciação Científica',
     outras: 'Outras',
   };
@@ -561,11 +560,8 @@ export const processProducaoOrientacoesScatter = (data) => {
     if (!info) {
       return null;
     }
-
-    // Contabiliza total de produções
     const totalProducoes = Array.isArray(info.producoes) ? info.producoes.length : 0;
 
-    // Contabiliza total de orientações concluídas
     let totalOrientacoesConcluidas = 0;
     if (info.orientacoes && typeof info.orientacoes === 'object') {
       const niveis = ['mestrado', 'doutorado', 'pos_doutorado', 'iniciacao_cientifica', 'outras'];
@@ -630,7 +626,6 @@ export const processProducaoOrientacoesDocenteScatter = (docente) => {
     };
   }
 
-  // Agrupa produções por ano
   const producoesPorAno = {};
   if (Array.isArray(info.producoes)) {
     info.producoes.forEach((prod) => {
@@ -639,7 +634,6 @@ export const processProducaoOrientacoesDocenteScatter = (docente) => {
     });
   }
 
-  // Agrupa orientações concluídas por ano
   const orientacoesConcluiPorAno = {};
   if (info.orientacoes && typeof info.orientacoes === 'object') {
     const niveis = ['mestrado', 'doutorado', 'pos_doutorado', 'iniciacao_cientifica', 'outras'];
@@ -661,7 +655,6 @@ export const processProducaoOrientacoesDocenteScatter = (docente) => {
     });
   }
 
-  // Combina anos para garantir que temos dados para ambos
   const todosAnosSet = new Set([...Object.keys(producoesPorAno), ...Object.keys(orientacoesConcluiPorAno)]);
   const todosAnos = Array.from(todosAnosSet).map((a) => parseInt(a)).sort((a, b) => a - b);
 
@@ -671,7 +664,7 @@ export const processProducaoOrientacoesDocenteScatter = (docente) => {
       y: orientacoesConcluiPorAno[ano] || 0,
       ano,
     }))
-    .filter((item) => item.x > 0 || item.y > 0); // Remove anos sem dados
+    .filter((item) => item.x > 0 || item.y > 0);
 
   const maxProducoes = docenteData.length > 0 ? Math.max(...docenteData.map((d) => d.x), 0) : 0;
   const maxOrientacoes = docenteData.length > 0 ? Math.max(...docenteData.map((d) => d.y), 0) : 0;
