@@ -1,5 +1,5 @@
-// Funções para processar dados do JSON de Lattes
-import lattesData from '../data/lattes_sucupira_integrado.json';
+// Funções para processar os conjuntos integrados de currículos
+import curriculosData from './curriculosDataAdapter';
 
 /**
  * Processa produções agrupadas por ano
@@ -316,8 +316,7 @@ export const getDocenteInfo = (docente) => {
  */
 export const loadLattesData = async () => {
   try {
-    // Retorna os dados importados diretamente
-    return lattesData;
+    return curriculosData;
   } catch (error) {
     console.error('Erro ao carregar dados de Lattes:', error);
     return null;
