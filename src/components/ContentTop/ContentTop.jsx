@@ -2,7 +2,6 @@ import { iconsImgs } from "../../utils/images";
 import "./ContentTop.css";
 import { useContext } from "react";
 import { SidebarContext } from "../../context/sidebarContext";
-import { navigationLinks } from '../../data/data';
 import { useLocation } from "react-router-dom";
 
 const ContentTop = ({ showSearchButton = true }) => {
@@ -15,8 +14,12 @@ const ContentTop = ({ showSearchButton = true }) => {
             return 'Home';
           case '/graficos':
             return 'Gráficos';
-          default:
+          case '/rede-coautoria':
+            return 'Rede de Coautoria';
+          case '/curriculos':
             return 'Currículos';
+          default:
+            return 'Sistema PPGCC';
         }
       };
 
