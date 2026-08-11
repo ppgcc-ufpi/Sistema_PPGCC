@@ -360,7 +360,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_0f0817435f306fbb"
+      "doc_0f0817435f306fbb",
+      "doc_d2f715d7e40e70c3"
     ]
   },
   {
@@ -506,6 +507,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_78970924a390e5f9",
+      "doc_ab93f4c5c7093a86",
       "doc_eddfa1eb50b0e898"
     ]
   },
@@ -583,7 +586,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_ab93f4c5c7093a86"
+      "doc_78970924a390e5f9",
+      "doc_ab93f4c5c7093a86",
+      "doc_eddfa1eb50b0e898"
     ]
   },
   {
@@ -797,7 +802,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_ab93f4c5c7093a86"
+      "doc_78970924a390e5f9",
+      "doc_ab93f4c5c7093a86",
+      "doc_eddfa1eb50b0e898"
     ]
   },
   {
@@ -872,6 +879,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_78970924a390e5f9",
+      "doc_ab93f4c5c7093a86",
       "doc_eddfa1eb50b0e898"
     ]
   },
@@ -1597,6 +1606,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_6fedbab2f46ede69",
       "doc_e7b8f2ba9d942b2e"
     ]
   },
@@ -1888,7 +1898,8 @@
     },
     "docente_ids": [
       "doc_6fedbab2f46ede69",
-      "doc_ac19fc0401fe1553"
+      "doc_ac19fc0401fe1553",
+      "doc_e7b8f2ba9d942b2e"
     ]
   },
   {
@@ -2598,7 +2609,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_ab93f4c5c7093a86"
+      "doc_ab93f4c5c7093a86",
+      "doc_d2f715d7e40e70c3"
     ]
   },
   {
@@ -2947,6 +2959,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_18caa8b991d19cb8",
       "doc_ac19fc0401fe1553"
     ]
   },
@@ -3267,7 +3280,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_0f0817435f306fbb"
+      "doc_0f0817435f306fbb",
+      "doc_18caa8b991d19cb8",
+      "doc_ac19fc0401fe1553"
     ]
   },
   {
@@ -3621,6 +3636,7 @@
     "docente_ids": [
       "doc_616f23f8133ca094",
       "doc_e7b8f2ba9d942b2e",
+      "doc_eddfa1eb50b0e898",
       "doc_f56b0fceb6495fcb"
     ]
   },
@@ -4686,7 +4702,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_0f0817435f306fbb"
+      "doc_0f0817435f306fbb",
+      "doc_d2f715d7e40e70c3"
     ]
   },
   {
@@ -5106,6 +5123,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_87ad0bf46cf65da7",
       "doc_fa0da25356113752"
     ]
   },
@@ -5460,7 +5478,8 @@
     },
     "docente_ids": [
       "doc_78970924a390e5f9",
-      "doc_ab93f4c5c7093a86"
+      "doc_ab93f4c5c7093a86",
+      "doc_eddfa1eb50b0e898"
     ]
   },
   {
@@ -6603,7 +6622,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_78970924a390e5f9"
+      "doc_78970924a390e5f9",
+      "doc_eddfa1eb50b0e898"
     ]
   },
   {
@@ -8145,6 +8165,7 @@
     },
     "docente_ids": [
       "doc_9f78268945de8352",
+      "doc_e7b8f2ba9d942b2e",
       "doc_fa0da25356113752"
     ]
   },
@@ -8417,6 +8438,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_6fedbab2f46ede69",
       "doc_9f78268945de8352"
     ]
   },
@@ -8831,6 +8853,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_3404515fa1d0004d",
       "doc_9f78268945de8352"
     ]
   },
@@ -9257,6 +9280,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_87ad0bf46cf65da7",
       "doc_e7b8f2ba9d942b2e"
     ]
   },
@@ -11268,7 +11292,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_ac19fc0401fe1553"
     ]
   },
   {
@@ -11345,7 +11370,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_ac19fc0401fe1553"
     ]
   },
   {
@@ -11500,6 +11526,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_040288908b2e230e",
       "doc_3404515fa1d0004d"
     ]
   },
@@ -12062,7 +12089,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_510dcc91ec21c621"
+      "doc_040288908b2e230e",
+      "doc_510dcc91ec21c621",
+      "doc_87ad0bf46cf65da7"
     ]
   },
   {
@@ -12271,6 +12300,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_3404515fa1d0004d",
       "doc_9f78268945de8352",
       "doc_fa0da25356113752"
     ]
@@ -13134,7 +13164,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_ac19fc0401fe1553"
     ]
   },
   {
@@ -13214,6 +13245,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_87ad0bf46cf65da7",
       "doc_e7b8f2ba9d942b2e"
     ]
   },
@@ -13285,7 +13317,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_31c0e089a7fbfa2a"
+      "doc_31c0e089a7fbfa2a",
+      "doc_ab93f4c5c7093a86"
     ]
   },
   {
@@ -13884,7 +13917,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_0f0817435f306fbb"
+      "doc_0f0817435f306fbb",
+      "doc_d2f715d7e40e70c3"
     ]
   },
   {
@@ -14593,7 +14627,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_78970924a390e5f9"
+      "doc_78970924a390e5f9",
+      "doc_eddfa1eb50b0e898"
     ]
   },
   {
@@ -15246,7 +15281,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_3404515fa1d0004d"
+      "doc_3404515fa1d0004d",
+      "doc_9f78268945de8352"
     ]
   },
   {
@@ -15313,6 +15349,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_0f0817435f306fbb",
       "doc_fe27df0f88099b6e"
     ]
   },
@@ -16127,7 +16164,8 @@
     },
     "docente_ids": [
       "doc_78970924a390e5f9",
-      "doc_ab93f4c5c7093a86"
+      "doc_ab93f4c5c7093a86",
+      "doc_eddfa1eb50b0e898"
     ]
   },
   {
@@ -21569,7 +21607,8 @@
     },
     "docente_ids": [
       "doc_18caa8b991d19cb8",
-      "doc_e7b8f2ba9d942b2e"
+      "doc_e7b8f2ba9d942b2e",
+      "doc_fa0da25356113752"
     ]
   },
   {
@@ -22618,7 +22657,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e"
     ]
   },
   {
@@ -23917,7 +23957,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_e7b8f2ba9d942b2e"
+      "doc_87ad0bf46cf65da7",
+      "doc_e7b8f2ba9d942b2e",
+      "doc_fa0da25356113752"
     ]
   },
   {
@@ -28198,7 +28240,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_78970924a390e5f9"
+      "doc_78970924a390e5f9",
+      "doc_ab93f4c5c7093a86"
     ]
   },
   {
@@ -28692,7 +28735,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_78970924a390e5f9"
+      "doc_78970924a390e5f9",
+      "doc_ab93f4c5c7093a86",
+      "doc_eddfa1eb50b0e898"
     ]
   },
   {
@@ -30637,6 +30682,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_7af911ac445c7660",
       "doc_ab93f4c5c7093a86"
     ]
   },
@@ -36433,6 +36479,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_18caa8b991d19cb8",
       "doc_ac19fc0401fe1553"
     ]
   },
@@ -36506,7 +36553,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_ac19fc0401fe1553"
     ]
   },
   {
@@ -36579,6 +36627,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_18caa8b991d19cb8",
       "doc_ac19fc0401fe1553"
     ]
   },
@@ -36652,7 +36701,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_ac19fc0401fe1553"
     ]
   },
   {
@@ -36976,7 +37026,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_ab93f4c5c7093a86"
+      "doc_78970924a390e5f9",
+      "doc_ab93f4c5c7093a86",
+      "doc_eddfa1eb50b0e898"
     ]
   },
   {
@@ -37326,7 +37378,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_510dcc91ec21c621"
+      "doc_510dcc91ec21c621",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -40640,7 +40693,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_87ad0bf46cf65da7"
+      "doc_87ad0bf46cf65da7",
+      "doc_e7b8f2ba9d942b2e",
+      "doc_fa0da25356113752"
     ]
   },
   {
@@ -41768,7 +41823,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_eddfa1eb50b0e898"
+      "doc_eddfa1eb50b0e898",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -42653,7 +42709,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -43197,6 +43255,7 @@
     "docente_ids": [
       "doc_0f0817435f306fbb",
       "doc_18caa8b991d19cb8",
+      "doc_ab93f4c5c7093a86",
       "doc_ac19fc0401fe1553"
     ]
   },
@@ -43728,6 +43787,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_18caa8b991d19cb8",
+      "doc_31c0e089a7fbfa2a",
+      "doc_7af911ac445c7660",
       "doc_ac19fc0401fe1553"
     ]
   },
@@ -49746,6 +49808,7 @@
       "ocorrencias_sucupira_consolidadas": 1
     },
     "docente_ids": [
+      "doc_31c0e089a7fbfa2a",
       "doc_ab93f4c5c7093a86"
     ]
   },
@@ -49906,6 +49969,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_0f0817435f306fbb",
       "doc_ac19fc0401fe1553"
     ]
   },
@@ -51289,7 +51353,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_0f0817435f306fbb",
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e"
     ]
   },
   {
@@ -52178,7 +52244,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_616f23f8133ca094",
+      "doc_e7b8f2ba9d942b2e"
     ]
   },
   {
@@ -53497,7 +53565,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_78970924a390e5f9"
+      "doc_78970924a390e5f9",
+      "doc_ab93f4c5c7093a86"
     ]
   },
   {
@@ -55185,7 +55254,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_78970924a390e5f9"
+      "doc_78970924a390e5f9",
+      "doc_ab93f4c5c7093a86"
     ]
   },
   {
@@ -55631,6 +55701,7 @@
     "docente_ids": [
       "doc_0f0817435f306fbb",
       "doc_18caa8b991d19cb8",
+      "doc_ab93f4c5c7093a86",
       "doc_ac19fc0401fe1553"
     ]
   },
@@ -57242,6 +57313,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_18caa8b991d19cb8",
       "doc_ac19fc0401fe1553"
     ]
   },
@@ -60837,7 +60909,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_78970924a390e5f9"
+      "doc_78970924a390e5f9",
+      "doc_ab93f4c5c7093a86",
+      "doc_eddfa1eb50b0e898"
     ]
   },
   {
@@ -63192,7 +63266,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_0f0817435f306fbb"
+      "doc_0f0817435f306fbb",
+      "doc_510dcc91ec21c621"
     ]
   },
   {
@@ -64098,6 +64173,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_18caa8b991d19cb8",
       "doc_e7b8f2ba9d942b2e",
       "doc_f56b0fceb6495fcb"
     ]
@@ -64810,6 +64886,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_040288908b2e230e",
       "doc_3404515fa1d0004d"
     ]
   },
@@ -68474,7 +68551,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_d2f715d7e40e70c3"
+      "doc_d2f715d7e40e70c3",
+      "doc_eddfa1eb50b0e898"
     ]
   },
   {
@@ -69596,6 +69674,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e",
       "doc_f56b0fceb6495fcb"
     ]
   },
@@ -69761,7 +69841,8 @@
     },
     "docente_ids": [
       "doc_18caa8b991d19cb8",
-      "doc_e7b8f2ba9d942b2e"
+      "doc_e7b8f2ba9d942b2e",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -70905,6 +70986,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_040288908b2e230e",
       "doc_3404515fa1d0004d"
     ]
   },
@@ -73357,7 +73439,8 @@
       "ocorrencias_sucupira_consolidadas": 1
     },
     "docente_ids": [
-      "doc_0f0817435f306fbb"
+      "doc_0f0817435f306fbb",
+      "doc_ab93f4c5c7093a86"
     ]
   },
   {
@@ -74790,7 +74873,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -78413,7 +78498,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_d2f715d7e40e70c3"
+      "doc_0f0817435f306fbb",
+      "doc_d2f715d7e40e70c3",
+      "doc_eddfa1eb50b0e898"
     ]
   },
   {
@@ -79237,7 +79324,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_d2f715d7e40e70c3"
+      "doc_d2f715d7e40e70c3",
+      "doc_eddfa1eb50b0e898"
     ]
   },
   {
@@ -79306,7 +79394,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_0f0817435f306fbb"
+      "doc_0f0817435f306fbb",
+      "doc_d2f715d7e40e70c3",
+      "doc_eddfa1eb50b0e898"
     ]
   },
   {
@@ -81773,6 +81863,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_ab93f4c5c7093a86",
       "doc_d2f715d7e40e70c3"
     ]
   },
@@ -83206,7 +83297,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_d2f715d7e40e70c3"
+      "doc_d2f715d7e40e70c3",
+      "doc_eddfa1eb50b0e898"
     ]
   },
   {
@@ -86751,6 +86843,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_18caa8b991d19cb8",
       "doc_ab93f4c5c7093a86"
     ]
   },
@@ -86961,7 +87054,8 @@
     },
     "docente_ids": [
       "doc_18caa8b991d19cb8",
-      "doc_87ad0bf46cf65da7"
+      "doc_87ad0bf46cf65da7",
+      "doc_e7b8f2ba9d942b2e"
     ]
   },
   {
@@ -88309,7 +88403,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_510dcc91ec21c621"
+      "doc_510dcc91ec21c621",
+      "doc_fa0da25356113752"
     ]
   },
   {
@@ -95657,7 +95752,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_d2f715d7e40e70c3"
+      "doc_d2f715d7e40e70c3",
+      "doc_eddfa1eb50b0e898"
     ]
   },
   {
@@ -97485,7 +97581,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_040288908b2e230e"
+      "doc_040288908b2e230e",
+      "doc_0f0817435f306fbb"
     ]
   },
   {
@@ -102416,7 +102513,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_040288908b2e230e"
+      "doc_040288908b2e230e",
+      "doc_0f0817435f306fbb"
     ]
   },
   {
@@ -111523,6 +111621,7 @@
       "ocorrencias_sucupira_consolidadas": 1
     },
     "docente_ids": [
+      "doc_e7b8f2ba9d942b2e",
       "doc_fa0da25356113752"
     ]
   },
@@ -111588,7 +111687,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_e7b8f2ba9d942b2e"
+      "doc_e7b8f2ba9d942b2e",
+      "doc_fa0da25356113752"
     ]
   },
   {
@@ -111963,6 +112063,7 @@
     },
     "docente_ids": [
       "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e",
       "doc_f56b0fceb6495fcb"
     ]
   },
@@ -113824,7 +113925,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -117320,7 +117423,10 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e",
+      "doc_eddfa1eb50b0e898",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -117913,7 +118019,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -117982,7 +118090,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -118097,6 +118207,7 @@
     "docente_ids": [
       "doc_18caa8b991d19cb8",
       "doc_e7b8f2ba9d942b2e",
+      "doc_eddfa1eb50b0e898",
       "doc_f56b0fceb6495fcb"
     ]
   },
@@ -118170,7 +118281,9 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -119649,6 +119762,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_18caa8b991d19cb8",
       "doc_f56b0fceb6495fcb"
     ]
   },
@@ -119714,6 +119828,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_18caa8b991d19cb8",
       "doc_f56b0fceb6495fcb"
     ]
   },
@@ -121114,7 +121229,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_87ad0bf46cf65da7"
+      "doc_87ad0bf46cf65da7",
+      "doc_e7b8f2ba9d942b2e"
     ]
   },
   {
@@ -123274,6 +123390,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e",
       "doc_eddfa1eb50b0e898",
       "doc_f56b0fceb6495fcb"
     ]
@@ -123348,7 +123466,10 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e",
+      "doc_eddfa1eb50b0e898",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -123559,7 +123680,10 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_e7b8f2ba9d942b2e"
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e",
+      "doc_eddfa1eb50b0e898",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -123678,6 +123802,7 @@
     },
     "docente_ids": [
       "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e",
       "doc_eddfa1eb50b0e898",
       "doc_f56b0fceb6495fcb"
     ]
@@ -124882,6 +125007,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_040288908b2e230e",
       "doc_0f0817435f306fbb"
     ]
   },
@@ -124959,7 +125085,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_040288908b2e230e"
+      "doc_040288908b2e230e",
+      "doc_0f0817435f306fbb"
     ]
   },
   {
@@ -125305,7 +125432,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_87ad0bf46cf65da7"
+      "doc_87ad0bf46cf65da7",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -125386,7 +125514,9 @@
     },
     "docente_ids": [
       "doc_18caa8b991d19cb8",
-      "doc_e7b8f2ba9d942b2e"
+      "doc_e7b8f2ba9d942b2e",
+      "doc_eddfa1eb50b0e898",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -125453,7 +125583,10 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_87ad0bf46cf65da7",
+      "doc_e7b8f2ba9d942b2e",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -126954,7 +127087,10 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_f56b0fceb6495fcb"
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e",
+      "doc_f56b0fceb6495fcb",
+      "doc_fa0da25356113752"
     ]
   },
   {
@@ -127271,7 +127407,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e"
     ]
   },
   {
@@ -127399,6 +127536,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_6fedbab2f46ede69",
       "doc_78970924a390e5f9"
     ]
   },
@@ -127895,6 +128033,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_616f23f8133ca094",
+      "doc_eddfa1eb50b0e898",
       "doc_f56b0fceb6495fcb",
       "doc_fa0da25356113752"
     ]
@@ -127975,7 +128115,10 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_616f23f8133ca094"
+      "doc_616f23f8133ca094",
+      "doc_eddfa1eb50b0e898",
+      "doc_f56b0fceb6495fcb",
+      "doc_fa0da25356113752"
     ]
   },
   {
@@ -128054,7 +128197,10 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_eddfa1eb50b0e898"
+      "doc_616f23f8133ca094",
+      "doc_eddfa1eb50b0e898",
+      "doc_f56b0fceb6495fcb",
+      "doc_fa0da25356113752"
     ]
   },
   {
@@ -128490,7 +128636,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_87ad0bf46cf65da7"
+      "doc_87ad0bf46cf65da7",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -128922,7 +129069,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e"
     ]
   },
   {
@@ -129200,7 +129348,10 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_87ad0bf46cf65da7"
+      "doc_6fedbab2f46ede69",
+      "doc_87ad0bf46cf65da7",
+      "doc_eddfa1eb50b0e898",
+      "doc_fa0da25356113752"
     ]
   },
   {
@@ -129525,7 +129676,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_eddfa1eb50b0e898"
+      "doc_eddfa1eb50b0e898",
+      "doc_fa0da25356113752"
     ]
   },
   {
@@ -130092,7 +130244,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e"
     ]
   },
   {
@@ -130283,7 +130436,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_040288908b2e230e"
+      "doc_040288908b2e230e",
+      "doc_0f0817435f306fbb"
     ]
   },
   {
@@ -131945,7 +132099,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_87ad0bf46cf65da7"
+      "doc_87ad0bf46cf65da7",
+      "doc_fa0da25356113752"
     ]
   },
   {
@@ -132004,6 +132159,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_87ad0bf46cf65da7",
       "doc_fa0da25356113752"
     ]
   },
@@ -133062,7 +133218,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e"
     ]
   },
   {
@@ -133125,7 +133282,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_18caa8b991d19cb8"
+      "doc_18caa8b991d19cb8",
+      "doc_e7b8f2ba9d942b2e"
     ]
   },
   {
@@ -133431,7 +133589,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_87ad0bf46cf65da7"
+      "doc_87ad0bf46cf65da7",
+      "doc_fa0da25356113752"
     ]
   },
   {
@@ -133490,6 +133649,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_87ad0bf46cf65da7",
       "doc_fa0da25356113752"
     ]
   },
@@ -140212,7 +140372,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_87ad0bf46cf65da7"
+      "doc_87ad0bf46cf65da7",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -146763,7 +146924,8 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
-      "doc_e7b8f2ba9d942b2e"
+      "doc_e7b8f2ba9d942b2e",
+      "doc_f56b0fceb6495fcb"
     ]
   },
   {
@@ -152221,6 +152383,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_510dcc91ec21c621",
       "doc_87ad0bf46cf65da7"
     ]
   },
@@ -152287,6 +152450,7 @@
       "ocorrencias_sucupira_consolidadas": 0
     },
     "docente_ids": [
+      "doc_510dcc91ec21c621",
       "doc_87ad0bf46cf65da7"
     ]
   },
