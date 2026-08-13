@@ -155,11 +155,20 @@ const RedeCoautoria = () => {
     ]);
   }, [arestaAtiva, docenteSelecionado, vizinhos]);
 
+  // Alterações nos filtros invalidam a colaboração selecionada, pois a aresta
+  // pode deixar de existir no novo recorte da rede.
   useEffect(() => {
     setArestaSelecionada('');
     if (pesoMinimo > maiorPeso) setPesoMinimo(maiorPeso);
-    if (docenteSelecionado && !nosPorId.has(docenteSelecionado)) setDocenteSelecionado('');
-  }, [anoInicial, anoFinal, natureza, pesoMinimo, maiorPeso, docenteSelecionado, nosPorId]);
+  }, [anoInicial, anoFinal, natureza, pesoMinimo, maiorPeso]);
+
+  // A troca entre a visão de um docente e os detalhes de uma colaboração não
+  // deve limpar a aresta recém-selecionada.
+  useEffect(() => {
+    if (docenteSelecionado && !nosPorId.has(docenteSelecionado)) {
+      setDocenteSelecionado('');
+    }
+  }, [docenteSelecionado, nosPorId]);
 
   const selecionarNo = (id) => {
     setDocenteSelecionado((atual) => (atual === id ? '' : id));

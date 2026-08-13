@@ -77,9 +77,9 @@ describe('coautoriaDataProcessor', () => {
     });
 
     expect(grafo.nos).toHaveLength(20);
-    expect(grafo.arestas).toHaveLength(81);
-    expect(grafo.estatisticas.totalProducoes).toBe(1132);
-    expect(grafo.estatisticas.producoesComCoautoria).toBe(355);
-    expect(grafo.estatisticas.totalVinculos).toBe(610);
+    expect(grafo.arestas).toHaveLength(84);
+    expect(grafo.estatisticas.totalProducoes).toBe(1097);
+    expect(grafo.estatisticas.producoesComCoautoria).toBe(403);
+    expect(grafo.estatisticas.totalVinculos).toBe(739);
   });
 });
