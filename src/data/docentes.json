@@ -1,0 +1,342 @@
+[
+  {
+    "id_docente": "doc_eddfa1eb50b0e898",
+    "nome": "andré castelo branco soares",
+    "nome_normalizado": "andre castelo branco soares",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE FEDERAL DO PIAUÍ",
+      "instituicao_normalizada": "universidade federal do piaui",
+      "area_conhecimento": "CIÊNCIA DA COMPUTAÇÃO",
+      "area_conhecimento_normalizada": "ciencia da computacao",
+      "categoria": "permanente",
+      "regime_trabalho": "Integral"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(andré_castelo_branco_soares).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_87ad0bf46cf65da7",
+    "nome": "andre macedo santana",
+    "nome_normalizado": "andre macedo santana",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE",
+      "instituicao_normalizada": "universidade federal do rio grande do norte",
+      "area_conhecimento": "ENGENHARIA ELÉTRICA",
+      "area_conhecimento_normalizada": "engenharia eletrica",
+      "categoria": "colaborador",
+      "regime_trabalho": "Integral"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(andre_macedo_santana).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_ac19fc0401fe1553",
+    "nome": "antonio oseas de carvalho filho",
+    "nome_normalizado": "antonio oseas de carvalho filho",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE FEDERAL DO MARANHÃO",
+      "instituicao_normalizada": "universidade federal do maranhao",
+      "area_conhecimento": "ENGENHARIA ELÉTRICA",
+      "area_conhecimento_normalizada": "engenharia eletrica",
+      "categoria": "permanente",
+      "regime_trabalho": "Dedicação Exclusiva"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(antonio_oseas_de_carvalho_filho).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_9f78268945de8352",
+    "nome": "arlino henrique magalhães de araújo",
+    "nome_normalizado": "arlino henrique magalhaes de araujo",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE FEDERAL DO CEARÁ",
+      "instituicao_normalizada": "universidade federal do ceara",
+      "area_conhecimento": "CIÊNCIA DA COMPUTAÇÃO",
+      "area_conhecimento_normalizada": "ciencia da computacao",
+      "categoria": "permanente",
+      "regime_trabalho": "Dedicação Exclusiva"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(arlino_henrique_magalhães_de_araújo).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_fe27df0f88099b6e",
+    "nome": "erico meneses leão",
+    "nome_normalizado": "erico meneses leao",
+    "vinculo_institucional": {
+      "instituicao": "FACULDADE DE ENGENHARIA",
+      "instituicao_normalizada": "faculdade de engenharia",
+      "area_conhecimento": "ENGENHARIA ELÉTRICA",
+      "area_conhecimento_normalizada": "engenharia eletrica",
+      "categoria": "permanente",
+      "regime_trabalho": "Dedicação Exclusiva"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(erico_meneses_leão).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_ab93f4c5c7093a86",
+    "nome": "francisco airton pereira da silva",
+    "nome_normalizado": "francisco airton pereira da silva",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE FEDERAL DE PERNAMBUCO",
+      "instituicao_normalizada": "universidade federal de pernambuco",
+      "area_conhecimento": "CIÊNCIA DA COMPUTAÇÃO",
+      "area_conhecimento_normalizada": "ciencia da computacao",
+      "categoria": "permanente",
+      "regime_trabalho": "Dedicação Exclusiva"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(francisco_airton_pereira_da_silva).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_78970924a390e5f9",
+    "nome": "glauber dias gonçalves",
+    "nome_normalizado": "glauber dias goncalves",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE FEDERAL DE MINAS GERAIS",
+      "instituicao_normalizada": "universidade federal de minas gerais",
+      "area_conhecimento": "CIÊNCIA DA COMPUTAÇÃO",
+      "area_conhecimento_normalizada": "ciencia da computacao",
+      "categoria": "permanente",
+      "regime_trabalho": "Dedicação Exclusiva"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(glauber_dias_gonçalves).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_3404515fa1d0004d",
+    "nome": "guilherme amaral avelino",
+    "nome_normalizado": "guilherme amaral avelino",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE FEDERAL DE MINAS GERAIS",
+      "instituicao_normalizada": "universidade federal de minas gerais",
+      "area_conhecimento": "CIÊNCIA DA COMPUTAÇÃO",
+      "area_conhecimento_normalizada": "ciencia da computacao",
+      "categoria": "permanente",
+      "regime_trabalho": "Dedicação Exclusiva"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(guilherme_amaral_avelino).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_6fedbab2f46ede69",
+    "nome": "ivan saraiva silva",
+    "nome_normalizado": "ivan saraiva silva",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSITÉ PIERRE ET MARIE CURIE - PARIS VI",
+      "instituicao_normalizada": "universite pierre et marie curie paris vi",
+      "area_conhecimento": "CIÊNCIA DA COMPUTAÇÃO",
+      "area_conhecimento_normalizada": "ciencia da computacao",
+      "categoria": "permanente",
+      "regime_trabalho": "Integral"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(ivan_saraiva_silva).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_d2f715d7e40e70c3",
+    "nome": "jose valdemir dos reis junior",
+    "nome_normalizado": "jose valdemir dos reis junior",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE DE SÃO PAULO - CAMPUS SÃO CARLOS",
+      "instituicao_normalizada": "universidade de sao paulo campus sao carlos",
+      "area_conhecimento": "ENGENHARIA ELÉTRICA",
+      "area_conhecimento_normalizada": "engenharia eletrica",
+      "categoria": "permanente",
+      "regime_trabalho": "Dedicação Exclusiva"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(jose_valdemir_dos_reis_junior).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_7af911ac445c7660",
+    "nome": "juliana oliveira de carvalho",
+    "nome_normalizado": "juliana oliveira de carvalho",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE FEDERAL DO CEARÁ",
+      "instituicao_normalizada": "universidade federal do ceara",
+      "area_conhecimento": "CIÊNCIA DA COMPUTAÇÃO",
+      "area_conhecimento_normalizada": "ciencia da computacao",
+      "categoria": "permanente",
+      "regime_trabalho": "Dedicação Exclusiva"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(juliana_oliveira_de_carvalho).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_f56b0fceb6495fcb",
+    "nome": "kelson romulo teixeira aires",
+    "nome_normalizado": "kelson romulo teixeira aires",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE",
+      "instituicao_normalizada": "universidade federal do rio grande do norte",
+      "area_conhecimento": "ENGENHARIA ELÉTRICA",
+      "area_conhecimento_normalizada": "engenharia eletrica",
+      "categoria": "permanente",
+      "regime_trabalho": "Integral"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(kelson_romulo_teixeira_aires).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_616f23f8133ca094",
+    "nome": "laurindo de sousa britto neto",
+    "nome_normalizado": "laurindo de sousa britto neto",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE ESTADUAL DE CAMPINAS",
+      "instituicao_normalizada": "universidade estadual de campinas",
+      "area_conhecimento": "CIÊNCIA DA COMPUTAÇÃO",
+      "area_conhecimento_normalizada": "ciencia da computacao",
+      "categoria": "permanente",
+      "regime_trabalho": "Dedicação Exclusiva"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(laurindo_de_sousa_britto_neto).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_040288908b2e230e",
+    "nome": "pedro de alcantara dos santos neto",
+    "nome_normalizado": "pedro de alcantara dos santos neto",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE FEDERAL DE MINAS GERAIS",
+      "instituicao_normalizada": "universidade federal de minas gerais",
+      "area_conhecimento": "CIÊNCIA DA COMPUTAÇÃO",
+      "area_conhecimento_normalizada": "ciencia da computacao",
+      "categoria": "permanente",
+      "regime_trabalho": "Integral"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(pedro_de_alcantara_dos_santos_neto).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_510dcc91ec21c621",
+    "nome": "raimundo santos moura",
+    "nome_normalizado": "raimundo santos moura",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE",
+      "instituicao_normalizada": "universidade federal do rio grande do norte",
+      "area_conhecimento": "ENGENHARIA ELÉTRICA",
+      "area_conhecimento_normalizada": "engenharia eletrica",
+      "categoria": "permanente",
+      "regime_trabalho": "Integral"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(raimundo_santos_moura).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_31c0e089a7fbfa2a",
+    "nome": "rayner gomes sousa",
+    "nome_normalizado": "rayner gomes sousa",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE FEDERAL DO CEARÁ",
+      "instituicao_normalizada": "universidade federal do ceara",
+      "area_conhecimento": "CIÊNCIA DA COMPUTAÇÃO",
+      "area_conhecimento_normalizada": "ciencia da computacao",
+      "categoria": "permanente",
+      "regime_trabalho": "Dedicação Exclusiva"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(rayner_gomes_sousa).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_0f0817435f306fbb",
+    "nome": "ricardo de andrade lira rabêlo",
+    "nome_normalizado": "ricardo de andrade lira rabelo",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE DE SÃO PAULO",
+      "instituicao_normalizada": "universidade de sao paulo",
+      "area_conhecimento": "ENGENHARIA ELÉTRICA",
+      "area_conhecimento_normalizada": "engenharia eletrica",
+      "categoria": "permanente",
+      "regime_trabalho": "Integral"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(ricardo_de_andrade_lira_rabêlo).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_e7b8f2ba9d942b2e",
+    "nome": "rodrigo de melo souza veras",
+    "nome_normalizado": "rodrigo de melo souza veras",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE FEDERAL DO CEARÁ",
+      "instituicao_normalizada": "universidade federal do ceara",
+      "area_conhecimento": "ENGENHARIA ELÉTRICA",
+      "area_conhecimento_normalizada": "engenharia eletrica",
+      "categoria": "permanente",
+      "regime_trabalho": "Dedicação Exclusiva"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(rodrigo_de_melo_souza_veras).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_18caa8b991d19cb8",
+    "nome": "romuere rodrigues veloso e silva",
+    "nome_normalizado": "romuere rodrigues veloso e silva",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE FEDERAL DO CEARÁ",
+      "instituicao_normalizada": "universidade federal do ceara",
+      "area_conhecimento": "ENGENHARIA ELÉTRICA",
+      "area_conhecimento_normalizada": "engenharia eletrica",
+      "categoria": "permanente",
+      "regime_trabalho": "Dedicação Exclusiva"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(romuere_rodrigues_veloso_e_silva).json",
+      "sucupira": true
+    }
+  },
+  {
+    "id_docente": "doc_fa0da25356113752",
+    "nome": "vinicius ponte machado",
+    "nome_normalizado": "vinicius ponte machado",
+    "vinculo_institucional": {
+      "instituicao": "UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE",
+      "instituicao_normalizada": "universidade federal do rio grande do norte",
+      "area_conhecimento": "ENGENHARIA ELÉTRICA",
+      "area_conhecimento_normalizada": "engenharia eletrica",
+      "categoria": "permanente",
+      "regime_trabalho": "Integral"
+    },
+    "fontes": {
+      "lattes": "currículo_do_sistema_de_currículos_lattes_(vinicius_ponte_machado).json",
+      "sucupira": true
+    }
+  }
+]
