@@ -330,21 +330,6 @@
     "escopo": "perfil_docente"
   },
   {
-    "id_formacao": "for_e827d4b7f5521211",
-    "id_docente": "doc_6fedbab2f46ede69",
-    "nivel": "Doutorado",
-    "nivel_normalizado": "doutorado",
-    "instituicao": "Pierre and Marie Curie University (Paris VI)",
-    "instituicao_normalizada": "pierre and marie curie university paris vi",
-    "ano_inicio": null,
-    "ano_conclusao": 1995,
-    "orientador": null,
-    "orientador_normalizado": "",
-    "titulo": null,
-    "titulo_normalizado": "",
-    "escopo": "perfil_docente"
-  },
-  {
     "id_formacao": "for_f12de22d9fbd2afc",
     "id_docente": "doc_6fedbab2f46ede69",
     "nivel": "Mestrado em Microélectronique et Microinformatique",
@@ -357,21 +342,6 @@
     "orientador_normalizado": "alain greiner",
     "titulo": "Etude de Faisabilité de Rapid-2 un Circuit Set-Associatif pour Bases de Données",
     "titulo_normalizado": "etude de faisabilite de rapid 2 un circuit set associatif pour bases de donnees",
-    "escopo": "perfil_docente"
-  },
-  {
-    "id_formacao": "for_7ba7a415a2e6f2ef",
-    "id_docente": "doc_6fedbab2f46ede69",
-    "nivel": "Outra",
-    "nivel_normalizado": "outra",
-    "instituicao": "Pierre and Marie Curie University (Paris VI)",
-    "instituicao_normalizada": "pierre and marie curie university paris vi",
-    "ano_inicio": null,
-    "ano_conclusao": 1991,
-    "orientador": null,
-    "orientador_normalizado": "",
-    "titulo": null,
-    "titulo_normalizado": "",
     "escopo": "perfil_docente"
   },
   {
@@ -390,21 +360,6 @@
     "escopo": "perfil_docente"
   },
   {
-    "id_formacao": "for_d2ff02b1eb9edb4d",
-    "id_docente": "doc_6fedbab2f46ede69",
-    "nivel": "Mestrado",
-    "nivel_normalizado": "mestrado",
-    "instituicao": "Federal University of Paraíba",
-    "instituicao_normalizada": "federal university of paraiba",
-    "ano_inicio": null,
-    "ano_conclusao": 1990,
-    "orientador": null,
-    "orientador_normalizado": "",
-    "titulo": null,
-    "titulo_normalizado": "",
-    "escopo": "perfil_docente"
-  },
-  {
     "id_formacao": "for_d5651e085aaa15df",
     "id_docente": "doc_6fedbab2f46ede69",
     "nivel": "Graduação em Engenharia Elétrica",
@@ -412,21 +367,6 @@
     "instituicao": "Universidade Federal da Paraíba, UFPB, Brasil.",
     "instituicao_normalizada": "universidade federal da paraiba ufpb brasil",
     "ano_inicio": 1984,
-    "ano_conclusao": 1989,
-    "orientador": null,
-    "orientador_normalizado": "",
-    "titulo": null,
-    "titulo_normalizado": "",
-    "escopo": "perfil_docente"
-  },
-  {
-    "id_formacao": "for_eea17cf79a1c9863",
-    "id_docente": "doc_6fedbab2f46ede69",
-    "nivel": "Graduação",
-    "nivel_normalizado": "graduacao",
-    "instituicao": "Federal University of Paraíba",
-    "instituicao_normalizada": "federal university of paraiba",
-    "ano_inicio": null,
     "ano_conclusao": 1989,
     "orientador": null,
     "orientador_normalizado": "",
@@ -450,21 +390,6 @@
     "escopo": "perfil_docente"
   },
   {
-    "id_formacao": "for_a3b42089d524eb72",
-    "id_docente": "doc_78970924a390e5f9",
-    "nivel": "Doutorado",
-    "nivel_normalizado": "doutorado",
-    "instituicao": "Universidade Federal de Minas Gerais",
-    "instituicao_normalizada": "universidade federal de minas gerais",
-    "ano_inicio": null,
-    "ano_conclusao": 2017,
-    "orientador": null,
-    "orientador_normalizado": "",
-    "titulo": null,
-    "titulo_normalizado": "",
-    "escopo": "perfil_docente"
-  },
-  {
     "id_formacao": "for_11cbc3bace1f21f9",
     "id_docente": "doc_78970924a390e5f9",
     "nivel": "Mestrado em Ciências da Computação",
@@ -477,21 +402,6 @@
     "orientador_normalizado": "jussara marques de almeida",
     "titulo": "Predição do Nível de Cooperação em Sistemas Par-a-Par de Vídeo ao Vivo a partir de Métricas de Centralidade",
     "titulo_normalizado": "predicao do nivel de cooperacao em sistemas par a par de video ao vivo a partir de metricas de centralidade",
-    "escopo": "perfil_docente"
-  },
-  {
-    "id_formacao": "for_1d788ada7957850f",
-    "id_docente": "doc_78970924a390e5f9",
-    "nivel": "Mestrado",
-    "nivel_normalizado": "mestrado",
-    "instituicao": "Universidade Federal de Minas Gerais",
-    "instituicao_normalizada": "universidade federal de minas gerais",
-    "ano_inicio": null,
-    "ano_conclusao": 2012,
-    "orientador": null,
-    "orientador_normalizado": "",
-    "titulo": null,
-    "titulo_normalizado": "",
     "escopo": "perfil_docente"
   },
   {
@@ -930,21 +840,6 @@
     "escopo": "perfil_docente"
   },
   {
-    "id_formacao": "for_569e9ed187b1feeb",
-    "id_docente": "doc_e7b8f2ba9d942b2e",
-    "nivel": "Doutorado",
-    "nivel_normalizado": "doutorado",
-    "instituicao": "Universidade Federal do Ceará",
-    "instituicao_normalizada": "universidade federal do ceara",
-    "ano_inicio": null,
-    "ano_conclusao": 2014,
-    "orientador": null,
-    "orientador_normalizado": "",
-    "titulo": null,
-    "titulo_normalizado": "",
-    "escopo": "perfil_docente"
-  },
-  {
     "id_formacao": "for_68f66dfa73d83453",
     "id_docente": "doc_e7b8f2ba9d942b2e",
     "nivel": "Mestrado em Ciências da Computação",
@@ -960,21 +855,6 @@
     "escopo": "perfil_docente"
   },
   {
-    "id_formacao": "for_717055d0391718ec",
-    "id_docente": "doc_e7b8f2ba9d942b2e",
-    "nivel": "Mestrado",
-    "nivel_normalizado": "mestrado",
-    "instituicao": "Universidade Federal do Ceará",
-    "instituicao_normalizada": "universidade federal do ceara",
-    "ano_inicio": null,
-    "ano_conclusao": 2007,
-    "orientador": null,
-    "orientador_normalizado": "",
-    "titulo": null,
-    "titulo_normalizado": "",
-    "escopo": "perfil_docente"
-  },
-  {
     "id_formacao": "for_a78aaf2dbbba0cd5",
     "id_docente": "doc_e7b8f2ba9d942b2e",
     "nivel": "Graduação em Bacharelado Em Ciência da Computação",
@@ -987,21 +867,6 @@
     "orientador_normalizado": "kelson romulo teixeira alves",
     "titulo": "Aplicação do Algoritmo SOM na Classificação Automática de Cores",
     "titulo_normalizado": "aplicacao do algoritmo som na classificacao automatica de cores",
-    "escopo": "perfil_docente"
-  },
-  {
-    "id_formacao": "for_dbf2e619096142e0",
-    "id_docente": "doc_e7b8f2ba9d942b2e",
-    "nivel": "Graduação",
-    "nivel_normalizado": "graduacao",
-    "instituicao": "Universidade Federal do Piauí",
-    "instituicao_normalizada": "universidade federal do piaui",
-    "ano_inicio": null,
-    "ano_conclusao": 2005,
-    "orientador": null,
-    "orientador_normalizado": "",
-    "titulo": null,
-    "titulo_normalizado": "",
     "escopo": "perfil_docente"
   },
   {
