@@ -262,11 +262,10 @@ export const prepareDadosOrientacoesPorNivel = (orientacoesPorNivel) => {
   const nivelLabels = {
     mestrado: 'Mestrado',
     doutorado: 'Doutorado',
+    pos_doutorado: 'Pós-Doutorado',
     iniciacao_cientifica: 'Iniciação Científica',
     outras: 'Outras',
   };
-
-  const niveis = Object.keys(nivelLabels);
 
   if (!orientacoesPorNivel || typeof orientacoesPorNivel !== 'object') {
     return {
@@ -277,6 +276,16 @@ export const prepareDadosOrientacoesPorNivel = (orientacoesPorNivel) => {
       categories: [],
     };
   }
+
+  const niveis = Object.keys(nivelLabels).filter((nivel) => {
+    const dadosNivel = orientacoesPorNivel[nivel] || {};
+    const totalCalculado = (dadosNivel.ativo || 0) + (dadosNivel.concluido || 0);
+    const total = Number.isFinite(Number(dadosNivel.total))
+      ? Number(dadosNivel.total)
+      : totalCalculado;
+
+    return total > 0;
+  });
 
   const ativoData = niveis.map((n) => (orientacoesPorNivel[n]?.ativo || 0));
   const concluidoData = niveis.map((n) => (orientacoesPorNivel[n]?.concluido || 0));
