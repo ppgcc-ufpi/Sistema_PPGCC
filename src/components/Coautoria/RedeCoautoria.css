@@ -172,7 +172,7 @@
 .rede-grafo {
   display: block;
   width: 100%;
-  min-height: 540px;
+  min-height: 610px;
   background-image: radial-gradient(circle at center, rgba(89, 195, 195, 0.07), transparent 62%);
 }
 
@@ -361,5 +361,5 @@
   .rede-filtros label:nth-child(5) { grid-column: 1 / -1; }
   .rede-estatisticas { grid-template-columns: 1fr 1fr; }
   .rede-estatisticas article { flex-direction: column; gap: 2px; }
-  .rede-grafo { min-height: 440px; }
+  .rede-grafo { min-height: 500px; }
 }

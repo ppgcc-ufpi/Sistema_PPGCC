@@ -7,8 +7,8 @@ import {
 } from '../../utils/coautoriaDataProcessor';
 import './RedeCoautoria.css';
 
-const LARGURA = 1000;
-const ALTURA = 650;
+const LARGURA = 1120;
+const ALTURA = 740;
 const PARTICULAS = new Set(['da', 'das', 'de', 'do', 'dos', 'e']);
 
 const formatarNome = (nome = '') => nome
@@ -32,7 +32,7 @@ const calcularLayout = (nos, arestas) => {
 
   const centroX = LARGURA / 2;
   const centroY = ALTURA / 2;
-  const raio = Math.min(LARGURA, ALTURA) * 0.37;
+  const raio = Math.min(LARGURA, ALTURA) * 0.39;
   const pontos = nos.map((no, indice) => {
     const angulo = (2 * Math.PI * indice) / nos.length - Math.PI / 2;
     return {
@@ -54,7 +54,7 @@ const calcularLayout = (nos, arestas) => {
         const dy = b.y - a.y || 0.01;
         const distanciaQuadrada = Math.max(dx * dx + dy * dy, 400);
         const distancia = Math.sqrt(distanciaQuadrada);
-        const forca = 9200 / distanciaQuadrada;
+        const forca = 11200 / distanciaQuadrada;
         const fx = (dx / distancia) * forca;
         const fy = (dy / distancia) * forca;
         a.vx -= fx;
@@ -71,7 +71,7 @@ const calcularLayout = (nos, arestas) => {
       const dx = target.x - source.x;
       const dy = target.y - source.y;
       const distancia = Math.max(Math.sqrt(dx * dx + dy * dy), 1);
-      const distanciaIdeal = 155;
+      const distanciaIdeal = 175;
       const forca = (distancia - distanciaIdeal) * 0.0035 * (1 + Math.log1p(aresta.peso));
       const fx = (dx / distancia) * forca;
       const fy = (dy / distancia) * forca;
