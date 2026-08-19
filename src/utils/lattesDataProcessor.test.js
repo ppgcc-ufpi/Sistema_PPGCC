@@ -1,5 +1,6 @@
 import {
   prepareDadosOrientacoesPorNivel,
+  processOrientacoes,
   processOrientacoesPorNivel,
 } from './lattesDataProcessor';
 
@@ -22,6 +23,25 @@ describe('orientações por nível', () => {
         { name: 'Concluído', data: [1, 1] },
       ],
       categories: ['Mestrado', 'Doutorado'],
+    });
+  });
+
+  it('mantém orientações em andamento nos anos posteriores ao início', () => {
+    const resultado = processOrientacoes({
+      mestrado: [
+        { ano: 2024, anos_registrados: [2024], situacao: 'Em andamento' },
+        { ano: 2025, anos_registrados: [2023, 2025], situacao: 'Concluído' },
+      ],
+      doutorado: [
+        { ano: 2026, anos_registrados: [2023, 2026], situacao: 'Em andamento' },
+      ],
+    }, 2026);
+
+    expect(resultado).toEqual({
+      2023: { ativo: 1, concluido: 0, total: 1 },
+      2024: { ativo: 2, concluido: 0, total: 2 },
+      2025: { ativo: 2, concluido: 1, total: 3 },
+      2026: { ativo: 2, concluido: 0, total: 2 },
     });
   });
 
