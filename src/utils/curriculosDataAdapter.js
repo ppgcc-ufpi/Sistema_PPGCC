@@ -6,6 +6,7 @@ import formacoes from '../data/formacoes.json';
 
 const PARTICULAS_NOME = new Set(['da', 'das', 'de', 'do', 'dos', 'e']);
 const TIPOS_GENERICOS = new Set(['bibliografica', 'tecnica']);
+const SITUACOES_ORIENTACAO_DASHBOARD = new Set(['em_andamento', 'concluido']);
 
 const formatarNome = (nome = '') => nome
   .trim()
@@ -83,13 +84,17 @@ const adaptarProjeto = (projeto) => ({
 });
 
 const deveIntegrar = (item) => item?.vinculo_programa?.integrar === true;
+const deveExibirOrientacao = (item) => (
+  deveIntegrar(item)
+  && SITUACOES_ORIENTACAO_DASHBOARD.has(item?.situacao_normalizada)
+);
 
 const producoesPorDocente = indexarPorDocente(
   producoes.filter(deveIntegrar),
   (item) => item.docente_ids || []
 );
 const orientacoesPorDocente = indexarPorDocente(
-  orientacoes.filter(deveIntegrar),
+  orientacoes.filter(deveExibirOrientacao),
   (item) => item.docente_ids || []
 );
 const projetosPorDocente = indexarPorDocente(

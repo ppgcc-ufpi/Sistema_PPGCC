@@ -14,6 +14,12 @@ const integraveis = (itens) => itens.filter(
   (item) => item.vinculo_programa?.integrar === true
 );
 
+const SITUACOES_ORIENTACAO_DASHBOARD = new Set(['em_andamento', 'concluido']);
+const orientacoesExibiveis = orientacoes.filter((item) => (
+  item.vinculo_programa?.integrar === true
+  && SITUACOES_ORIENTACAO_DASHBOARD.has(item.situacao_normalizada)
+));
+
 describe('curriculosDataAdapter', () => {
   it('monta um registro de dashboard para cada docente', () => {
     expect(curriculosData.registros).toHaveLength(docentes.length);
@@ -33,9 +39,23 @@ describe('curriculosDataAdapter', () => {
     );
 
     expect(total('producoes')).toBe(totalVinculos(integraveis(producoes)));
-    expect(totalOrientacoes).toBe(totalVinculos(integraveis(orientacoes)));
+    expect(totalOrientacoes).toBe(totalVinculos(orientacoesExibiveis));
     expect(total('projetos')).toBe(totalVinculos(integraveis(projetos)));
     expect(total('formacao')).toBe(formacoes.length);
+  });
+
+  it('não envia orientações desligadas ou abandonadas aos dashboards', () => {
+    const orientacoesExcluidas = orientacoes.filter((item) => (
+      item.vinculo_programa?.integrar === true
+      && ['desligado', 'abandonado'].includes(item.situacao_normalizada)
+    ));
+    const orientacoesDashboard = curriculosData.registros
+      .flatMap((registro) => Object.values(registro.lattes.orientacoes).flat());
+
+    expect(orientacoesExcluidas.length).toBeGreaterThan(0);
+    expect(orientacoesDashboard.every((item) => (
+      SITUACOES_ORIENTACAO_DASHBOARD.has(item.situacao_normalizada)
+    ))).toBe(true);
   });
 
   it('exclui dos dashboards os dados sem vínculo com o programa', () => {

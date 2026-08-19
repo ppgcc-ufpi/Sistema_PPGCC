@@ -53,9 +53,10 @@ export const processProducoesPorAnoETipo = (producoes) => {
 /**
  * Processa orientações por nível e ano
  * @param {Object} orientacoes - Objeto com orientações por nível
+ * @param {number} anoFinal - Último ano em que orientações em andamento devem ser contabilizadas
  * @returns {Object} Dados processados
  */
-export const processOrientacoes = (orientacoes) => {
+export const processOrientacoes = (orientacoes, anoFinal = new Date().getFullYear()) => {
   const processed = {};
   
   if (!orientacoes || typeof orientacoes !== 'object') return processed;
@@ -67,20 +68,31 @@ export const processOrientacoes = (orientacoes) => {
     
     if (Array.isArray(list)) {
       list.forEach(orient => {
-        const ano = orient.ano || orient.ano_fim || new Date().getFullYear();
         const situacao = orient.situacao || 'Concluído';
-        
-        if (!processed[ano]) {
-          processed[ano] = { ativo: 0, concluido: 0, total: 0 };
-        }
-        
-        processed[ano].total += 1;
-        
-        if (situacao.toLowerCase().includes('andamento') || 
-            situacao.toLowerCase().includes('em-andamento')) {
-          processed[ano].ativo += 1;
-        } else {
-          processed[ano].concluido += 1;
+        const emAndamento = situacao.toLowerCase().includes('andamento')
+          || situacao.toLowerCase().includes('em-andamento');
+        const anosRegistrados = Array.isArray(orient.anos_registrados)
+          ? orient.anos_registrados.map(Number).filter(Number.isFinite)
+          : [];
+        const anoReferencia = Number(orient.ano || orient.ano_fim || anoFinal);
+        const anoInicio = emAndamento && anosRegistrados.length > 0
+          ? Math.min(...anosRegistrados, anoReferencia)
+          : anoReferencia;
+        const ultimoAno = emAndamento
+          ? Math.max(anoInicio, Number(anoFinal) || anoInicio)
+          : anoReferencia;
+
+        for (let ano = anoInicio; ano <= ultimoAno; ano += 1) {
+          if (!processed[ano]) {
+            processed[ano] = { ativo: 0, concluido: 0, total: 0 };
+          }
+
+          processed[ano].total += 1;
+          if (emAndamento) {
+            processed[ano].ativo += 1;
+          } else {
+            processed[ano].concluido += 1;
+          }
         }
       });
     }

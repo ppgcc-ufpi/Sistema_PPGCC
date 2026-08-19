@@ -92,6 +92,9 @@
     "vinculo_programa": {
       "status": "inferido",
       "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes",
         "orientando_programa"
       ],
       "integrar": true
@@ -123,9 +126,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -154,9 +161,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -216,9 +227,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -284,9 +299,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -317,6 +336,9 @@
     "vinculo_programa": {
       "status": "inferido",
       "evidencias": [
+        "instituicao_programa_em_rede",
+        "nivel_pos_graduacao",
+        "orientacao_lattes",
         "orientando_programa"
       ],
       "integrar": true
@@ -449,9 +471,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -482,6 +508,9 @@
     "vinculo_programa": {
       "status": "inferido",
       "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes",
         "orientando_programa"
       ],
       "integrar": true
@@ -544,9 +573,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -575,9 +608,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -606,9 +643,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -639,6 +680,9 @@
     "vinculo_programa": {
       "status": "inferido",
       "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes",
         "orientando_programa"
       ],
       "integrar": true
@@ -734,9 +778,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -798,6 +846,9 @@
     "vinculo_programa": {
       "status": "inferido",
       "evidencias": [
+        "instituicao_programa_em_rede",
+        "nivel_pos_graduacao",
+        "orientacao_lattes",
         "orientando_programa"
       ],
       "integrar": true
@@ -829,9 +880,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -889,9 +944,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -951,9 +1010,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -982,9 +1045,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -1048,9 +1115,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -1115,9 +1186,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -1146,9 +1221,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -1337,9 +1416,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -1368,9 +1451,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -1435,9 +1522,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -1503,6 +1594,9 @@
     "vinculo_programa": {
       "status": "inferido",
       "evidencias": [
+        "instituicao_programa_em_rede",
+        "nivel_pos_graduacao",
+        "orientacao_lattes",
         "orientando_programa"
       ],
       "integrar": true
@@ -1571,9 +1665,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -1664,9 +1762,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -1854,9 +1956,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -1916,9 +2022,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -1947,9 +2057,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -2293,9 +2407,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -2324,9 +2442,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -2547,6 +2669,9 @@
     "vinculo_programa": {
       "status": "inferido",
       "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes",
         "orientando_programa"
       ],
       "integrar": true
@@ -2609,9 +2734,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -2924,9 +3053,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -3245,9 +3378,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -3369,9 +3506,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -3776,9 +3917,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -3869,9 +4014,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -4156,9 +4305,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -4218,9 +4371,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -4816,9 +4973,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -4971,9 +5132,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -5002,9 +5167,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -5033,9 +5202,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa_em_rede",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -5157,9 +5330,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -5746,9 +5923,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -5808,9 +5989,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -5980,9 +6165,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -6166,9 +6355,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -6483,9 +6676,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -6669,9 +6866,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -6960,6 +7161,9 @@
     "vinculo_programa": {
       "status": "inferido",
       "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes",
         "orientando_programa"
       ],
       "integrar": true
@@ -7219,9 +7423,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -7750,9 +7958,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -7812,9 +8024,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -7905,9 +8121,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -7936,9 +8156,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -7998,9 +8222,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -8536,9 +8764,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -8731,9 +8963,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -9643,9 +9879,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -9891,9 +10131,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -10885,9 +11129,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -12860,9 +13108,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -13293,9 +13545,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa_em_rede",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -13945,6 +14201,9 @@
     "vinculo_programa": {
       "status": "inferido",
       "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes",
         "orientando_programa"
       ],
       "integrar": true
@@ -14477,6 +14736,9 @@
     "vinculo_programa": {
       "status": "inferido",
       "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes",
         "orientando_programa"
       ],
       "integrar": true
@@ -14598,9 +14860,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -14732,9 +14998,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -15879,9 +16149,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa_em_rede",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -16731,9 +17005,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -17561,6 +17839,9 @@
     "vinculo_programa": {
       "status": "inferido",
       "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes",
         "orientando_programa"
       ],
       "integrar": true
@@ -17782,9 +18063,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -18061,9 +18346,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -18997,9 +19286,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -20335,6 +20628,9 @@
     "vinculo_programa": {
       "status": "inferido",
       "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes",
         "orientando_programa"
       ],
       "integrar": true
@@ -20562,6 +20858,9 @@
     "vinculo_programa": {
       "status": "inferido",
       "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes",
         "orientando_programa"
       ],
       "integrar": true
@@ -22137,9 +22436,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -22170,6 +22473,9 @@
     "vinculo_programa": {
       "status": "inferido",
       "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes",
         "orientando_programa"
       ],
       "integrar": true
@@ -24441,9 +24747,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -27614,9 +27924,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -27680,9 +27994,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -28158,9 +28476,13 @@
     ],
     "situacao_normalizada": "em_andamento",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -28191,6 +28513,9 @@
     "vinculo_programa": {
       "status": "inferido",
       "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes",
         "orientando_programa"
       ],
       "integrar": true
@@ -29946,9 +30271,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -31193,9 +31522,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -31791,9 +32124,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -34474,9 +34811,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -35414,9 +35755,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -36009,9 +36354,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -36478,9 +36827,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -37966,9 +38319,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
@@ -40028,9 +40385,13 @@
     ],
     "situacao_normalizada": "concluido",
     "vinculo_programa": {
-      "status": "nao_confirmado",
-      "evidencias": [],
-      "integrar": false
+      "status": "inferido",
+      "evidencias": [
+        "instituicao_programa",
+        "nivel_pos_graduacao",
+        "orientacao_lattes"
+      ],
+      "integrar": true
     },
     "fontes": [
       "lattes"
