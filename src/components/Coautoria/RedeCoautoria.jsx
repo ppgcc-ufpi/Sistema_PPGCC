@@ -193,11 +193,6 @@ const RedeCoautoria = () => {
           <h1>Rede de Coautoria</h1>
           <p>Colaborações em produções integradas entre os docentes do PPGCC.</p>
         </div>
-        <div className="rede-legenda" aria-label="Legenda da rede">
-          <span><i className="legenda-cor legenda-cor--permanente" /> Permanente</span>
-          <span><i className="legenda-cor legenda-cor--colaborador" /> Colaborador</span>
-          <span><i className="legenda-linha" /> Espessura = produções conjuntas</span>
-        </div>
       </header>
 
       <section className="rede-filtros" aria-label="Filtros da rede">
@@ -268,7 +263,13 @@ const RedeCoautoria = () => {
 
       <div className="rede-conteudo">
         <section className="rede-grafo-card">
-          <div className="rede-grafo-instrucao">Clique em um docente ou em uma ligação para ver os detalhes.</div>
+          <div className="rede-grafo-topo">
+            <div className="rede-grafo-instrucao">Clique em um docente ou em uma ligação para ver os detalhes.</div>
+          </div>
+          <div className="rede-legenda" aria-label="Legenda da rede">
+            <span><i className="legenda-cor legenda-cor--permanente" /> Permanente</span>
+            <span><i className="legenda-cor legenda-cor--colaborador" /> Colaborador</span>
+          </div>
           <svg
             className="rede-grafo"
             viewBox={`0 0 ${LARGURA} ${ALTURA}`}
