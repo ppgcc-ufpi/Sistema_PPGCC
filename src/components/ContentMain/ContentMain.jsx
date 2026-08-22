@@ -4,9 +4,7 @@ import Tempo_Medio_Titulacao from "../Tempo_Medio_Titulacao/Tempo_Medio_Titulaca
 import Turmas_Ofertadas from "../Turmas_Ofertadas/Turmas_Ofertadas";
 import Docentes from "../Docentes/Docentes";
 import Projetos_Pesquisa from "../Projetos_Pesquisa/Projetos_Pesquisa";
-import Savings from "../Savings/Savings";
 import Producao_Tecnica from "../Producao_Tecnica/Producao_Tecnica";
-import Financial from "../Financial/Financial";
 
 const ContentMain = () => {
   return (
