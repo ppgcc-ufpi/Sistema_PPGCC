@@ -1,5 +1,6 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
+import './LattesCharts.css';
 
 const ProducaoOrientacoesScatterChart = ({
   docenteData,
@@ -10,7 +11,7 @@ const ProducaoOrientacoesScatterChart = ({
 }) => {
   if (!docenteData || docenteData.length === 0) {
     return (
-      <div style={{ padding: '20px', textAlign: 'center', color: '#999' }}>
+      <div className="lattes-chart lattes-chart--empty">
         Sem dados de produção e orientações disponíveis
       </div>
     );
@@ -155,15 +156,7 @@ const ProducaoOrientacoesScatterChart = ({
   };
 
   return (
-    <div
-      style={{
-        width: '100%',
-        minHeight: '420px',
-        background: '#1a1f3a',
-        borderRadius: '8px',
-        padding: '20px',
-      }}
-    >
+    <div className="lattes-chart lattes-chart--dynamic">
       <Chart options={options} series={series} type="scatter" height={350} />
     </div>
   );
