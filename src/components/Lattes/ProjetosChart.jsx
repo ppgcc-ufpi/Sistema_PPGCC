@@ -1,5 +1,6 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
+import './LattesCharts.css';
 
 const ProjetosChart = ({ projetosPorAno, chartName = "Projetos por Ano" }) => {
   const anos = Object.keys(projetosPorAno)
@@ -8,7 +9,7 @@ const ProjetosChart = ({ projetosPorAno, chartName = "Projetos por Ano" }) => {
 
   if (anos.length === 0) {
     return (
-      <div style={{ padding: '20px', textAlign: 'center', color: '#999' }}>
+      <div className="lattes-chart lattes-chart--empty">
         Sem dados de projetos disponíveis
       </div>
     );
@@ -134,7 +135,7 @@ const ProjetosChart = ({ projetosPorAno, chartName = "Projetos por Ano" }) => {
   ];
 
   return (
-    <div style={{ width: '100%', height: '400px', background: '#1a1f3a', borderRadius: '8px', padding: '20px' }}>
+    <div className="lattes-chart">
       <Chart options={options} series={series} type="bar" height={350} />
     </div>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
+import './LattesCharts.css';
 
 const ProducoesDocenteQuadrienioChart = ({
   dadosQuadrenio,
@@ -10,7 +11,7 @@ const ProducoesDocenteQuadrienioChart = ({
 
   if (categories.length === 0 || series.length === 0) {
     return (
-      <div style={{ padding: '20px', textAlign: 'center', color: '#999' }}>
+      <div className="lattes-chart lattes-chart--empty">
         Sem dados de produção disponíveis para o quadriênio selecionado
       </div>
     );
@@ -89,15 +90,7 @@ const ProducoesDocenteQuadrienioChart = ({
   };
 
   return (
-    <div
-      style={{
-        width: '100%',
-        minHeight: '420px',
-        background: '#1a1f3a',
-        borderRadius: '8px',
-        padding: '20px',
-      }}
-    >
+    <div className="lattes-chart lattes-chart--dynamic">
       <Chart options={options} series={series} type="bar" height={chartHeight} />
     </div>
   );

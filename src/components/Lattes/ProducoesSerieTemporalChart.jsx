@@ -1,5 +1,6 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
+import './LattesCharts.css';
 
 const ProducoesSerieTemporalChart = ({ producoesPorAnoTipo, chartName = 'Série Temporal de Produção por Tipo' }) => {
   const anos = Object.keys(producoesPorAnoTipo)
@@ -8,7 +9,7 @@ const ProducoesSerieTemporalChart = ({ producoesPorAnoTipo, chartName = 'Série 
 
   if (anos.length === 0) {
     return (
-      <div style={{ padding: '20px', textAlign: 'center', color: '#999' }}>
+      <div className="lattes-chart lattes-chart--empty">
         Sem dados de produções por tipo disponíveis
       </div>
     );
@@ -119,7 +120,7 @@ const ProducoesSerieTemporalChart = ({ producoesPorAnoTipo, chartName = 'Série 
   };
 
   return (
-    <div style={{ width: '100%', height: '400px', background: '#1a1f3a', borderRadius: '8px', padding: '20px' }}>
+    <div className="lattes-chart">
       <Chart options={options} series={series} type="line" height={350} />
     </div>
   );
