@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Sistema_PPGCC/static/css/main.4d6fb44e.css",
-    "main.js": "/Sistema_PPGCC/static/js/main.a83f9c48.js",
+    "main.css": "/Sistema_PPGCC/static/css/main.392dd10b.css",
+    "main.js": "/Sistema_PPGCC/static/js/main.42bdf38f.js",
     "static/media/brasao_ufpi.png": "/Sistema_PPGCC/static/media/brasao_ufpi.28f234a8cc0be64b1c85.png",
     "static/media/person_two.jpg": "/Sistema_PPGCC/static/media/person_two.348b2fcc3bf8c629eea7.jpg",
     "static/media/person_four.jpg": "/Sistema_PPGCC/static/media/person_four.dcc4b73631cb58bf3f0e.jpg",
@@ -22,15 +22,17 @@
     "static/media/bell.svg": "/Sistema_PPGCC/static/media/bell.1362b91a4e9f3af2e1bf55a5b13d3b74.svg",
     "static/media/user.svg": "/Sistema_PPGCC/static/media/user.003b2f49d15b27c3cce9d0ecdb55ded1.svg",
     "static/media/plane.svg": "/Sistema_PPGCC/static/media/plane.42b7328c8f0e962e615f6ec83835d211.svg",
+    "static/media/network.svg": "/Sistema_PPGCC/static/media/network.0108e4fd0b78e434150c2cfdeae86ddb.svg",
     "static/media/empty_check.svg": "/Sistema_PPGCC/static/media/empty_check.c56bc89b4c93779d47300fa3506fbe6d.svg",
     "static/media/plus.svg": "/Sistema_PPGCC/static/media/plus.d596a11e5eb4d14415112c474078cb31.svg",
+    "static/media/production.svg": "/Sistema_PPGCC/static/media/production.8c059cda7e5b0dcb3c3469c3d7ba2050.svg",
     "static/media/chart.svg": "/Sistema_PPGCC/static/media/chart.eaa7970dcc3680ece0e812a425cdcc0f.svg",
     "static/media/menu.svg": "/Sistema_PPGCC/static/media/menu.671405f9050c951365cbfaf9273aadc7.svg",
-    "main.4d6fb44e.css.map": "/Sistema_PPGCC/static/css/main.4d6fb44e.css.map",
-    "main.a83f9c48.js.map": "/Sistema_PPGCC/static/js/main.a83f9c48.js.map"
+    "main.392dd10b.css.map": "/Sistema_PPGCC/static/css/main.392dd10b.css.map",
+    "main.42bdf38f.js.map": "/Sistema_PPGCC/static/js/main.42bdf38f.js.map"
   },
   "entrypoints": [
-    "static/css/main.4d6fb44e.css",
-    "static/js/main.a83f9c48.js"
+    "static/css/main.392dd10b.css",
+    "static/js/main.42bdf38f.js"
   ]
 }
