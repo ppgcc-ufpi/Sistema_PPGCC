@@ -5,8 +5,6 @@ import ProducoesSerieTemporalChart from './ProducoesSerieTemporalChart';
 import OrientacoesChart from './OrientacoesChart';
 import OrientacoesNivelChart from './OrientacoesNivelChart';
 import ProjetosChart from './ProjetosChart';
-import ProducoesDocenteQuadrienioChart from './ProducoesDocenteQuadrienioChart';
-import ProducoesParetoDocenteChart from './ProducoesParetoDocenteChart';
 import ProducaoOrientacoesScatterChart from './ProducaoOrientacoesScatterChart';
 import {
   loadLattesData,
@@ -18,10 +16,6 @@ import {
   processOrientacoes,
   processOrientacoesPorNivel,
   processProjectos,
-  getAnosProducoes,
-  getQuadrieniosDisponiveis,
-  processProducoesPorDocenteQuadrienio,
-  processParetoProducoesPorDocenteQuadrienio,
   processProducaoOrientacoesDocenteScatter,
 } from '../../utils/lattesDataProcessor';
 import './CurriculoDocente.css';
@@ -39,24 +33,6 @@ const CurriculoDocente = () => {
   const [orientacoesPorNivel, setOrientacoesPorNivel] = useState({});
   const [projetosPorAno, setProjetosPorAno] = useState({});
   const [formacao, setFormacao] = useState([]);
-  const [modoVisualizacao, setModoVisualizacao] = useState('docente');
-  const [quadrieniosDisponiveis, setQuadrieniosDisponiveis] = useState([]);
-  const [selectedQuadrienio, setSelectedQuadrienio] = useState(null);
-  const [producoesDocenteQuadrienio, setProducoesDocenteQuadrienio] = useState({
-    categories: [],
-    series: [],
-    anos: [],
-    totalProducoes: 0,
-    docentesAtivos: 0,
-  });
-  const [paretoProducoesDocente, setParetoProducoesDocente] = useState({
-    categories: [],
-    producoes: [],
-    acumuladoPercentual: [],
-    totalProducoes: 0,
-    docentesAtivos: 0,
-    docentesPareto80: 0,
-  });
   const [producaoOrientacoesScatter, setProducaoOrientacoesScatter] = useState({
     docenteData: [],
     maxProducoes: 0,
@@ -79,17 +55,6 @@ const CurriculoDocente = () => {
         setData(loadedData);
         const listaDocentes = getListaDocentes(loadedData);
         setDocentes(listaDocentes);
-
-        const anosProducoes = getAnosProducoes(loadedData);
-        const quadrienios = getQuadrieniosDisponiveis(anosProducoes, 2013, 2026).map((ano) => ({
-          value: ano,
-          label: `${ano} - ${ano + 3}`,
-        }));
-        setQuadrieniosDisponiveis(quadrienios);
-
-        if (quadrienios.length > 0) {
-          setSelectedQuadrienio(quadrienios[quadrienios.length - 1]);
-        }
         
         // Seleciona o primeiro docente por padrão
         if (listaDocentes.length > 0) {
@@ -169,39 +134,6 @@ const CurriculoDocente = () => {
     }
   }, [selectedDocente, data]);
 
-  useEffect(() => {
-    if (!data || !selectedQuadrienio) {
-      setProducoesDocenteQuadrienio({
-        categories: [],
-        series: [],
-        anos: [],
-        totalProducoes: 0,
-        docentesAtivos: 0,
-      });
-      setParetoProducoesDocente({
-        categories: [],
-        producoes: [],
-        acumuladoPercentual: [],
-        totalProducoes: 0,
-        docentesAtivos: 0,
-        docentesPareto80: 0,
-      });
-      return;
-    }
-
-    const dados = processProducoesPorDocenteQuadrienio(data, selectedQuadrienio.value);
-    setProducoesDocenteQuadrienio(dados);
-
-    const dadosPareto = processParetoProducoesPorDocenteQuadrienio(data, selectedQuadrienio.value);
-    setParetoProducoesDocente(dadosPareto);
-  }, [data, selectedQuadrienio]);
-
-  const modoVisualizacaoOptions = [
-    { value: 'docente', label: 'Painel do docente selecionado' },
-    { value: 'quadrenio', label: 'Barras empilhadas por docente no quadriênio' },
-    { value: 'pareto', label: 'Curva de Pareto da produção por docente' },
-  ];
-
   const customSelectStyles = {
     control: (provided) => ({
       ...provided,
@@ -263,50 +195,19 @@ const CurriculoDocente = () => {
       <div className="curriculo-selector">
         <div className="selector-grid">
           <div className="selector-field">
-            <label htmlFor="modo-visualizacao-select">Modo de visualização:</label>
+            <label htmlFor="docente-select">Selecione um professor:</label>
             <Select
-              id="modo-visualizacao-select"
-              options={modoVisualizacaoOptions}
-              value={modoVisualizacaoOptions.find((option) => option.value === modoVisualizacao)}
-              onChange={(option) => setModoVisualizacao(option?.value || 'docente')}
+              inputId="docente-select"
+              options={docentes}
+              value={selectedDocente}
+              onChange={setSelectedDocente}
               styles={customSelectStyles}
-              placeholder="Selecione um modo..."
-              isSearchable={false}
+              getOptionLabel={(option) => option.label}
+              getOptionValue={(option) => option.id}
+              placeholder="Escolha um professor..."
+              isSearchable
             />
           </div>
-
-          {modoVisualizacao === 'docente' && (
-            <div className="selector-field">
-              <label htmlFor="docente-select">Selecione um professor:</label>
-              <Select
-                id="docente-select"
-                options={docentes}
-                value={selectedDocente}
-                onChange={setSelectedDocente}
-                styles={customSelectStyles}
-                getOptionLabel={(option) => option.label}
-                getOptionValue={(option) => option.id}
-                placeholder="Escolha um professor..."
-                isSearchable
-              />
-            </div>
-          )}
-
-          {(modoVisualizacao === 'quadrenio' || modoVisualizacao === 'pareto') && (
-            <div className="selector-field">
-              <label htmlFor="quadrienio-select">Selecione o quadriênio:</label>
-              <Select
-                id="quadrienio-select"
-                options={quadrieniosDisponiveis}
-                value={selectedQuadrienio}
-                onChange={setSelectedQuadrienio}
-                styles={customSelectStyles}
-                placeholder="Escolha um quadriênio..."
-                isSearchable={false}
-                isDisabled={quadrieniosDisponiveis.length === 0}
-              />
-            </div>
-          )}
         </div>
       </div>
 
@@ -314,71 +215,7 @@ const CurriculoDocente = () => {
         <div className="error-message">{error}</div>
       )}
 
-      {modoVisualizacao === 'quadrenio' && (
-        <div className="curriculo-content">
-          <div className="charts-grid charts-grid--single">
-            <div className="chart-container">
-              <ProducoesDocenteQuadrienioChart
-                dadosQuadrenio={producoesDocenteQuadrienio}
-                chartName={selectedQuadrienio
-                  ? `Produção por Docente no Quadriênio ${selectedQuadrienio.label}`
-                  : 'Produção por Docente no Quadriênio'}
-              />
-            </div>
-          </div>
-
-          <div className="statistics">
-            <div className="stat-card">
-              <div className="stat-label">Total de Produções no Quadriênio</div>
-              <div className="stat-value">{producoesDocenteQuadrienio.totalProducoes}</div>
-            </div>
-
-            <div className="stat-card">
-              <div className="stat-label">Docentes com Produção</div>
-              <div className="stat-value">{producoesDocenteQuadrienio.docentesAtivos}</div>
-            </div>
-
-            <div className="stat-card">
-              <div className="stat-label">Total de Docentes</div>
-              <div className="stat-value">{producoesDocenteQuadrienio.categories.length}</div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {modoVisualizacao === 'pareto' && (
-        <div className="curriculo-content">
-          <div className="charts-grid charts-grid--single">
-            <div className="chart-container">
-              <ProducoesParetoDocenteChart
-                dadosPareto={paretoProducoesDocente}
-                chartName={selectedQuadrienio
-                  ? `Curva de Pareto da Produção por Docente (${selectedQuadrienio.label})`
-                  : 'Curva de Pareto da Produção por Docente'}
-              />
-            </div>
-          </div>
-
-          <div className="statistics">
-            <div className="stat-card">
-              <div className="stat-label">Total de Produções no Quadriênio</div>
-              <div className="stat-value">{paretoProducoesDocente.totalProducoes}</div>
-            </div>
-
-            <div className="stat-card">
-              <div className="stat-label">Docentes até 80% da Produção</div>
-              <div className="stat-value">{paretoProducoesDocente.docentesPareto80}</div>
-            </div>
-
-            <div className="stat-card">
-              <div className="stat-label">Docentes com Produção</div>
-              <div className="stat-value">{paretoProducoesDocente.docentesAtivos}</div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {modoVisualizacao === 'docente' && selectedDocente && (
+      {selectedDocente && (
         <div className="curriculo-content">
           <div className="curriculo-info">
             <h2>{selectedDocente.label}</h2>

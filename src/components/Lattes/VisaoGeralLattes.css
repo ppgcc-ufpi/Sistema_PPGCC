@@ -1,0 +1,130 @@
+.visao-geral-lattes {
+  min-width: 0;
+  margin-top: 12px;
+  color: var(--clr-white);
+}
+
+.visao-geral-lattes__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.visao-geral-lattes__header h2 {
+  margin: 0 0 6px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.visao-geral-lattes__header p {
+  margin: 0;
+  color: var(--clr-silver);
+  font-size: 14px;
+}
+
+.visao-geral-lattes__filters {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 16px;
+  flex: 1;
+}
+
+.visao-geral-lattes__filter {
+  width: min(100%, 280px);
+  flex: 0 0 280px;
+}
+
+.visao-geral-lattes__filter--mode {
+  width: min(100%, 360px);
+  flex-basis: 360px;
+}
+
+.visao-geral-lattes__filter label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--clr-silver-v1);
+  font-size: 13px;
+}
+
+.visao-geral-lattes__chart {
+  min-width: 0;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+}
+
+.visao-geral-lattes__statistics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.visao-geral-lattes__stat {
+  display: flex;
+  min-height: 110px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 18px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--clr-pumpkin), #6366f1);
+  text-align: center;
+}
+
+.visao-geral-lattes__stat span {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.visao-geral-lattes__stat strong {
+  margin-top: 8px;
+  font-size: 30px;
+}
+
+.visao-geral-lattes__message {
+  padding: 28px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.visao-geral-lattes__message--error {
+  border: 1px solid var(--clr-scarlet);
+  color: #ffb4aa;
+}
+
+@media screen and (max-width: 768px) {
+  .visao-geral-lattes__header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .visao-geral-lattes__filters {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .visao-geral-lattes__filter,
+  .visao-geral-lattes__filter--mode {
+    width: 100%;
+    flex-basis: auto;
+  }
+
+  .visao-geral-lattes__statistics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .visao-geral-lattes__statistics {
+    grid-template-columns: 1fr;
+  }
+}

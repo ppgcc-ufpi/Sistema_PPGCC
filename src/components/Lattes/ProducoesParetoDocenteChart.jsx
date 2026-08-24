@@ -1,5 +1,6 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
+import './LattesCharts.css';
 
 const ProducoesParetoDocenteChart = ({
   dadosPareto,
@@ -20,7 +21,7 @@ const ProducoesParetoDocenteChart = ({
 
   if (!categories.length || !producoes.length) {
     return (
-      <div style={{ padding: '20px', textAlign: 'center', color: '#999' }}>
+      <div className="lattes-chart lattes-chart--empty">
         Sem dados de produção disponíveis para a curva de Pareto
       </div>
     );
@@ -162,7 +163,7 @@ const ProducoesParetoDocenteChart = ({
   ];
 
   return (
-    <div style={{ width: '100%', minHeight: '460px', background: '#1a1f3a', borderRadius: '8px', padding: '20px' }}>
+    <div className="lattes-chart lattes-chart--large">
       <Chart options={options} series={series} type="line" height={420} />
     </div>
   );

@@ -27,12 +27,18 @@
 }
 
 .rede-legenda {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 12px 18px;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 12px;
+  position: absolute;
+  z-index: 3;
+  bottom: 12px;
+  left: 12px;
+  display: grid;
+  gap: 5px;
+  max-width: 210px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 10px;
+  line-height: 1.2;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+  pointer-events: none;
 }
 
 .rede-legenda span {
@@ -42,20 +48,14 @@
 }
 
 .legenda-cor {
-  width: 11px;
-  height: 11px;
+  width: 9px;
+  height: 9px;
+  flex: 0 0 9px;
   border-radius: 50%;
 }
 
 .legenda-cor--permanente { background: #59c3c3; }
 .legenda-cor--colaborador { background: #ffb35c; }
-
-.legenda-linha {
-  display: inline-block;
-  width: 23px;
-  border-top: 4px solid rgba(255, 255, 255, 0.55);
-  border-radius: 2px;
-}
 
 .rede-filtros {
   display: grid;
@@ -152,20 +152,27 @@
   overflow: hidden;
 }
 
+.rede-grafo-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 24px;
+  min-height: 48px;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(8, 13, 31, 0.45);
+}
+
 .rede-grafo-instrucao {
-  position: absolute;
-  z-index: 2;
-  top: 13px;
-  left: 16px;
+  flex: 1 1 220px;
   color: rgba(255, 255, 255, 0.55);
   font-size: 11px;
-  pointer-events: none;
 }
 
 .rede-grafo {
   display: block;
   width: 100%;
-  min-height: 540px;
+  min-height: 610px;
   background-image: radial-gradient(circle at center, rgba(89, 195, 195, 0.07), transparent 62%);
 }
 
@@ -348,12 +355,11 @@
 @media (max-width: 720px) {
   .rede-container { padding: 12px 0; }
   .rede-header { flex-direction: column; }
-  .rede-legenda { justify-content: flex-start; }
+  .rede-legenda { bottom: 8px; left: 8px; }
   .rede-filtros { grid-template-columns: 1fr 1fr; padding: 13px; }
   .rede-filtros label:nth-child(4),
   .rede-filtros label:nth-child(5) { grid-column: 1 / -1; }
   .rede-estatisticas { grid-template-columns: 1fr 1fr; }
   .rede-estatisticas article { flex-direction: column; gap: 2px; }
-  .rede-grafo { min-height: 440px; }
+  .rede-grafo { min-height: 500px; }
 }
-

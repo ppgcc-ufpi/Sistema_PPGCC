@@ -1,15 +1,14 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import { prepareDadosOrientacoesPorNivel } from '../../utils/lattesDataProcessor';
+import './LattesCharts.css';
 
 const OrientacoesNivelChart = ({ orientacoesPorNivel, chartName = 'Orientações por Nível' }) => {
   const { series, categories } = prepareDadosOrientacoesPorNivel(orientacoesPorNivel || {});
 
-  const total = series && series.length ? series.reduce((sum, s) => sum + s.data.reduce((a, b) => a + b, 0), 0) : 0;
-
   if (!categories || categories.length === 0) {
     return (
-      <div style={{ padding: '20px', textAlign: 'center', color: '#999' }}>
+      <div className="lattes-chart lattes-chart--empty">
         Sem dados de orientações por nível disponíveis
       </div>
     );
@@ -57,8 +56,7 @@ const OrientacoesNivelChart = ({ orientacoesPorNivel, chartName = 'Orientações
   };
 
   return (
-    <div style={{ width: '100%', height: '400px', background: '#1a1f3a', borderRadius: '8px', padding: '20px' }}>
-      <div style={{ marginBottom: '8px', color: '#B0C4DE' }}>{chartName} — Total: {total}</div>
+    <div className="lattes-chart">
       <Chart options={options} series={series} type="bar" height={350} />
     </div>
   );
