@@ -1,0 +1,162 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum PerfilUsuario {
+  COORDENACAO
+  DOCENTE
+}
+
+enum StatusImportacao {
+  INICIADA
+  CONCLUIDA
+  FALHOU
+}
+
+model Usuario {
+  id        String        @id @db.Uuid
+  email     String        @unique
+  nome      String?
+  perfil    PerfilUsuario @default(DOCENTE)
+  ativo     Boolean       @default(true)
+  docenteId String?       @unique @map("docente_id")
+  docente   Docente?      @relation(fields: [docenteId], references: [id])
+  criadoEm  DateTime      @default(now()) @map("criado_em")
+  atualizadoEm DateTime   @updatedAt @map("atualizado_em")
+
+  @@map("usuarios")
+}
+
+model Docente {
+  id             String   @id @map("id_docente")
+  nome           String
+  nomeNormalizado String  @map("nome_normalizado")
+  dados          Json
+  usuario        Usuario?
+  producoes      ProducaoDocente[]
+  orientacoes    OrientacaoDocente[]
+  projetos       ProjetoDocente[]
+  formacoes      Formacao[]
+  criadoEm       DateTime @default(now()) @map("criado_em")
+  atualizadoEm   DateTime @updatedAt @map("atualizado_em")
+
+  @@index([nomeNormalizado])
+  @@map("docentes")
+}
+
+model Formacao {
+  id           String   @id @map("id_formacao")
+  docenteId    String   @map("docente_id")
+  docente      Docente  @relation(fields: [docenteId], references: [id], onDelete: Cascade)
+  nivel        String?
+  instituicao  String?
+  anoInicio    Int?     @map("ano_inicio")
+  anoConclusao Int?     @map("ano_conclusao")
+  dados        Json
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  @@index([docenteId])
+  @@map("formacoes")
+}
+
+model Producao {
+  id           String   @id @map("id_producao")
+  titulo       String
+  ano          Int?
+  natureza     String?
+  integravel   Boolean  @default(false)
+  dados        Json
+  docentes     ProducaoDocente[]
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  @@index([ano])
+  @@index([integravel])
+  @@map("producoes")
+}
+
+model ProducaoDocente {
+  producaoId String   @map("producao_id")
+  docenteId  String   @map("docente_id")
+  producao   Producao @relation(fields: [producaoId], references: [id], onDelete: Cascade)
+  docente    Docente  @relation(fields: [docenteId], references: [id], onDelete: Cascade)
+
+  @@id([producaoId, docenteId])
+  @@index([docenteId])
+  @@map("producao_docentes")
+}
+
+model Orientacao {
+  id           String   @id @map("id_orientacao")
+  orientando   String
+  ano          Int?
+  nivel        String?  @map("nivel_normalizado")
+  situacao     String?  @map("situacao_normalizada")
+  integravel   Boolean  @default(false)
+  dados        Json
+  docentes     OrientacaoDocente[]
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  @@index([ano])
+  @@index([integravel])
+  @@map("orientacoes")
+}
+
+model OrientacaoDocente {
+  orientacaoId String     @map("orientacao_id")
+  docenteId    String     @map("docente_id")
+  orientacao   Orientacao @relation(fields: [orientacaoId], references: [id], onDelete: Cascade)
+  docente      Docente    @relation(fields: [docenteId], references: [id], onDelete: Cascade)
+
+  @@id([orientacaoId, docenteId])
+  @@index([docenteId])
+  @@map("orientacao_docentes")
+}
+
+model Projeto {
+  id           String   @id @map("id_projeto")
+  titulo       String
+  anoInicio    Int?     @map("ano_inicio")
+  anoConclusao Int?     @map("ano_conclusao")
+  situacao     String?  @map("situacao_normalizada")
+  integravel   Boolean  @default(false)
+  dados        Json
+  docentes     ProjetoDocente[]
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  @@index([anoInicio])
+  @@index([integravel])
+  @@map("projetos")
+}
+
+model ProjetoDocente {
+  projetoId String  @map("projeto_id")
+  docenteId String  @map("docente_id")
+  projeto   Projeto @relation(fields: [projetoId], references: [id], onDelete: Cascade)
+  docente   Docente @relation(fields: [docenteId], references: [id], onDelete: Cascade)
+
+  @@id([projetoId, docenteId])
+  @@index([docenteId])
+  @@map("projeto_docentes")
+}
+
+model Importacao {
+  id          String           @id @default(uuid()) @db.Uuid
+  status      StatusImportacao @default(INICIADA)
+  origem      String
+  contagens   Json?
+  erro        String?
+  iniciadaEm  DateTime         @default(now()) @map("iniciada_em")
+  concluidaEm DateTime?        @map("concluida_em")
+
+  @@map("importacoes")
+}

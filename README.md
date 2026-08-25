@@ -2,6 +2,13 @@
 
 Este projeto oferece uma aplicação React para visualizar dados de arquivos Excel (xlsx, xls) em diferentes tipos de gráficos.
 
+## Backend
+
+O backend NestJS, preparado para PostgreSQL e autenticação do Supabase, está em
+[`backend/`](backend/README.md). A configuração do projeto Supabase e a ordem dos
+comandos estão descritas em
+[`backend/docs/SUPABASE_SETUP.md`](backend/docs/SUPABASE_SETUP.md).
+
 ## Pré-requisitos
 
 - Node.js (v14 ou superior)
