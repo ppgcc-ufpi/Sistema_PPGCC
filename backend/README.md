@@ -12,6 +12,7 @@ as regras de negócio e autorização permanecem nesta API.
 - endpoints iniciais de docentes e dashboards;
 - importação dos cinco JSONs existentes;
 - exportação de snapshots estáticos para contingência;
+- endpoints públicos sanitizados, sem necessidade de conta;
 - script de endurecimento que bloqueia acesso direto às tabelas pela Data API.
 
 ## Requisitos
@@ -44,13 +45,26 @@ A API ficará em `http://localhost:3001/api` e a verificação de saúde em:
 GET http://localhost:3001/api/health
 ```
 
-## Endpoints iniciais
+## Endpoints públicos
+
+Estas rotas não exigem conta ou token. Elas retornam somente registros aceitos
+para integração e removem metadados administrativos internos.
+
+| Método | Rota | Conteúdo |
+|---|---|---|
+| GET | `/api/public/dashboard` | totais gerais do programa |
+| GET | `/api/public/docentes` | docentes e vínculos públicos |
+| GET | `/api/public/producoes` | produções públicas integráveis |
+| GET | `/api/public/orientacoes` | orientações públicas integráveis |
+| GET | `/api/public/projetos` | projetos públicos integráveis |
+| GET | `/api/public/formacoes` | formação pública dos docentes |
+
+## Endpoints autenticados
 
 Todos, exceto `health`, exigem `Authorization: Bearer <access_token>`.
 
 | Método | Rota | Perfil |
 |---|---|---|
-| GET | `/api/health` | público |
 | GET | `/api/docentes/me` | usuário vinculado a docente |
 | GET | `/api/docentes` | coordenação |
 | GET | `/api/docentes/:id` | coordenação |
@@ -72,6 +86,10 @@ Todos, exceto `health`, exigem `Authorization: Bearer <access_token>`.
 - `metadados.json`.
 
 O diretório padrão de saída é `../frontend/public/dados`.
+
+O snapshot é deliberadamente público e usa os mesmos sanitizadores de
+`/api/public`. Contas, logs, controles de revisão, fontes internas e registros
+não integráveis nunca devem ser exportados para esse diretório.
 
 ## Segurança
 

@@ -2,6 +2,13 @@ import 'dotenv/config';
 import { PrismaClient } from '@prisma/client';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import {
+  sanitizarDocente,
+  sanitizarFormacao,
+  sanitizarOrientacao,
+  sanitizarProducao,
+  sanitizarProjeto,
+} from '../src/public/public-data.mapper';
 
 const prisma = new PrismaClient();
 const outputDir = resolve(process.cwd(), process.env.STATIC_FALLBACK_DIR ?? '../frontend/public/dados');
@@ -14,22 +21,32 @@ async function exportar() {
   await mkdir(outputDir, { recursive: true });
   const [docentes, producoes, orientacoes, projetos, formacoes, importacao] = await Promise.all([
     prisma.docente.findMany({ orderBy: { nomeNormalizado: 'asc' } }),
-    prisma.producao.findMany({ orderBy: [{ ano: 'desc' }, { titulo: 'asc' }] }),
-    prisma.orientacao.findMany({ orderBy: [{ ano: 'desc' }, { orientando: 'asc' }] }),
-    prisma.projeto.findMany({ orderBy: [{ anoInicio: 'desc' }, { titulo: 'asc' }] }),
+    prisma.producao.findMany({
+      where: { integravel: true },
+      orderBy: [{ ano: 'desc' }, { titulo: 'asc' }],
+    }),
+    prisma.orientacao.findMany({
+      where: { integravel: true },
+      orderBy: [{ ano: 'desc' }, { orientando: 'asc' }],
+    }),
+    prisma.projeto.findMany({
+      where: { integravel: true },
+      orderBy: [{ anoInicio: 'desc' }, { titulo: 'asc' }],
+    }),
     prisma.formacao.findMany({ orderBy: [{ docenteId: 'asc' }, { anoConclusao: 'desc' }] }),
     prisma.importacao.findFirst({ where: { status: 'CONCLUIDA' }, orderBy: { concluidaEm: 'desc' } }),
   ]);
 
   await Promise.all([
-    escrever('docentes.json', docentes.map((item) => item.dados)),
-    escrever('producoes.json', producoes.map((item) => item.dados)),
-    escrever('orientacoes.json', orientacoes.map((item) => item.dados)),
-    escrever('projetos.json', projetos.map((item) => item.dados)),
-    escrever('formacoes.json', formacoes.map((item) => item.dados)),
+    escrever('docentes.json', docentes.map((item) => sanitizarDocente(item.dados))),
+    escrever('producoes.json', producoes.map((item) => sanitizarProducao(item.dados))),
+    escrever('orientacoes.json', orientacoes.map((item) => sanitizarOrientacao(item.dados))),
+    escrever('projetos.json', projetos.map((item) => sanitizarProjeto(item.dados))),
+    escrever('formacoes.json', formacoes.map((item) => sanitizarFormacao(item.dados))),
     escrever('metadados.json', {
       gerado_em: new Date().toISOString(),
       ultima_importacao: importacao?.concluidaEm?.toISOString() ?? null,
+      escopo: 'publico',
       contagens: {
         docentes: docentes.length,
         producoes: producoes.length,

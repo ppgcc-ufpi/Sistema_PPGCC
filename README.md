@@ -3,6 +3,9 @@
 Sistema de visualização dos dados acadêmicos do Programa de Pós-Graduação em
 Ciência da Computação da UFPI.
 
+Os dashboards gerais são públicos e não exigem login. A autenticação é
+necessária somente para as visões privadas de docentes e da coordenação.
+
 ## Estrutura
 
 ```text
@@ -49,6 +52,8 @@ Após instalar e configurar o backend, ele pode ser iniciado pela raiz:
 ```bash
 npm run backend
 ```
+
+Os dados públicos ficam disponíveis em `http://localhost:3001/api/public/*`.
 
 ## Testes
 

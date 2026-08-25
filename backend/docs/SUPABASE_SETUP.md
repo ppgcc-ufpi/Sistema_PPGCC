@@ -77,6 +77,9 @@ O frontend ainda precisa receber um adaptador que tente a API primeiro e, em
 caso de indisponibilidade, carregue `/dados/*.json`. Essa integração é a próxima
 etapa e deve ser feita depois que a API responder localmente.
 
+Os arquivos gerados são públicos. O exportador aplica o mesmo mapeamento dos
+endpoints `/api/public` e não inclui os campos administrativos internos.
+
 ## 8. Produção
 
 Ainda será necessário escolher onde hospedar o NestJS. O Supabase hospeda o

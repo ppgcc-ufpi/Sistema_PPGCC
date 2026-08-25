@@ -5,6 +5,7 @@ import { DashboardsModule } from './dashboards/dashboards.module';
 import { DocentesModule } from './docentes/docentes.module';
 import { HealthController } from './health/health.controller';
 import { PrismaModule } from './prisma/prisma.module';
+import { PublicDataModule } from './public/public-data.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { PrismaModule } from './prisma/prisma.module';
     AuthModule,
     DocentesModule,
     DashboardsModule,
+    PublicDataModule,
   ],
   controllers: [HealthController],
 })
