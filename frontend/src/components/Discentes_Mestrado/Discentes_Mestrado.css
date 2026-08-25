@@ -1,0 +1,24 @@
+/* grid c1 */
+.grid-c1 {
+  display: flex;
+  flex-direction: column;
+}
+.apexcharts-tooltip {
+  color: #000;
+
+}
+.apexcharts-menu.apexcharts-menu-open {
+  color: #000;
+}
+
+.apexcharts-title-text {
+  fill: #B0C4DE;
+}
+
+
+@media screen and (max-width: 768px) {
+  .grid-c1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+}

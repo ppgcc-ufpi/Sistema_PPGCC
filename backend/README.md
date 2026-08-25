@@ -59,9 +59,8 @@ Todos, exceto `health`, exigem `Authorization: Bearer <access_token>`.
 
 ## Importação e snapshot
 
-`npm run db:import` lê `DATA_SOURCE_DIR`. Por padrão, ele usa `../src/data`, que
-é a localização atual dos JSONs. Caso o frontend seja movido para `frontend/`,
-altere para `../frontend/src/data`.
+`npm run db:import` lê `DATA_SOURCE_DIR`. Por padrão, ele usa
+`../frontend/src/data`, que é a localização dos JSONs do frontend.
 
 `npm run snapshot:export` gera em `STATIC_FALLBACK_DIR`:
 
@@ -72,8 +71,7 @@ altere para `../frontend/src/data`.
 - `formacoes.json`;
 - `metadados.json`.
 
-Enquanto o frontend ainda estiver na raiz, use `../public/dados`. Depois da
-separação completa, use `../frontend/public/dados`.
+O diretório padrão de saída é `../frontend/public/dados`.
 
 ## Segurança
 

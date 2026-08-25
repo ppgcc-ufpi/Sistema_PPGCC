@@ -1,71 +1,62 @@
-# Visualizador de Dados em Gráficos
+# Sistema PPGCC
 
-Este projeto oferece uma aplicação React para visualizar dados de arquivos Excel (xlsx, xls) em diferentes tipos de gráficos.
+Sistema de visualização dos dados acadêmicos do Programa de Pós-Graduação em
+Ciência da Computação da UFPI.
+
+## Estrutura
+
+```text
+Sistema_PPGCC/
+├── frontend/   # aplicação React e snapshots estáticos
+├── backend/    # API NestJS, Prisma e integração com Supabase
+├── package.json
+└── README.md
+```
+
+## Frontend
+
+O frontend React está em [`frontend/`](frontend/). Para executá-lo:
+
+```bash
+cd frontend
+npm install
+npm start
+```
+
+Ou, a partir da raiz:
+
+```bash
+npm run frontend
+```
+
+A aplicação estará disponível em `http://localhost:3000`. O build e a
+publicação no GitHub Pages continuam configurados no `package.json` do frontend:
+
+```bash
+cd frontend
+npm run build
+npm run deploy
+```
 
 ## Backend
 
-O backend NestJS, preparado para PostgreSQL e autenticação do Supabase, está em
-[`backend/`](backend/README.md). A configuração do projeto Supabase e a ordem dos
-comandos estão descritas em
+O backend NestJS está em [`backend/`](backend/README.md). A configuração do
+Supabase está detalhada em
 [`backend/docs/SUPABASE_SETUP.md`](backend/docs/SUPABASE_SETUP.md).
 
-## Pré-requisitos
+Após instalar e configurar o backend, ele pode ser iniciado pela raiz:
 
-- Node.js (v14 ou superior)
-- npm ou yarn
+```bash
+npm run backend
+```
 
-## Instalação
+## Testes
 
-1. Clone este repositório:
+```bash
+npm run test:frontend
+npm run test:backend
+```
 
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
-
-
-2. Navegue até o diretório do projeto:
-
-cd nome-do-repositorio
-
-
-3. Instale as dependências:
-
-npm install # ou use 'yarn install' se estiver usando o Yarn
-
-
-## Como Usar
-
-1. Após instalar as dependências, inicie o servidor de desenvolvimento:
-
-npm start # ou 'yarn start' se estiver usando o Yarn
-
-
-2. Acesse a aplicação no navegador:
-
-http://localhost:3000
-
-
-3. Na página inicial, selecione o arquivo Excel contendo os dados.
-4. Escolha as informações e anos desejados nos seletores.
-5. Clique nos diferentes tipos de gráficos exibidos para visualizar os dados.
-
-## Estrutura do Código
-
-- `src/`: Contém os arquivos-fonte da aplicação.
-- `chart-types/`: Componentes para diferentes tipos de gráficos.
-- `styles/`: Arquivos de estilos da aplicação.
-- `XLSXReader.js`: Componente principal da aplicação.
-
-## Git Pages
+## Aplicação publicada
 
 https://ppgcc-ufpi.github.io/Sistema_PPGCC/
-
-## Documentação
-
-https://docs.google.com/document/d/1deNa1YNQ8SEjwDKelbMKZa0UOKSOIdVHRRcC-tJHM5I/edit?usp=sharing
-
-## Contribuição
-
-Contribuições são bem-vindas! Se encontrar problemas ou tiver sugestões, sinta-se à vontade para criar uma issue ou um pull request.
-
-## Licença
-
-Este projeto está licenciado sob a [MIT License](LICENSE).

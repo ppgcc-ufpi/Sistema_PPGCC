@@ -6,7 +6,7 @@ import { resolve } from 'node:path';
 type JsonObject = Record<string, unknown>;
 
 const prisma = new PrismaClient();
-const sourceDir = resolve(process.cwd(), process.env.DATA_SOURCE_DIR ?? '../src/data');
+const sourceDir = resolve(process.cwd(), process.env.DATA_SOURCE_DIR ?? '../frontend/src/data');
 
 async function lerJson(nome: string): Promise<JsonObject[]> {
   const conteudo = await readFile(resolve(sourceDir, nome), 'utf8');

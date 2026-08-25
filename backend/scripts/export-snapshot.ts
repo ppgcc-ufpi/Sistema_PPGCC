@@ -4,7 +4,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
 const prisma = new PrismaClient();
-const outputDir = resolve(process.cwd(), process.env.STATIC_FALLBACK_DIR ?? '../public/dados');
+const outputDir = resolve(process.cwd(), process.env.STATIC_FALLBACK_DIR ?? '../frontend/public/dados');
 
 async function escrever(nome: string, dados: unknown) {
   await writeFile(resolve(outputDir, nome), `${JSON.stringify(dados, null, 2)}\n`, 'utf8');
