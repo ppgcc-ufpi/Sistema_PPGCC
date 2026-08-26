@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: sistema-ppgcc-api
+    runtime: node
+    plan: free
+    region: virginia
+    rootDir: backend
+    buildCommand: npm ci && npm run prisma:generate && npm run build && npm run prisma:deploy
+    startCommand: npm run start:prod
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: 20.20.2
+      - key: NODE_ENV
+        value: production
+      - key: FRONTEND_URL
+        value: https://ppgcc-ufpi.github.io
+      - key: DEFAULT_PROGRAM_ID
+        value: ppgcc-ufpi
+      - key: JWT_ACCESS_SECONDS
+        value: 900
+      - key: JWT_REFRESH_DAYS
+        value: 30
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false
+      - key: DIRECT_URL
+        sync: false

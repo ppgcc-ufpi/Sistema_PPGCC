@@ -1,64 +1,69 @@
-# Visualizador de Dados em Gráficos
+# Sistema PPGCC
 
-Este projeto oferece uma aplicação React para visualizar dados de arquivos Excel (xlsx, xls) em diferentes tipos de gráficos.
+Sistema de visualização dos dados acadêmicos do Programa de Pós-Graduação em
+Ciência da Computação da UFPI.
 
-## Pré-requisitos
+Os dashboards gerais são públicos e não exigem login. A autenticação é
+necessária somente para as visões privadas de docentes e da coordenação.
 
-- Node.js (v14 ou superior)
-- npm ou yarn
+## Estrutura
 
-## Instalação
+```text
+Sistema_PPGCC/
+├── frontend/   # aplicação React e snapshots estáticos
+├── backend/    # API NestJS, Prisma e PostgreSQL no Neon
+├── package.json
+└── README.md
+```
 
-1. Clone este repositório:
+## Frontend
 
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+O frontend React está em [`frontend/`](frontend/). Para executá-lo:
 
+```bash
+cd frontend
+npm install
+npm start
+```
 
-2. Navegue até o diretório do projeto:
+Ou, a partir da raiz:
 
-cd nome-do-repositorio
+```bash
+npm run frontend
+```
 
+A aplicação estará disponível em `http://localhost:3000`. O build e a
+publicação no GitHub Pages continuam configurados no `package.json` do frontend:
 
-3. Instale as dependências:
+```bash
+cd frontend
+npm run build
+npm run deploy
+```
 
-npm install # ou use 'yarn install' se estiver usando o Yarn
+## Backend
 
+O backend NestJS está em [`backend/`](backend/README.md). A configuração do Neon
+e da autenticação está detalhada em
+[`backend/docs/NEON_SETUP.md`](backend/docs/NEON_SETUP.md). A publicação da API
+no Render está descrita em
+[`backend/docs/RENDER_DEPLOY.md`](backend/docs/RENDER_DEPLOY.md).
 
-## Como Usar
+Após instalar e configurar o backend, ele pode ser iniciado pela raiz:
 
-1. Após instalar as dependências, inicie o servidor de desenvolvimento:
+```bash
+npm run backend
+```
 
-npm start # ou 'yarn start' se estiver usando o Yarn
+Os dados públicos ficam disponíveis em `http://localhost:3001/api/public/*`.
 
+## Testes
 
-2. Acesse a aplicação no navegador:
+```bash
+npm run test:frontend
+npm run test:backend
+```
 
-http://localhost:3000
-
-
-3. Na página inicial, selecione o arquivo Excel contendo os dados.
-4. Escolha as informações e anos desejados nos seletores.
-5. Clique nos diferentes tipos de gráficos exibidos para visualizar os dados.
-
-## Estrutura do Código
-
-- `src/`: Contém os arquivos-fonte da aplicação.
-- `chart-types/`: Componentes para diferentes tipos de gráficos.
-- `styles/`: Arquivos de estilos da aplicação.
-- `XLSXReader.js`: Componente principal da aplicação.
-
-## Git Pages
+## Aplicação publicada
 
 https://ppgcc-ufpi.github.io/Sistema_PPGCC/
-
-## Documentação
-
-https://docs.google.com/document/d/1deNa1YNQ8SEjwDKelbMKZa0UOKSOIdVHRRcC-tJHM5I/edit?usp=sharing
-
-## Contribuição
-
-Contribuições são bem-vindas! Se encontrar problemas ou tiver sugestões, sinta-se à vontade para criar uma issue ou um pull request.
-
-## Licença
-
-Este projeto está licenciado sob a [MIT License](LICENSE).
