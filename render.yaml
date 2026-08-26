@@ -5,7 +5,7 @@ services:
     plan: free
     region: virginia
     rootDir: backend
-    buildCommand: npm ci && npm run prisma:generate && npm run build && npm run prisma:deploy
+    buildCommand: npm ci --include=dev && npm run prisma:generate && npm run build && npm run prisma:deploy && npm prune --omit=dev
     startCommand: npm run start:prod
     healthCheckPath: /api/health
     autoDeployTrigger: commit
