@@ -19,144 +19,324 @@ enum StatusImportacao {
   FALHOU
 }
 
-model Usuario {
-  id        String        @id @db.Uuid
-  email     String        @unique
-  nome      String?
-  perfil    PerfilUsuario @default(DOCENTE)
-  ativo     Boolean       @default(true)
-  docenteId String?       @unique @map("docente_id")
-  docente   Docente?      @relation(fields: [docenteId], references: [id])
-  criadoEm  DateTime      @default(now()) @map("criado_em")
-  atualizadoEm DateTime   @updatedAt @map("atualizado_em")
+enum TipoEntidade {
+  DOCENTE
+  FORMACAO
+  PRODUCAO
+  ORIENTACAO
+  PROJETO
+}
 
+enum StatusSugestao {
+  PENDENTE
+  APROVADA
+  REJEITADA
+  CANCELADA
+}
+
+enum TipoDecisao {
+  APROVACAO
+  REJEICAO
+}
+
+model Programa {
+  id           String             @id
+  nome         String
+  sigla        String
+  ativo        Boolean            @default(true)
+  criadoEm     DateTime           @default(now()) @map("criado_em")
+  atualizadoEm DateTime           @updatedAt @map("atualizado_em")
+  usuarios     Usuario[]
+  docentes     Docente[]
+  formacoes    Formacao[]
+  producoes    Producao[]
+  orientacoes  Orientacao[]
+  projetos     Projeto[]
+  importacoes  Importacao[]
+  sugestoes    Sugestao[]
+  correcoes    CorrecaoAprovada[]
+
+  @@map("programas")
+}
+
+model Usuario {
+  id           String             @id @default(uuid()) @db.Uuid
+  programaId   String             @map("programa_id")
+  programa     Programa           @relation(fields: [programaId], references: [id])
+  email        String             @unique
+  senhaHash    String             @map("senha_hash")
+  nome         String?
+  perfil       PerfilUsuario      @default(DOCENTE)
+  ativo        Boolean            @default(true)
+  docenteId    String?            @unique @map("docente_id") @db.Uuid
+  docente      Docente?           @relation(fields: [docenteId], references: [id])
+  criadoEm     DateTime           @default(now()) @map("criado_em")
+  atualizadoEm DateTime           @updatedAt @map("atualizado_em")
+  sessoes      SessaoRefresh[]
+  sugestoes    Sugestao[]         @relation("AutorSugestao")
+  decisoes     DecisaoSugestao[]  @relation("ResponsavelDecisao")
+  correcoes    CorrecaoAprovada[] @relation("ResponsavelCorrecao")
+
+  @@index([programaId, perfil])
   @@map("usuarios")
 }
 
-model Docente {
-  id             String   @id @map("id_docente")
-  nome           String
-  nomeNormalizado String  @map("nome_normalizado")
-  dados          Json
-  usuario        Usuario?
-  producoes      ProducaoDocente[]
-  orientacoes    OrientacaoDocente[]
-  projetos       ProjetoDocente[]
-  formacoes      Formacao[]
-  criadoEm       DateTime @default(now()) @map("criado_em")
-  atualizadoEm   DateTime @updatedAt @map("atualizado_em")
+model SessaoRefresh {
+  id         String    @id @default(uuid()) @db.Uuid
+  usuarioId  String    @map("usuario_id") @db.Uuid
+  usuario    Usuario   @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  tokenHash  String    @unique @map("token_hash")
+  expiraEm   DateTime  @map("expira_em")
+  revogadaEm DateTime? @map("revogada_em")
+  criadaEm   DateTime  @default(now()) @map("criada_em")
 
-  @@index([nomeNormalizado])
+  @@index([usuarioId, expiraEm])
+  @@map("sessoes_refresh")
+}
+
+model Docente {
+  id              String              @id @default(uuid()) @db.Uuid
+  programaId      String              @map("programa_id")
+  programa        Programa            @relation(fields: [programaId], references: [id], onDelete: Cascade)
+  idExterno       String              @map("id_docente")
+  nome            String
+  nomeNormalizado String              @map("nome_normalizado")
+  anoIngresso     Int?                @map("ano_ingresso_programa")
+  dadosOriginais  Json                @map("dados_originais")
+  usuario         Usuario?
+  producoes       ProducaoDocente[]
+  orientacoes     OrientacaoDocente[]
+  projetos        ProjetoDocente[]
+  formacoes       Formacao[]
+  criadoEm        DateTime            @default(now()) @map("criado_em")
+  atualizadoEm    DateTime            @updatedAt @map("atualizado_em")
+
+  @@unique([programaId, idExterno])
+  @@index([programaId, nomeNormalizado])
   @@map("docentes")
 }
 
 model Formacao {
-  id           String   @id @map("id_formacao")
-  docenteId    String   @map("docente_id")
-  docente      Docente  @relation(fields: [docenteId], references: [id], onDelete: Cascade)
-  nivel        String?
-  instituicao  String?
-  anoInicio    Int?     @map("ano_inicio")
-  anoConclusao Int?     @map("ano_conclusao")
-  dados        Json
-  criadoEm     DateTime @default(now()) @map("criado_em")
-  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+  id             String   @id @default(uuid()) @db.Uuid
+  programaId     String   @map("programa_id")
+  programa       Programa @relation(fields: [programaId], references: [id], onDelete: Cascade)
+  idExterno      String   @map("id_formacao")
+  docenteId      String   @map("docente_id") @db.Uuid
+  docente        Docente  @relation(fields: [docenteId], references: [id], onDelete: Cascade)
+  nivel          String?
+  instituicao    String?
+  anoInicio      Int?     @map("ano_inicio")
+  anoConclusao   Int?     @map("ano_conclusao")
+  dadosOriginais Json     @map("dados_originais")
+  criadoEm       DateTime @default(now()) @map("criado_em")
+  atualizadoEm   DateTime @updatedAt @map("atualizado_em")
 
+  @@unique([programaId, idExterno])
   @@index([docenteId])
   @@map("formacoes")
 }
 
 model Producao {
-  id           String   @id @map("id_producao")
-  titulo       String
-  ano          Int?
-  natureza     String?
-  integravel   Boolean  @default(false)
-  dados        Json
-  docentes     ProducaoDocente[]
-  criadoEm     DateTime @default(now()) @map("criado_em")
-  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+  id                         String            @id @default(uuid()) @db.Uuid
+  programaId                 String            @map("programa_id")
+  programa                   Programa          @relation(fields: [programaId], references: [id], onDelete: Cascade)
+  idExterno                  String            @map("id_producao")
+  titulo                     String
+  ano                        Int?
+  natureza                   String?
+  elegivelCoordenacao        Boolean           @default(false) @map("elegivel_coordenacao")
+  elegivelPublico            Boolean           @default(false) @map("elegivel_publico")
+  exibirPorPadraoCoordenacao Boolean           @default(false) @map("exibir_padrao_coordenacao")
+  exibirPorPadraoPublico     Boolean           @default(false) @map("exibir_padrao_publico")
+  permiteOcultarCoordenacao  Boolean           @default(false) @map("permite_ocultar_coordenacao")
+  ocultaCoordenacao          Boolean           @default(false) @map("oculta_coordenacao")
+  ocultadaPorId              String?           @map("ocultada_por") @db.Uuid
+  ocultadaEm                 DateTime?         @map("ocultada_em")
+  dadosOriginais             Json              @map("dados_originais")
+  docentes                   ProducaoDocente[]
+  criadoEm                   DateTime          @default(now()) @map("criado_em")
+  atualizadoEm               DateTime          @updatedAt @map("atualizado_em")
 
-  @@index([ano])
-  @@index([integravel])
+  @@unique([programaId, idExterno])
+  @@index([programaId, elegivelPublico, ocultaCoordenacao])
+  @@index([programaId, elegivelCoordenacao])
   @@map("producoes")
 }
 
 model ProducaoDocente {
-  producaoId String   @map("producao_id")
-  docenteId  String   @map("docente_id")
-  producao   Producao @relation(fields: [producaoId], references: [id], onDelete: Cascade)
-  docente    Docente  @relation(fields: [docenteId], references: [id], onDelete: Cascade)
+  producaoId      String    @map("producao_id") @db.Uuid
+  docenteId       String    @map("docente_id") @db.Uuid
+  producao        Producao  @relation(fields: [producaoId], references: [id], onDelete: Cascade)
+  docente         Docente   @relation(fields: [docenteId], references: [id], onDelete: Cascade)
+  elegivelDocente Boolean   @default(false) @map("elegivel_docente")
+  exibirPorPadrao Boolean   @default(false) @map("exibir_por_padrao")
+  permiteOcultar  Boolean   @default(false) @map("permite_ocultar")
+  ocultaDocente   Boolean   @default(false) @map("oculta_docente")
+  ocultadaPorId   String?   @map("ocultada_por") @db.Uuid
+  ocultadaEm      DateTime? @map("ocultada_em")
 
   @@id([producaoId, docenteId])
-  @@index([docenteId])
+  @@index([docenteId, elegivelDocente, ocultaDocente])
   @@map("producao_docentes")
 }
 
 model Orientacao {
-  id           String   @id @map("id_orientacao")
-  orientando   String
-  ano          Int?
-  nivel        String?  @map("nivel_normalizado")
-  situacao     String?  @map("situacao_normalizada")
-  integravel   Boolean  @default(false)
-  dados        Json
-  docentes     OrientacaoDocente[]
-  criadoEm     DateTime @default(now()) @map("criado_em")
-  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+  id                         String              @id @default(uuid()) @db.Uuid
+  programaId                 String              @map("programa_id")
+  programa                   Programa            @relation(fields: [programaId], references: [id], onDelete: Cascade)
+  idExterno                  String              @map("id_orientacao")
+  orientando                 String
+  ano                        Int?
+  nivel                      String?             @map("nivel_normalizado")
+  situacao                   String?             @map("situacao_normalizada")
+  elegivelCoordenacao        Boolean             @default(false) @map("elegivel_coordenacao")
+  elegivelPublico            Boolean             @default(false) @map("elegivel_publico")
+  exibirPorPadraoCoordenacao Boolean             @default(false) @map("exibir_padrao_coordenacao")
+  exibirPorPadraoPublico     Boolean             @default(false) @map("exibir_padrao_publico")
+  permiteOcultarCoordenacao  Boolean             @default(false) @map("permite_ocultar_coordenacao")
+  ocultaCoordenacao          Boolean             @default(false) @map("oculta_coordenacao")
+  ocultadaPorId              String?             @map("ocultada_por") @db.Uuid
+  ocultadaEm                 DateTime?           @map("ocultada_em")
+  monitoramento              Json?               @map("monitoramento_atualizacao")
+  dadosOriginais             Json                @map("dados_originais")
+  docentes                   OrientacaoDocente[]
+  criadoEm                   DateTime            @default(now()) @map("criado_em")
+  atualizadoEm               DateTime            @updatedAt @map("atualizado_em")
 
-  @@index([ano])
-  @@index([integravel])
+  @@unique([programaId, idExterno])
+  @@index([programaId, elegivelPublico, ocultaCoordenacao])
+  @@index([programaId, elegivelCoordenacao])
   @@map("orientacoes")
 }
 
 model OrientacaoDocente {
-  orientacaoId String     @map("orientacao_id")
-  docenteId    String     @map("docente_id")
-  orientacao   Orientacao @relation(fields: [orientacaoId], references: [id], onDelete: Cascade)
-  docente      Docente    @relation(fields: [docenteId], references: [id], onDelete: Cascade)
+  orientacaoId    String     @map("orientacao_id") @db.Uuid
+  docenteId       String     @map("docente_id") @db.Uuid
+  orientacao      Orientacao @relation(fields: [orientacaoId], references: [id], onDelete: Cascade)
+  docente         Docente    @relation(fields: [docenteId], references: [id], onDelete: Cascade)
+  elegivelDocente Boolean    @default(false) @map("elegivel_docente")
+  exibirPorPadrao Boolean    @default(false) @map("exibir_por_padrao")
+  permiteOcultar  Boolean    @default(false) @map("permite_ocultar")
+  ocultaDocente   Boolean    @default(false) @map("oculta_docente")
+  ocultadaPorId   String?    @map("ocultada_por") @db.Uuid
+  ocultadaEm      DateTime?  @map("ocultada_em")
 
   @@id([orientacaoId, docenteId])
-  @@index([docenteId])
+  @@index([docenteId, elegivelDocente, ocultaDocente])
   @@map("orientacao_docentes")
 }
 
 model Projeto {
-  id           String   @id @map("id_projeto")
-  titulo       String
-  anoInicio    Int?     @map("ano_inicio")
-  anoConclusao Int?     @map("ano_conclusao")
-  situacao     String?  @map("situacao_normalizada")
-  integravel   Boolean  @default(false)
-  dados        Json
-  docentes     ProjetoDocente[]
-  criadoEm     DateTime @default(now()) @map("criado_em")
-  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+  id                         String           @id @default(uuid()) @db.Uuid
+  programaId                 String           @map("programa_id")
+  programa                   Programa         @relation(fields: [programaId], references: [id], onDelete: Cascade)
+  idExterno                  String           @map("id_projeto")
+  titulo                     String
+  anoInicio                  Int?             @map("ano_inicio")
+  anoConclusao               Int?             @map("ano_conclusao")
+  situacao                   String?          @map("situacao_normalizada")
+  elegivelCoordenacao        Boolean          @default(false) @map("elegivel_coordenacao")
+  elegivelPublico            Boolean          @default(false) @map("elegivel_publico")
+  exibirPorPadraoCoordenacao Boolean          @default(false) @map("exibir_padrao_coordenacao")
+  exibirPorPadraoPublico     Boolean          @default(false) @map("exibir_padrao_publico")
+  permiteOcultarCoordenacao  Boolean          @default(false) @map("permite_ocultar_coordenacao")
+  ocultaCoordenacao          Boolean          @default(false) @map("oculta_coordenacao")
+  ocultadaPorId              String?          @map("ocultada_por") @db.Uuid
+  ocultadaEm                 DateTime?        @map("ocultada_em")
+  dadosOriginais             Json             @map("dados_originais")
+  docentes                   ProjetoDocente[]
+  criadoEm                   DateTime         @default(now()) @map("criado_em")
+  atualizadoEm               DateTime         @updatedAt @map("atualizado_em")
 
-  @@index([anoInicio])
-  @@index([integravel])
+  @@unique([programaId, idExterno])
+  @@index([programaId, elegivelPublico, ocultaCoordenacao])
+  @@index([programaId, elegivelCoordenacao])
   @@map("projetos")
 }
 
 model ProjetoDocente {
-  projetoId String  @map("projeto_id")
-  docenteId String  @map("docente_id")
-  projeto   Projeto @relation(fields: [projetoId], references: [id], onDelete: Cascade)
-  docente   Docente @relation(fields: [docenteId], references: [id], onDelete: Cascade)
+  projetoId       String    @map("projeto_id") @db.Uuid
+  docenteId       String    @map("docente_id") @db.Uuid
+  projeto         Projeto   @relation(fields: [projetoId], references: [id], onDelete: Cascade)
+  docente         Docente   @relation(fields: [docenteId], references: [id], onDelete: Cascade)
+  elegivelDocente Boolean   @default(false) @map("elegivel_docente")
+  exibirPorPadrao Boolean   @default(false) @map("exibir_por_padrao")
+  permiteOcultar  Boolean   @default(false) @map("permite_ocultar")
+  ocultaDocente   Boolean   @default(false) @map("oculta_docente")
+  ocultadaPorId   String?   @map("ocultada_por") @db.Uuid
+  ocultadaEm      DateTime? @map("ocultada_em")
 
   @@id([projetoId, docenteId])
-  @@index([docenteId])
+  @@index([docenteId, elegivelDocente, ocultaDocente])
   @@map("projeto_docentes")
 }
 
 model Importacao {
-  id          String           @id @default(uuid()) @db.Uuid
-  status      StatusImportacao @default(INICIADA)
-  origem      String
-  contagens   Json?
-  erro        String?
-  iniciadaEm  DateTime         @default(now()) @map("iniciada_em")
-  concluidaEm DateTime?        @map("concluida_em")
+  id           String           @id @default(uuid()) @db.Uuid
+  programaId   String?          @map("programa_id")
+  programa     Programa?        @relation(fields: [programaId], references: [id], onDelete: SetNull)
+  status       StatusImportacao @default(INICIADA)
+  origem       String
+  schemaVersao String?          @map("schema_versao")
+  metadados    Json?
+  contagens    Json?
+  erro         String?
+  iniciadaEm   DateTime         @default(now()) @map("iniciada_em")
+  concluidaEm  DateTime?        @map("concluida_em")
 
+  @@index([programaId, status, concluidaEm])
   @@map("importacoes")
+}
+
+model Sugestao {
+  id                String            @id @default(uuid()) @db.Uuid
+  programaId        String            @map("programa_id")
+  programa          Programa          @relation(fields: [programaId], references: [id], onDelete: Cascade)
+  tipoEntidade      TipoEntidade      @map("tipo_entidade")
+  registroIdExterno String            @map("registro_id_externo")
+  alteracoes        Json
+  justificativa     String
+  status            StatusSugestao    @default(PENDENTE)
+  autorId           String            @map("autor_id") @db.Uuid
+  autor             Usuario           @relation("AutorSugestao", fields: [autorId], references: [id])
+  criadaEm          DateTime          @default(now()) @map("criada_em")
+  atualizadaEm      DateTime          @updatedAt @map("atualizada_em")
+  decisoes          DecisaoSugestao[]
+  correcao          CorrecaoAprovada?
+
+  @@index([programaId, status, criadaEm])
+  @@index([programaId, tipoEntidade, registroIdExterno])
+  @@map("sugestoes")
+}
+
+model DecisaoSugestao {
+  id            String      @id @default(uuid()) @db.Uuid
+  sugestaoId    String      @map("sugestao_id") @db.Uuid
+  sugestao      Sugestao    @relation(fields: [sugestaoId], references: [id], onDelete: Cascade)
+  tipo          TipoDecisao
+  justificativa String
+  responsavelId String      @map("responsavel_id") @db.Uuid
+  responsavel   Usuario     @relation("ResponsavelDecisao", fields: [responsavelId], references: [id])
+  decididaEm    DateTime    @default(now()) @map("decidida_em")
+
+  @@index([sugestaoId, decididaEm])
+  @@map("decisoes_sugestoes")
+}
+
+model CorrecaoAprovada {
+  id                String       @id @default(uuid()) @db.Uuid
+  programaId        String       @map("programa_id")
+  programa          Programa     @relation(fields: [programaId], references: [id], onDelete: Cascade)
+  sugestaoId        String       @unique @map("sugestao_id") @db.Uuid
+  sugestao          Sugestao     @relation(fields: [sugestaoId], references: [id], onDelete: Cascade)
+  tipoEntidade      TipoEntidade @map("tipo_entidade")
+  registroIdExterno String       @map("registro_id_externo")
+  alteracoes        Json
+  ativa             Boolean      @default(true)
+  responsavelId     String       @map("responsavel_id") @db.Uuid
+  responsavel       Usuario      @relation("ResponsavelCorrecao", fields: [responsavelId], references: [id])
+  aprovadaEm        DateTime     @default(now()) @map("aprovada_em")
+
+  @@index([programaId, tipoEntidade, registroIdExterno, ativa])
+  @@map("correcoes_aprovadas")
 }

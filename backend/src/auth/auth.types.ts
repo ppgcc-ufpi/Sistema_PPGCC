@@ -1,8 +1,8 @@
 import { PerfilUsuario, Usuario } from '@prisma/client';
 
-export type UsuarioAutenticado = Pick<
+export type AuthenticatedUser = Pick<
   Usuario,
-  'id' | 'email' | 'nome' | 'perfil' | 'ativo' | 'docenteId'
+  'id' | 'email' | 'nome' | 'perfil' | 'ativo' | 'docenteId' | 'programaId'
 >;
 
-export { PerfilUsuario };
+export { PerfilUsuario as UserRole };

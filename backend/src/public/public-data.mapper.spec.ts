@@ -1,12 +1,12 @@
 import {
-  sanitizarDocente,
-  sanitizarOrientacao,
-  sanitizarProducao,
+  sanitizeFaculty,
+  sanitizeAdvising,
+  sanitizeProduction,
 } from './public-data.mapper';
 
 describe('mapeamento dos dados públicos', () => {
   it('remove fontes internas do docente', () => {
-    const resultado = sanitizarDocente({
+    const resultado = sanitizeFaculty({
       id_docente: 'doc_1',
       nome: 'Docente',
       fontes: { lattes: 'arquivo-interno.json' },
@@ -17,7 +17,7 @@ describe('mapeamento dos dados públicos', () => {
   });
 
   it('remove controle e evidências internas da produção', () => {
-    const resultado = sanitizarProducao({
+    const resultado = sanitizeProduction({
       id_producao: 'prod_1',
       titulo: 'Produção pública',
       controle_dashboard: { revisao_recomendada: true },
@@ -35,7 +35,7 @@ describe('mapeamento dos dados públicos', () => {
   });
 
   it('preserva o contrato usado pelos dashboards de orientações', () => {
-    const resultado = sanitizarOrientacao({
+    const resultado = sanitizeAdvising({
       id_orientacao: 'ori_1',
       docente_ids: ['doc_1'],
       situacao_normalizada: 'concluido',

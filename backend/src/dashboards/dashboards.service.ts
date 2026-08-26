@@ -5,44 +5,39 @@ import { PrismaService } from '../prisma/prisma.service';
 export class DashboardsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async coordenacao() {
+  async coordination(programaId: string) {
     const [docentes, producoes, orientacoes, projetos, ultimaImportacao] = await Promise.all([
-      this.prisma.docente.count(),
-      this.prisma.producao.count({ where: { integravel: true } }),
-      this.prisma.orientacao.count({ where: { integravel: true } }),
-      this.prisma.projeto.count({ where: { integravel: true } }),
+      this.prisma.docente.count({ where: { programaId } }),
+      this.prisma.producao.count({ where: { programaId, elegivelCoordenacao: true } }),
+      this.prisma.orientacao.count({ where: { programaId, elegivelCoordenacao: true } }),
+      this.prisma.projeto.count({ where: { programaId, elegivelCoordenacao: true } }),
       this.prisma.importacao.findFirst({
-        where: { status: 'CONCLUIDA' },
+        where: { programaId, status: 'CONCLUIDA' },
         orderBy: { concluidaEm: 'desc' },
       }),
     ]);
 
-    return {
-      docentes,
-      producoes,
-      orientacoes,
-      projetos,
-      atualizadoEm: ultimaImportacao?.concluidaEm ?? null,
-    };
+    return { faculty: docentes, productions: producoes, advising: orientacoes,
+      projects: projetos, updatedAt: ultimaImportacao?.concluidaEm ?? null };
   }
 
-  async docente(docenteId: string | null) {
+  async faculty(docenteId: string | null) {
     if (!docenteId) throw new NotFoundException('Usuário sem vínculo com docente.');
 
     const [docente, producoes, orientacoes, projetos] = await Promise.all([
       this.prisma.docente.findUnique({ where: { id: docenteId } }),
       this.prisma.producaoDocente.count({
-        where: { docenteId, producao: { integravel: true } },
+        where: { docenteId, elegivelDocente: true, ocultaDocente: false },
       }),
       this.prisma.orientacaoDocente.count({
-        where: { docenteId, orientacao: { integravel: true } },
+        where: { docenteId, elegivelDocente: true, ocultaDocente: false },
       }),
       this.prisma.projetoDocente.count({
-        where: { docenteId, projeto: { integravel: true } },
+        where: { docenteId, elegivelDocente: true, ocultaDocente: false },
       }),
     ]);
 
     if (!docente) throw new NotFoundException('Docente não encontrado.');
-    return { docente: docente.dados, producoes, orientacoes, projetos };
+    return { faculty: docente.dadosOriginais, productions: producoes, advising: orientacoes, projects: projetos };
   }
 }

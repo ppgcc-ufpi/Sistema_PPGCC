@@ -12,9 +12,9 @@ const pick = (source: JsonObject, fields: readonly string[]): JsonObject =>
       .map((field) => [field, source[field]]),
   );
 
-const vinculoPublico = { integrar: true };
+const publicProgramLink = { integrar: true };
 
-export const sanitizarDocente = (value: unknown) =>
+export const sanitizeFaculty = (value: unknown) =>
   pick(toObject(value), [
     'id_docente',
     'nome',
@@ -22,7 +22,7 @@ export const sanitizarDocente = (value: unknown) =>
     'vinculo_institucional',
   ]);
 
-export const sanitizarProducao = (value: unknown) => ({
+export const sanitizeProduction = (value: unknown) => ({
   ...pick(toObject(value), [
     'id_producao',
     'titulo',
@@ -45,10 +45,10 @@ export const sanitizarProducao = (value: unknown) => ({
     'vinculada_tcc',
     'docente_ids',
   ]),
-  vinculo_programa: vinculoPublico,
+  vinculo_programa: publicProgramLink,
 });
 
-export const sanitizarOrientacao = (value: unknown) => ({
+export const sanitizeAdvising = (value: unknown) => ({
   ...pick(toObject(value), [
     'id_orientacao',
     'docente_ids',
@@ -61,10 +61,10 @@ export const sanitizarOrientacao = (value: unknown) => ({
     'anos_registrados',
     'situacao_normalizada',
   ]),
-  vinculo_programa: vinculoPublico,
+  vinculo_programa: publicProgramLink,
 });
 
-export const sanitizarProjeto = (value: unknown) => ({
+export const sanitizeProject = (value: unknown) => ({
   ...pick(toObject(value), [
     'id_projeto',
     'docente_ids',
@@ -80,10 +80,10 @@ export const sanitizarProjeto = (value: unknown) => ({
     'linhas_pesquisa',
     'descricoes',
   ]),
-  vinculo_programa: vinculoPublico,
+  vinculo_programa: publicProgramLink,
 });
 
-export const sanitizarFormacao = (value: unknown) =>
+export const sanitizeEducation = (value: unknown) =>
   pick(toObject(value), [
     'id_formacao',
     'id_docente',

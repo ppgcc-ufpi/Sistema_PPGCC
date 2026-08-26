@@ -1,7 +1,7 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
-import { RequestAutenticada } from './supabase-auth.guard';
+import { AuthenticatedRequest } from './jwt-auth.guard';
 
 export const CurrentUser = createParamDecorator(
   (_data: unknown, context: ExecutionContext) =>
-    context.switchToHttp().getRequest<RequestAutenticada>().usuario,
+    context.switchToHttp().getRequest<AuthenticatedRequest>().user,
 );
