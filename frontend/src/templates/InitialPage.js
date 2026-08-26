@@ -13,9 +13,8 @@ const InitialPage = () => {
                 <div>
                     <h1 className="text-5xl">Sistema PPGCC</h1>
                 </div>
-                <div className="w-screen flex justify-center gap-3">
-                    <button className="bg-secondbgcolor hover:bg-hovercolor px-4 py-2 rounded-lg font-bold"><Link className="text-black" to="/dashboard">Ver dashboards</Link></button>
-                    <button className="bg-secondbgcolor hover:bg-hovercolor px-4 py-2 rounded-lg font-bold"><Link className="text-black" to="/login">Área restrita</Link></button>
+                <div className="w-screen flex justify-center">
+                    <button className="bg-secondbgcolor hover:bg-hovercolor px-4 py-2 rounded-lg font-bold"><Link className="text-black" to="/dashboard">Entrar</Link></button>
                 </div>
             </div>
         </>
