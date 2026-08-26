@@ -11,7 +11,7 @@ necessária somente para as visões privadas de docentes e da coordenação.
 ```text
 Sistema_PPGCC/
 ├── frontend/   # aplicação React e snapshots estáticos
-├── backend/    # API NestJS, Prisma e integração com Supabase
+├── backend/    # API NestJS, Prisma e PostgreSQL no Neon
 ├── package.json
 └── README.md
 ```
@@ -43,9 +43,11 @@ npm run deploy
 
 ## Backend
 
-O backend NestJS está em [`backend/`](backend/README.md). A configuração do
-Supabase está detalhada em
-[`backend/docs/SUPABASE_SETUP.md`](backend/docs/SUPABASE_SETUP.md).
+O backend NestJS está em [`backend/`](backend/README.md). A configuração do Neon
+e da autenticação está detalhada em
+[`backend/docs/NEON_SETUP.md`](backend/docs/NEON_SETUP.md). A publicação da API
+no Render está descrita em
+[`backend/docs/RENDER_DEPLOY.md`](backend/docs/RENDER_DEPLOY.md).
 
 Após instalar e configurar o backend, ele pode ser iniciado pela raiz:
 

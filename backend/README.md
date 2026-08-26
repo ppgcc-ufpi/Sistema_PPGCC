@@ -26,6 +26,9 @@ npm run start:dev
 Consulte [docs/NEON_SETUP.md](docs/NEON_SETUP.md) para preparar banco, JWT e a
 primeira conta de coordenação.
 
+Para publicar a API NestJS no Render, consulte
+[docs/RENDER_DEPLOY.md](docs/RENDER_DEPLOY.md).
+
 ## Atualização dos dados
 
 `DATA_SOURCE_DIR` deve apontar para `observatorioPPG/data/integrados`. O importador
