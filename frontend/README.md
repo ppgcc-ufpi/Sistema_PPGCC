@@ -1,0 +1,38 @@
+# Frontend do Sistema PPGCC
+
+Aplicação React publicada no GitHub Pages. Os dashboards públicos consultam a
+API no Render e utilizam `public/dados/metadados.json` como fallback quando a API
+está indisponível ou iniciando.
+
+## Configuração
+
+As variáveis disponíveis estão em `.env.example`:
+
+```env
+REACT_APP_API_URL=https://sistema-ppgcc-api.onrender.com
+REACT_APP_PROGRAM_ID=ppgcc-ufpi
+```
+
+Esses valores são públicos e não devem conter URLs do Neon, segredos JWT, senhas
+ou tokens. O endereço padrão da API já está definido no código para o build do
+GitHub Pages.
+
+## Áreas da aplicação
+
+- `/dashboard`: dashboard público com API e fallback estático;
+- `/login`: autenticação de docentes e coordenação;
+- `/faculty`: área protegida do docente;
+- `/coordination`: área protegida da coordenação;
+- `/portal`: redirecionamento para a área correspondente ao perfil autenticado.
+
+A sessão fica restrita à aba do navegador por meio de `sessionStorage`. O access
+token é renovado automaticamente com o refresh token quando necessário e os
+dois são removidos no logout ou ao fechar a aba.
+
+## Verificação e publicação
+
+```bash
+npm test -- --watchAll=false
+npm run build
+npm run deploy
+```

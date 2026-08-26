@@ -18,7 +18,7 @@ Sistema_PPGCC/
 
 ## Frontend
 
-O frontend React está em [`frontend/`](frontend/). Para executá-lo:
+O frontend React está em [`frontend/`](frontend/README.md). Para executá-lo:
 
 ```bash
 cd frontend
