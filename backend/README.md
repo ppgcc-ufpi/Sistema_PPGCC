@@ -1,101 +1,88 @@
-# Backend do Sistema PPGCC
+# Backend do Observatório PPG
 
-API NestJS para o Sistema PPGCC. O Supabase fornece PostgreSQL e autenticação;
-as regras de negócio e autorização permanecem nesta API.
+API NestJS com PostgreSQL hospedado no Neon, Prisma e autenticação JWT própria.
 
-## O que já está preparado
+## Capacidades
 
-- conexão PostgreSQL com Prisma;
-- validação de tokens do Supabase Auth;
-- perfis `COORDENACAO` e `DOCENTE`;
-- vínculo seguro entre usuário e docente;
-- endpoints iniciais de docentes e dashboards;
-- importação dos cinco JSONs existentes;
-- exportação de snapshots estáticos para contingência;
-- endpoints públicos sanitizados, sem necessidade de conta;
-- script de endurecimento que bloqueia acesso direto às tabelas pela Data API.
+- dados públicos sem autenticação;
+- visões separadas para coordenação e docentes;
+- escopos de visualização do contrato 3.8 do pipeline;
+- ocultação global pela coordenação e individual pelo docente;
+- sugestões, aprovação/rejeição e histórico de decisões;
+- correções aprovadas aplicadas como camada sobre os dados importados;
+- importação transacional que preserva decisões humanas;
+- snapshot público sanitizado para fallback estático;
+- estrutura isolada por programa de pós-graduação.
 
-## Requisitos
-
-- Node.js 20 ou superior;
-- um projeto no Supabase;
-- credenciais do banco e da API do Supabase.
-
-## Configuração local
+## Desenvolvimento
 
 ```bash
-cd backend
-npm install
 cp .env.example .env
-```
-
-Preencha o `.env` conforme `docs/SUPABASE_SETUP.md`. Depois:
-
-```bash
+npm install
 npx prisma generate
-npx prisma migrate dev --name initial_schema
-npm run db:import
-npm run snapshot:export
 npm run start:dev
 ```
 
-A API ficará em `http://localhost:3001/api` e a verificação de saúde em:
+Consulte [docs/NEON_SETUP.md](docs/NEON_SETUP.md) para preparar banco, JWT e a
+primeira conta de coordenação.
 
-```text
-GET http://localhost:3001/api/health
+## Atualização dos dados
+
+`DATA_SOURCE_DIR` deve apontar para `observatorioPPG/data/integrados`. O importador
+aceita atualmente `metadados.schema_versao = 3.8`.
+
+```bash
+npm run db:import
+npm run snapshot:export
+npm run corrections:export
+npm test
 ```
 
-## Endpoints públicos
+A importação atualiza os dados originais e os escopos calculados pelo pipeline,
+mas não sobrescreve ocultações, sugestões, decisões ou correções aprovadas.
 
-Estas rotas não exigem conta ou token. Elas retornam somente registros aceitos
-para integração e removem metadados administrativos internos.
+## Rotas principais
 
-| Método | Rota | Conteúdo |
-|---|---|---|
-| GET | `/api/public/dashboard` | totais gerais do programa |
-| GET | `/api/public/docentes` | docentes e vínculos públicos |
-| GET | `/api/public/producoes` | produções públicas integráveis |
-| GET | `/api/public/orientacoes` | orientações públicas integráveis |
-| GET | `/api/public/projetos` | projetos públicos integráveis |
-| GET | `/api/public/formacoes` | formação pública dos docentes |
+### Públicas
 
-## Endpoints autenticados
+- `GET /api/public/dashboard?program=ppgcc-ufpi`
+- `GET /api/public/faculty`
+- `GET /api/public/productions`
+- `GET /api/public/advising`
+- `GET /api/public/projects`
+- `GET /api/public/education`
 
-Todos, exceto `health`, exigem `Authorization: Bearer <access_token>`.
+### Autenticação
 
-| Método | Rota | Perfil |
-|---|---|---|
-| GET | `/api/docentes/me` | usuário vinculado a docente |
-| GET | `/api/docentes` | coordenação |
-| GET | `/api/docentes/:id` | coordenação |
-| GET | `/api/dashboards/docente` | docente |
-| GET | `/api/dashboards/coordenacao` | coordenação |
+- `POST /api/auth/login`
+- `POST /api/auth/refresh`
+- `POST /api/auth/logout`
+- `GET /api/auth/me`
+- `POST /api/auth/change-password`
 
-## Importação e snapshot
+### Gestão autenticada
 
-`npm run db:import` lê `DATA_SOURCE_DIR`. Por padrão, ele usa
-`../frontend/src/data`, que é a localização dos JSONs do frontend.
+- `GET /api/dashboards/coordination`
+- `GET /api/dashboards/faculty`
+- `GET|POST /api/users` — coordenação
+- `PATCH /api/users/:id` — coordenação
+- `POST /api/suggestions`
+- `GET /api/suggestions/mine`
+- `GET /api/suggestions/coordination` — coordenação
+- `POST /api/suggestions/:id/decision` — coordenação
+- `PATCH /api/visibility/coordination/:type/:id`
+- `PATCH /api/visibility/faculty/:type/:id`
 
-`npm run snapshot:export` gera em `STATIC_FALLBACK_DIR`:
+Os valores aceitos em `:type` permanecem `PRODUCAO`, `ORIENTACAO` e `PROJETO`,
+pois são enums persistidos pelo Prisma e compartilhados com o contrato do pipeline.
 
-- `docentes.json`;
-- `producoes.json`;
-- `orientacoes.json`;
-- `projetos.json`;
-- `formacoes.json`;
-- `metadados.json`.
+## Verificação
 
-O diretório padrão de saída é `../frontend/public/dados`.
+```bash
+npm run lint
+npm run build
+npm test -- --runInBand
+```
 
-O snapshot é deliberadamente público e usa os mesmos sanitizadores de
-`/api/public`. Contas, logs, controles de revisão, fontes internas e registros
-não integráveis nunca devem ser exportados para esse diretório.
-
-## Segurança
-
-O frontend usa apenas a chave publicável/anon do Supabase. Nunca envie senha do
-banco, `DATABASE_URL`, `DIRECT_URL` ou uma chave `service_role` para o navegador.
-
-Após criar o schema, execute `prisma/hardening.sql` no SQL Editor do Supabase.
-Ele bloqueia `anon` e `authenticated` de acessarem as tabelas diretamente. A API
-NestJS continuará acessando-as pela conexão privada do PostgreSQL.
+O frontend nunca deve receber `DATABASE_URL`, `DIRECT_URL`, `JWT_SECRET`, hashes
+de senha, tokens de atualização, fontes internas ou decisões administrativas.
