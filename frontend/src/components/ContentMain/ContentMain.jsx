@@ -5,10 +5,12 @@ import Turmas_Ofertadas from "../Turmas_Ofertadas/Turmas_Ofertadas";
 import Docentes from "../Docentes/Docentes";
 import Projetos_Pesquisa from "../Projetos_Pesquisa/Projetos_Pesquisa";
 import Producao_Tecnica from "../Producao_Tecnica/Producao_Tecnica";
+import PublicSummary from "../PublicSummary/PublicSummary";
 
 const ContentMain = () => {
   return (
     <div className="main-content-holder">
+        <PublicSummary />
         <div className="content-grid-one">
             <Discentes_Mestrado />
             <Tempo_Medio_Titulacao />
