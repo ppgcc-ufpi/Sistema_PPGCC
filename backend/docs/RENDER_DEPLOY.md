@@ -4,6 +4,11 @@ O arquivo `render.yaml` na raiz configura um Web Service gratuito para a API. O
 serviço usa o diretório `backend`, executa as migrations do Prisma durante o
 build e verifica a saúde em `/api/health`.
 
+O build usa `npm ci --include=dev`, pois o Nest CLI e o Prisma CLI são
+dependências de desenvolvimento necessárias para compilar a aplicação e aplicar
+as migrations mesmo quando `NODE_ENV=production`. Ao final, `npm prune
+--omit=dev` remove essas ferramentas do ambiente que executará a API.
+
 ## Antes de publicar
 
 1. Confirme que `DATABASE_URL` usa a conexão com pooling do Neon.
