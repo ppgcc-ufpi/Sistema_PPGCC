@@ -3,10 +3,23 @@ import RedeCoautoria from './RedeCoautoria';
 
 describe('RedeCoautoria', () => {
   it('exibe as produções ao selecionar uma colaboração na visão do docente', () => {
-    render(<RedeCoautoria />);
+    const docentes = [
+      { id_docente: 'a', nome: 'Docente A', vinculo_institucional: { categoria: 'permanente' } },
+      { id_docente: 'b', nome: 'Guilherme Amaral Avelino', vinculo_institucional: { categoria: 'permanente' } },
+    ];
+    const producoes = Array.from({ length: 6 }, (_, index) => ({
+      id_producao: `p${index + 1}`,
+      titulo: index === 0 ? 'DataCoin: Dataset Sazonal' : `Produção compartilhada ${index + 1}`,
+      ano: 2025,
+      natureza: 'bibliografica',
+      docente_ids: ['a', 'b'],
+      vinculo_programa: { integrar: true },
+    }));
+
+    render(<RedeCoautoria data={{ docentes, producoes }} />);
 
     fireEvent.change(screen.getByLabelText('Docente em destaque'), {
-      target: { value: 'doc_9f78268945de8352' },
+      target: { value: 'a' },
     });
 
     expect(screen.getByText('Principais colaborações')).toBeTruthy();

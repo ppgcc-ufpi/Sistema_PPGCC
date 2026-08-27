@@ -11,23 +11,8 @@ const labels = {
   education: 'Formações',
 };
 
-const loadFallback = async () => {
-  const response = await fetch(`${process.env.PUBLIC_URL}/dados/metadados.json`);
-  if (!response.ok) throw new Error('Snapshot público indisponível.');
-  const metadata = await response.json();
-  const counts = metadata?.contagens || {};
-  return {
-    faculty: counts.docentes,
-    productions: counts.producoes,
-    advising: counts.orientacoes,
-    projects: counts.projetos,
-    education: counts.formacoes,
-  };
-};
-
 const PublicSummary = () => {
   const [summary, setSummary] = useState(null);
-  const [source, setSource] = useState('api');
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -41,17 +26,8 @@ const PublicSummary = () => {
       .then((data) => {
         if (active) setSummary(data);
       })
-      .catch(async () => {
-        if (!active) return;
-        try {
-          const fallback = await loadFallback();
-          if (active) {
-            setSummary(fallback);
-            setSource('snapshot');
-          }
-        } catch {
-          if (active) setError('Não foi possível carregar o resumo do programa.');
-        }
+      .catch(() => {
+        if (active) setError('Não foi possível consultar a API do programa.');
       })
       .finally(() => window.clearTimeout(timeout));
 
@@ -72,9 +48,7 @@ const PublicSummary = () => {
           <h2 id="public-summary-title">Visão geral do programa</h2>
           <p>Dados públicos consolidados do PPGCC/UFPI.</p>
         </div>
-        <span className={`public-summary-source ${source}`}>
-          {source === 'api' ? 'API atualizada' : 'Snapshot de segurança'}
-        </span>
+        <span className="public-summary-source">API atualizada</span>
       </div>
       <div className="public-summary-grid">
         {Object.keys(labels).map((key) => (

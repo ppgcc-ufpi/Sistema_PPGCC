@@ -1,8 +1,7 @@
 # Frontend do Sistema PPGCC
 
-Aplicação React publicada no GitHub Pages. Os dashboards públicos consultam a
-API no Render e utilizam `public/dados/metadados.json` como fallback quando a API
-está indisponível ou iniciando.
+Aplicação React publicada no GitHub Pages. Todos os dados exibidos pelos
+dashboards são consultados nas APIs públicas hospedadas no Render.
 
 ## Configuração
 
@@ -19,7 +18,7 @@ GitHub Pages.
 
 ## Áreas da aplicação
 
-- `/dashboard`: dashboard público com API e fallback estático;
+- `/dashboard`: dashboard público alimentado pela API;
 - `/login`: autenticação de docentes e coordenação;
 - `/faculty`: área protegida do docente;
 - `/coordination`: área protegida da coordenação;

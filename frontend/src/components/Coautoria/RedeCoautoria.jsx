@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import docentes from '../../data/docentes.json';
-import producoes from '../../data/producoes.json';
+import { loadPublicData } from '../../services/publicDataService';
 import {
   buildCoauthorshipGraph,
   getCoauthorshipYears,
@@ -10,6 +9,7 @@ import './RedeCoautoria.css';
 const LARGURA = 1120;
 const ALTURA = 740;
 const PARTICULAS = new Set(['da', 'das', 'de', 'do', 'dos', 'e']);
+const EMPTY_DATA = [];
 
 const formatarNome = (nome = '') => nome
   .trim()
@@ -94,8 +94,13 @@ const calcularLayout = (nos, arestas) => {
   return new Map(pontos.map(({ id, x, y }) => [id, { x, y }]));
 };
 
-const RedeCoautoria = () => {
-  const anos = useMemo(() => getCoauthorshipYears(producoes), []);
+const RedeCoautoria = ({ data: initialData = null }) => {
+  const [data, setData] = useState(initialData);
+  const [loading, setLoading] = useState(!initialData);
+  const [error, setError] = useState('');
+  const docentes = data?.docentes || EMPTY_DATA;
+  const producoes = data?.producoes || EMPTY_DATA;
+  const anos = useMemo(() => getCoauthorshipYears(producoes), [producoes]);
   const [anoInicial, setAnoInicial] = useState(anos[0]);
   const [anoFinal, setAnoFinal] = useState(anos[anos.length - 1]);
   const [natureza, setNatureza] = useState('todas');
@@ -103,13 +108,39 @@ const RedeCoautoria = () => {
   const [docenteSelecionado, setDocenteSelecionado] = useState('');
   const [arestaSelecionada, setArestaSelecionada] = useState('');
 
+  useEffect(() => {
+    if (initialData) return undefined;
+    let active = true;
+
+    loadPublicData()
+      .then((loadedData) => {
+        if (active) setData(loadedData);
+      })
+      .catch((requestError) => {
+        if (active) setError(requestError.message || 'Não foi possível consultar a API.');
+      })
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [initialData]);
+
+  useEffect(() => {
+    if (anos.length === 0) return;
+    setAnoInicial((current) => current ?? anos[0]);
+    setAnoFinal((current) => current ?? anos[anos.length - 1]);
+  }, [anos]);
+
   const grafoCompleto = useMemo(() => buildCoauthorshipGraph({
     docentes,
     producoes,
     anoInicial,
     anoFinal,
     natureza,
-  }), [anoInicial, anoFinal, natureza]);
+  }), [docentes, producoes, anoInicial, anoFinal, natureza]);
 
   const maiorPeso = Math.max(1, ...grafoCompleto.arestas.map((aresta) => aresta.peso));
 
@@ -120,7 +151,7 @@ const RedeCoautoria = () => {
     anoFinal,
     natureza,
     pesoMinimo,
-  }), [anoInicial, anoFinal, natureza, pesoMinimo]);
+  }), [docentes, producoes, anoInicial, anoFinal, natureza, pesoMinimo]);
 
   const nosPorId = useMemo(
     () => new Map(grafo.nos.map((no) => [no.id, no])),
@@ -185,6 +216,9 @@ const RedeCoautoria = () => {
     || (docenteSelecionado
       && (aresta.source === docenteSelecionado || aresta.target === docenteSelecionado))
   );
+
+  if (loading) return <div className="rede-status">Carregando dados da API...</div>;
+  if (error) return <div className="rede-status rede-status--error">{error}</div>;
 
   return (
     <main className="rede-container">

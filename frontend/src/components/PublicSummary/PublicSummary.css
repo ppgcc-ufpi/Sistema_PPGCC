@@ -31,8 +31,6 @@
   white-space: nowrap;
 }
 
-.public-summary-source.snapshot { background: #fff4d6; color: #785800; }
-
 .public-summary-grid {
   display: grid;
   gap: 12px;
