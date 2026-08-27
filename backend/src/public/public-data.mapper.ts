@@ -14,17 +14,31 @@ const pick = (source: JsonObject, fields: readonly string[]): JsonObject =>
 
 const publicProgramLink = { integrar: true };
 
+const NAME_FIELDS = new Set(['nome', 'orientando', 'orientador', 'docente', 'autores', 'integrantes']);
+
+export const sanitizePersonalNames = (value: unknown, parentField?: string): unknown => {
+  if (Array.isArray(value)) return value.map((item) => sanitizePersonalNames(item, parentField));
+  if (value !== null && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value)
+      .filter(([field]) => field !== 'nome_normalizado')
+      .map(([field, item]) => [field, sanitizePersonalNames(item, field)]));
+  }
+  if (typeof value === 'string' && parentField && NAME_FIELDS.has(parentField)) {
+    return value.toLocaleUpperCase('pt-BR');
+  }
+  return value;
+};
+
 export const sanitizeFaculty = (value: unknown) =>
-  pick(toObject(value), [
+  sanitizePersonalNames(pick(toObject(value), [
     'id_docente',
     'nome',
-    'nome_normalizado',
     'vinculo_institucional',
     'ano_ingresso_programa',
     'vinculos_programa',
-  ]);
+  ]));
 
-export const sanitizeProduction = (value: unknown) => ({
+export const sanitizeProduction = (value: unknown) => sanitizePersonalNames({
   ...pick(toObject(value), [
     'id_producao',
     'titulo',
@@ -50,7 +64,7 @@ export const sanitizeProduction = (value: unknown) => ({
   vinculo_programa: publicProgramLink,
 });
 
-export const sanitizeAdvising = (value: unknown) => ({
+export const sanitizeAdvising = (value: unknown) => sanitizePersonalNames({
   ...pick(toObject(value), [
     'id_orientacao',
     'docente_ids',
@@ -66,7 +80,7 @@ export const sanitizeAdvising = (value: unknown) => ({
   vinculo_programa: publicProgramLink,
 });
 
-export const sanitizeProject = (value: unknown) => ({
+export const sanitizeProject = (value: unknown) => sanitizePersonalNames({
   ...pick(toObject(value), [
     'id_projeto',
     'docente_ids',
@@ -86,7 +100,7 @@ export const sanitizeProject = (value: unknown) => ({
 });
 
 export const sanitizeEducation = (value: unknown) =>
-  pick(toObject(value), [
+  sanitizePersonalNames(pick(toObject(value), [
     'id_formacao',
     'id_docente',
     'nivel',
@@ -98,4 +112,4 @@ export const sanitizeEducation = (value: unknown) =>
     'orientador',
     'titulo',
     'escopo',
-  ]);
+  ]));
