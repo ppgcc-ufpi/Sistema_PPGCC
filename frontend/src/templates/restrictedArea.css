@@ -205,7 +205,8 @@ button.danger-action { background: #a93434; }
 button:disabled { cursor: not-allowed; opacity: 0.5; }
 .workspace-error { color: #9d1d1d; }
 
-.suggestions-panel { border: 1px solid #dce1ee; box-shadow: none; padding: 20px 0 0; }
+.suggestions-panel { border: 1px solid #dce1ee; box-shadow: none; margin-top: 24px; padding: 20px; }
+.suggestions-panel > p { margin: 16px 0 0; }
 .suggestion-list { display: grid; gap: 12px; margin-top: 18px; }
 .suggestion-list article { background: #f8f9fc; border-radius: 10px; padding: 16px; }
 .suggestion-list p { color: #59647a; margin: 8px 0; }
