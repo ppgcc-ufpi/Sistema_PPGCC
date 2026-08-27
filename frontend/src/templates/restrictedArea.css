@@ -171,8 +171,7 @@
 .record-card { border: 1px solid #dce1ee; border-radius: 12px; padding: 18px; }
 .record-card.is-hidden { background: #f6f7fa; border-style: dashed; }
 .record-card-heading > div { min-width: 0; }
-.record-card-heading h3 { font-size: 17px; line-height: 1.35; margin: 4px 0 0; overflow-wrap: anywhere; }
-.record-card-heading > div > span { color: #7b8499; font-size: 11px; }
+.record-card-heading h3 { font-size: 17px; line-height: 1.35; margin: 0; overflow-wrap: anywhere; }
 
 .visibility-pill,
 .status-pill {

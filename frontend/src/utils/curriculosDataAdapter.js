@@ -1,17 +1,9 @@
-const PARTICULAS_NOME = new Set(['da', 'das', 'de', 'do', 'dos', 'e']);
 const TIPOS_GENERICOS = new Set(['bibliografica', 'tecnica']);
 const SITUACOES_ORIENTACAO_DASHBOARD = new Set(['em_andamento', 'concluido']);
 
 const formatarNome = (nome = '') => nome
   .trim()
-  .toLocaleLowerCase('pt-BR')
-  .split(/\s+/)
-  .map((parte, index) => (
-    index > 0 && PARTICULAS_NOME.has(parte)
-      ? parte
-      : `${parte.charAt(0).toLocaleUpperCase('pt-BR')}${parte.slice(1)}`
-  ))
-  .join(' ');
+  .toLocaleUpperCase('pt-BR');
 
 const normalizarTexto = (valor = '') => valor
   .toString()
