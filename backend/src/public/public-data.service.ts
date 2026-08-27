@@ -23,8 +23,13 @@ export class PublicDataService {
       this.prisma.formacao.count({ where: { programaId } }),
       this.prisma.importacao.findFirst({ where: { programaId, status: 'CONCLUIDA' }, orderBy: { concluidaEm: 'desc' } }),
     ]);
+    const metadata = ultimaImportacao?.metadados;
+    const sucupiraLastValidatedYear = metadata !== null && typeof metadata === 'object' && !Array.isArray(metadata)
+      && typeof metadata.ultimo_ano_validado_sucupira === 'number'
+      ? metadata.ultimo_ano_validado_sucupira
+      : null;
     return { programId: programaId, faculty: docentes, productions: producoes, advising: orientacoes, projects: projetos, education: formacoes,
-      updatedAt: ultimaImportacao?.concluidaEm ?? null };
+      updatedAt: ultimaImportacao?.concluidaEm ?? null, sucupiraLastValidatedYear };
   }
 
   async faculty(id?: string) {
