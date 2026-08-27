@@ -1,9 +1,3 @@
-import docentes from '../data/docentes.json';
-import producoes from '../data/producoes.json';
-import orientacoes from '../data/orientacoes.json';
-import projetos from '../data/projetos.json';
-import formacoes from '../data/formacoes.json';
-
 const PARTICULAS_NOME = new Set(['da', 'das', 'de', 'do', 'dos', 'e']);
 const TIPOS_GENERICOS = new Set(['bibliografica', 'tecnica']);
 const SITUACOES_ORIENTACAO_DASHBOARD = new Set(['em_andamento', 'concluido']);
@@ -89,22 +83,6 @@ const deveExibirOrientacao = (item) => (
   && SITUACOES_ORIENTACAO_DASHBOARD.has(item?.situacao_normalizada)
 );
 
-const producoesPorDocente = indexarPorDocente(
-  producoes.filter(deveIntegrar),
-  (item) => item.docente_ids || []
-);
-const orientacoesPorDocente = indexarPorDocente(
-  orientacoes.filter(deveExibirOrientacao),
-  (item) => item.docente_ids || []
-);
-const projetosPorDocente = indexarPorDocente(
-  projetos.filter(deveIntegrar),
-  (item) => item.docente_ids || []
-);
-const formacoesPorDocente = indexarPorDocente(formacoes, (item) => (
-  item.id_docente ? [item.id_docente] : []
-));
-
 const montarOrientacoes = (itens) => {
   const porNivel = {
     mestrado: [],
@@ -126,30 +104,54 @@ const montarOrientacoes = (itens) => {
  * dashboards de currículos. Registros compartilhados são atribuídos a cada
  * docente listado em `docente_ids`.
  */
-export const curriculosData = {
-  registros: docentes.map((docente) => {
-    const nome = formatarNome(docente.nome);
-    const producoesDocente = producoesPorDocente.get(docente.id_docente) || [];
-    const orientacoesDocente = orientacoesPorDocente.get(docente.id_docente) || [];
-    const projetosDocente = projetosPorDocente.get(docente.id_docente) || [];
-    const formacoesDocente = formacoesPorDocente.get(docente.id_docente) || [];
+export const buildCurriculosData = ({
+  docentes = [],
+  producoes = [],
+  orientacoes = [],
+  projetos = [],
+  formacoes = [],
+} = {}) => {
+  const producoesPorDocente = indexarPorDocente(
+    producoes.filter(deveIntegrar),
+    (item) => item.docente_ids || [],
+  );
+  const orientacoesPorDocente = indexarPorDocente(
+    orientacoes.filter(deveExibirOrientacao),
+    (item) => item.docente_ids || [],
+  );
+  const projetosPorDocente = indexarPorDocente(
+    projetos.filter(deveIntegrar),
+    (item) => item.docente_ids || [],
+  );
+  const formacoesPorDocente = indexarPorDocente(formacoes, (item) => (
+    item.id_docente ? [item.id_docente] : []
+  ));
 
-    return {
-      id_docente: docente.id_docente,
-      docente: nome,
-      dados_docente: docente,
-      lattes: {
-        docente: {
-          id: docente.id_docente,
-          nome,
+  return {
+    registros: docentes.map((docente) => {
+      const nome = formatarNome(docente.nome);
+      const producoesDocente = producoesPorDocente.get(docente.id_docente) || [];
+      const orientacoesDocente = orientacoesPorDocente.get(docente.id_docente) || [];
+      const projetosDocente = projetosPorDocente.get(docente.id_docente) || [];
+      const formacoesDocente = formacoesPorDocente.get(docente.id_docente) || [];
+
+      return {
+        id_docente: docente.id_docente,
+        docente: nome,
+        dados_docente: docente,
+        lattes: {
+          docente: {
+            id: docente.id_docente,
+            nome,
+          },
+          formacao: formacoesDocente,
+          producoes: producoesDocente.map(adaptarProducao),
+          orientacoes: montarOrientacoes(orientacoesDocente),
+          projetos: projetosDocente.map(adaptarProjeto),
         },
-        formacao: formacoesDocente,
-        producoes: producoesDocente.map(adaptarProducao),
-        orientacoes: montarOrientacoes(orientacoesDocente),
-        projetos: projetosDocente.map(adaptarProjeto),
-      },
-    };
-  }),
+      };
+    }),
+  };
 };
 
-export default curriculosData;
+export default buildCurriculosData;

@@ -10,7 +10,7 @@ necessária somente para as visões privadas de docentes e da coordenação.
 
 ```text
 Sistema_PPGCC/
-├── frontend/   # aplicação React e snapshots estáticos
+├── frontend/   # aplicação React consumidora da API
 ├── backend/    # API NestJS, Prisma e PostgreSQL no Neon
 ├── package.json
 └── README.md
@@ -18,7 +18,7 @@ Sistema_PPGCC/
 
 ## Frontend
 
-O frontend React está em [`frontend/`](frontend/). Para executá-lo:
+O frontend React está em [`frontend/`](frontend/README.md). Para executá-lo:
 
 ```bash
 cd frontend

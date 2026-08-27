@@ -18,6 +18,10 @@ const ContentTop = ({ showSearchButton = true }) => {
             return 'Rede de Coautoria';
           case '/curriculos':
             return 'Currículos';
+          case '/producao-docente':
+            return 'Produção Docente';
+          case '/login':
+            return 'Área restrita';
           default:
             return 'Sistema PPGCC';
         }

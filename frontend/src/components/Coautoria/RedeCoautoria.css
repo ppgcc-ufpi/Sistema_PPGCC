@@ -4,6 +4,15 @@
   color: var(--clr-white);
 }
 
+.rede-status {
+  padding: 28px;
+  border-radius: 10px;
+  background: rgba(13, 19, 42, 0.48);
+  color: var(--clr-white);
+}
+
+.rede-status--error { color: #ffd2d2; }
+
 .rede-header {
   display: flex;
   align-items: flex-start;

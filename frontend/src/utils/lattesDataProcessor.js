@@ -1,5 +1,8 @@
 // Funções para processar os conjuntos integrados de currículos
-import curriculosData from './curriculosDataAdapter';
+import { loadPublicData } from '../services/publicDataService';
+import { buildCurriculosData } from './curriculosDataAdapter';
+
+let lattesDataPromise = null;
 
 /**
  * Processa produções agrupadas por ano
@@ -332,16 +335,20 @@ export const getDocenteInfo = (docente) => {
 };
 
 /**
- * Carrega dados do JSON de Lattes
- * @returns {Promise<Object>} Dados do JSON
+ * Carrega e adapta os dados públicos fornecidos pela API.
+ * @returns {Promise<Object>} Dados adaptados para os dashboards
  */
 export const loadLattesData = async () => {
-  try {
-    return curriculosData;
-  } catch (error) {
-    console.error('Erro ao carregar dados de Lattes:', error);
-    return null;
+  if (!lattesDataPromise) {
+    lattesDataPromise = loadPublicData()
+      .then(buildCurriculosData)
+      .catch((error) => {
+        lattesDataPromise = null;
+        throw error;
+      });
   }
+
+  return lattesDataPromise;
 };
 
 /**

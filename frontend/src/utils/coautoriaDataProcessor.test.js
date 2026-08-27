@@ -1,6 +1,4 @@
-import docentes from '../data/docentes.json';
-import producoes from '../data/producoes.json';
-import { buildCoauthorshipGraph, getCoauthorshipYears } from './coautoriaDataProcessor';
+import { buildCoauthorshipGraph } from './coautoriaDataProcessor';
 
 describe('coautoriaDataProcessor', () => {
   const docentesFixture = [
@@ -65,21 +63,5 @@ describe('coautoriaDataProcessor', () => {
 
     expect(grafo.arestas).toHaveLength(1);
     expect(grafo.arestas[0].peso).toBe(1);
-  });
-
-  it('reproduz os totais esperados da base integrada atual', () => {
-    const anos = getCoauthorshipYears(producoes);
-    const grafo = buildCoauthorshipGraph({
-      docentes,
-      producoes,
-      anoInicial: anos[0],
-      anoFinal: anos[anos.length - 1],
-    });
-
-    expect(grafo.nos).toHaveLength(20);
-    expect(grafo.arestas).toHaveLength(84);
-    expect(grafo.estatisticas.totalProducoes).toBe(1097);
-    expect(grafo.estatisticas.producoesComCoautoria).toBe(403);
-    expect(grafo.estatisticas.totalVinculos).toBe(739);
   });
 });
