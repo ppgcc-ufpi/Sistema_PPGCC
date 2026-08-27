@@ -7,5 +7,5 @@ export const navigationLinks = [
     { id: 3, title: 'Currículos', image: iconsImgs.user, path: '/curriculos'},
     { id: 4, title: 'Produção Docente', image: iconsImgs.production, path: '/producao-docente'},
     { id: 5, title: 'Rede de Coautoria', image: iconsImgs.network, path: '/rede-coautoria'},
-    { id: 6, title: 'Settings', image: iconsImgs.gears , path: '#'}
+    { id: 6, title: 'Configurações', image: iconsImgs.gears, path: '/portal'}
 ];

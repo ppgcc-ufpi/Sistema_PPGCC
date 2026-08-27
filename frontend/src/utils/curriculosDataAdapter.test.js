@@ -1,9 +1,29 @@
-import curriculosData from './curriculosDataAdapter';
-import docentes from '../data/docentes.json';
-import producoes from '../data/producoes.json';
-import orientacoes from '../data/orientacoes.json';
-import projetos from '../data/projetos.json';
-import formacoes from '../data/formacoes.json';
+import { buildCurriculosData } from './curriculosDataAdapter';
+
+const docentes = [
+  { id_docente: 'a', nome: 'Docente A' },
+  { id_docente: 'b', nome: 'Docente B' },
+];
+const producoes = [
+  { id_producao: 'p1', docente_ids: ['a', 'b'], natureza: 'bibliografica', vinculo_programa: { integrar: true } },
+  { id_producao: 'p2', docente_ids: ['a'], natureza: 'tecnica', vinculo_programa: { integrar: false } },
+];
+const orientacoes = [
+  { id_orientacao: 'o1', docente_ids: ['a'], nivel_normalizado: 'mestrado', situacao_normalizada: 'concluido', vinculo_programa: { integrar: true } },
+  { id_orientacao: 'o2', docente_ids: ['b'], nivel_normalizado: 'doutorado', situacao_normalizada: 'em_andamento', vinculo_programa: { integrar: true } },
+  { id_orientacao: 'o3', docente_ids: ['a'], nivel_normalizado: 'mestrado', situacao_normalizada: 'desligado', vinculo_programa: { integrar: true } },
+];
+const projetos = [
+  { id_projeto: 'r1', docente_ids: ['a', 'b'], situacao_normalizada: 'em_andamento', vinculo_programa: { integrar: true } },
+  { id_projeto: 'r2', docente_ids: ['a'], situacao_normalizada: 'concluido', vinculo_programa: { integrar: false } },
+];
+const formacoes = [
+  { id_formacao: 'f1', id_docente: 'a' },
+  { id_formacao: 'f2', id_docente: 'b' },
+];
+const curriculosData = buildCurriculosData({
+  docentes, producoes, orientacoes, projetos, formacoes,
+});
 
 const totalVinculos = (itens) => itens.reduce(
   (total, item) => total + (item.docente_ids || []).length,

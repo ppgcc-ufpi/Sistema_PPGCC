@@ -11,7 +11,6 @@ API NestJS com PostgreSQL hospedado no Neon, Prisma e autenticação JWT própri
 - sugestões, aprovação/rejeição e histórico de decisões;
 - correções aprovadas aplicadas como camada sobre os dados importados;
 - importação transacional que preserva decisões humanas;
-- snapshot público sanitizado para fallback estático;
 - estrutura isolada por programa de pós-graduação.
 
 ## Desenvolvimento
@@ -36,7 +35,6 @@ aceita atualmente `metadados.schema_versao = 3.8`.
 
 ```bash
 npm run db:import
-npm run snapshot:export
 npm run corrections:export
 npm test
 ```
@@ -67,6 +65,8 @@ mas não sobrescreve ocultações, sugestões, decisões ou correções aprovada
 
 - `GET /api/dashboards/coordination`
 - `GET /api/dashboards/faculty`
+- `GET /api/records/coordination?type=PRODUCAO` — detalhes e flags da coordenação
+- `GET /api/records/faculty?type=PRODUCAO` — detalhes e flags do docente
 - `GET|POST /api/users` — coordenação
 - `PATCH /api/users/:id` — coordenação
 - `POST /api/suggestions`
