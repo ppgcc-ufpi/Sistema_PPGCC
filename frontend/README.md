@@ -28,6 +28,11 @@ A sessão fica restrita à aba do navegador por meio de `sessionStorage`. O acce
 token é renovado automaticamente com o refresh token quando necessário e os
 dois são removidos no logout ou ao fechar a aba.
 
+Nas áreas protegidas, produções, orientações e projetos podem ser consultados
+com seus critérios de visibilidade. A edição gera uma sugestão auditável: a
+coordenação registra a aprovação ou rejeição, e somente correções aprovadas são
+aplicadas sobre os dados importados.
+
 ## Verificação e publicação
 
 ```bash

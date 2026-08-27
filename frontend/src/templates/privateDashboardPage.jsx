@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
+import RecordsWorkspace from '../components/RestrictedRecords/RecordsWorkspace';
 import './restrictedArea.css';
 
 const labels = {
@@ -16,6 +17,7 @@ const PrivateDashboardPage = ({ role }) => {
   const [dashboard, setDashboard] = useState(null);
   const [error, setError] = useState('');
   const isCoordination = role === 'COORDENACAO';
+  const visibleMetrics = Object.entries(labels).filter(([key]) => isCoordination || key !== 'faculty');
 
   useEffect(() => {
     let active = true;
@@ -63,28 +65,17 @@ const PrivateDashboardPage = ({ role }) => {
       {error && <p className="restricted-error private-error" role="alert">{error}</p>}
       {!dashboard && !error && <p className="private-loading">Carregando dados protegidos...</p>}
       {dashboard && (
-        <section className="private-metrics" aria-label="Indicadores privados">
-          {Object.entries(labels).map(([key, label]) => (
+        <section className={`private-metrics ${isCoordination ? 'coordination-metrics' : 'faculty-metrics'}`} aria-label="Indicadores privados">
+          {visibleMetrics.map(([key, label]) => (
             <article key={key}>
               <span>{label}</span>
-              <strong>
-                {key === 'faculty' && typeof dashboard[key] === 'object'
-                  ? dashboard[key]?.nome || 'Perfil vinculado'
-                  : dashboard[key] ?? 0}
-              </strong>
+              <strong>{dashboard[key] ?? 0}</strong>
             </article>
           ))}
         </section>
       )}
 
-      <section className="private-next-actions">
-        <h2>Recursos da área restrita</h2>
-        <p>
-          {isCoordination
-            ? 'A gestão de usuários, a revisão de sugestões e o histórico de decisões serão conectados nesta área.'
-            : 'O envio de sugestões e o controle individual de visibilidade serão conectados nesta área.'}
-        </p>
-      </section>
+      <RecordsWorkspace isCoordination={isCoordination} request={request} />
     </main>
   );
 };

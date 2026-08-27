@@ -37,7 +37,6 @@ const LoginPage = () => {
       <section className="login-card" aria-labelledby="login-title">
         <img src={Logo} alt="Brasão da UFPI" />
         <div>
-          <p className="restricted-eyebrow">Área restrita</p>
           <h1 id="login-title">Acesso ao Sistema PPGCC</h1>
           <p>Entre com a conta fornecida pela coordenação do programa.</p>
         </div>
@@ -53,7 +52,7 @@ const LoginPage = () => {
             {submitting ? 'Entrando...' : 'Entrar'}
           </button>
         </form>
-        <Link className="restricted-back" to="/dashboard">Voltar aos dashboards públicos</Link>
+        <Link className="restricted-back" to="/dashboard">Voltar</Link>
       </section>
     </main>
   );
