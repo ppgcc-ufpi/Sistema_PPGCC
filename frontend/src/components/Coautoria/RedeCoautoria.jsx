@@ -13,16 +13,10 @@ const EMPTY_DATA = [];
 
 const formatarNome = (nome = '') => nome
   .trim()
-  .split(/\s+/)
-  .map((parte, indice) => (
-    indice > 0 && PARTICULAS.has(parte.toLocaleLowerCase('pt-BR'))
-      ? parte.toLocaleLowerCase('pt-BR')
-      : `${parte.charAt(0).toLocaleUpperCase('pt-BR')}${parte.slice(1).toLocaleLowerCase('pt-BR')}`
-  ))
-  .join(' ');
+  .toLocaleUpperCase('pt-BR');
 
 const nomeCurto = (nome = '') => {
-  const partes = formatarNome(nome).split(' ').filter((parte) => !PARTICULAS.has(parte));
+  const partes = formatarNome(nome).split(' ').filter((parte) => !PARTICULAS.has(parte.toLocaleLowerCase('pt-BR')));
   if (partes.length < 2) return partes[0] || nome;
   return `${partes[0]} ${partes[partes.length - 1]}`;
 };

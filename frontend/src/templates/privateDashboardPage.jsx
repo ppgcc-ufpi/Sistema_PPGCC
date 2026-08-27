@@ -52,7 +52,7 @@ const PrivateDashboardPage = ({ role }) => {
         <div>
           <p className="restricted-eyebrow">{isCoordination ? 'Coordenação' : 'Docente'}</p>
           <h1>{isCoordination ? 'Visão da coordenação' : 'Minha visão docente'}</h1>
-          <p>{user?.nome || user?.email}</p>
+          <p>{user?.nome ? user.nome.toLocaleUpperCase('pt-BR') : user?.email}</p>
         </div>
         <div className="private-actions">
           <button type="button" className="secondary" onClick={() => navigate('/dashboard')}>

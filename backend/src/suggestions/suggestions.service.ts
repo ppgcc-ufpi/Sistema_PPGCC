@@ -24,10 +24,14 @@ export class SuggestionsService {
     return this.prisma.sugestao.findMany({ where: { autorId: user.id }, include: { decisoes: true }, orderBy: { criadaEm: 'desc' } });
   }
 
-  listForCoordination(user: AuthenticatedUser, status?: SuggestionStatus) {
-    return this.prisma.sugestao.findMany({ where: { programaId: user.programaId, status }, include: {
+  async listForCoordination(user: AuthenticatedUser, status?: SuggestionStatus) {
+    const suggestions = await this.prisma.sugestao.findMany({ where: { programaId: user.programaId, status }, include: {
       autor: { select: { id: true, nome: true, email: true, perfil: true } }, decisoes: true,
     }, orderBy: { criadaEm: 'desc' } });
+    return suggestions.map((item) => ({
+      ...item,
+      autor: { ...item.autor, nome: item.autor.nome?.toLocaleUpperCase('pt-BR') ?? null },
+    }));
   }
 
   async decide(user: AuthenticatedUser, id: string, dto: DecideSuggestionDto) {

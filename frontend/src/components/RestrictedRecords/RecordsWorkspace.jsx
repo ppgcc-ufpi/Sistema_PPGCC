@@ -6,6 +6,21 @@ const recordTypes = [
   { value: 'PROJETO', label: 'Projetos' },
 ];
 
+const filtersByType = {
+  PRODUCAO: [
+    { key: 'natureza', label: 'Natureza', placeholder: 'Todas as naturezas' },
+    { key: 'tipos', label: 'Tipo de produção', placeholder: 'Todos os tipos' },
+  ],
+  ORIENTACAO: [
+    { key: 'nivel_normalizado', label: 'Nível', placeholder: 'Todos os níveis' },
+    { key: 'situacao_normalizada', label: 'Situação', placeholder: 'Todas as situações' },
+  ],
+  PROJETO: [
+    { key: 'situacao_normalizada', label: 'Situação', placeholder: 'Todas as situações' },
+    { key: 'naturezas', label: 'Natureza', placeholder: 'Todas as naturezas' },
+  ],
+};
+
 const fieldsByType = {
   PRODUCAO: [
     { key: 'titulo', label: 'Título' },
@@ -26,20 +41,133 @@ const fieldsByType = {
   ],
 };
 
-const titleOf = (record) => record.data?.titulo || record.data?.orientando || record.externalId;
+const formatPersonName = (value = '') => String(value).toLocaleUpperCase('pt-BR');
+
+const entityTypeLabels = {
+  PRODUCAO: 'Produção',
+  ORIENTACAO: 'Orientação',
+  PROJETO: 'Projeto',
+};
+
+const fieldLabels = {
+  anos_registrados: 'Anos registrados',
+  categorias_especificas: 'Categorias específicas',
+  titulos_alternativos: 'Títulos alternativos',
+  locais_evento: 'Locais do evento',
+  editoras_ou_publicadores: 'Editoras ou publicadores',
+  numeros_registro: 'Números de registro',
+  instituicoes_registro: 'Instituições de registro',
+  areas_concentracao: 'Áreas de concentração',
+  linhas_pesquisa: 'Linhas de pesquisa',
+  projetos_pesquisa: 'Projetos de pesquisa',
+  vinculada_tcc: 'Vinculada a TCC',
+  ano_inicio: 'Ano de início',
+  ano_conclusao: 'Ano de conclusão',
+  nivel_normalizado: 'Nível',
+  situacao_normalizada: 'Situação',
+};
+
+const valueLabels = {
+  tecnica: 'Técnica',
+  bibliografica: 'Bibliográfica',
+  em_andamento: 'Em andamento',
+  concluido: 'Concluído',
+  concluida: 'Concluída',
+  mestrado: 'Mestrado',
+  doutorado: 'Doutorado',
+  pos_doutorado: 'Pós-doutorado',
+};
+
+const hiddenDetailFields = new Set([
+  'id_producao', 'id_orientacao', 'id_projeto', 'id_docente', 'docente_ids',
+]);
+
+const titleOf = (record) => record.data?.titulo
+  || (record.data?.orientando && formatPersonName(record.data.orientando))
+  || entityTypeLabels[record.entityType]
+  || 'Registro';
 
 const searchableText = (record) => JSON.stringify(record.data || {}).toLocaleLowerCase('pt-BR');
 
-const displayValue = (value) => {
+const valuesOf = (record, field) => {
+  const value = record.data?.[field];
+  if (value === null || value === undefined || value === '') return [];
+  return (Array.isArray(value) ? value : [value])
+    .filter((item) => ['string', 'number'].includes(typeof item))
+    .map(String);
+};
+
+const integerOf = (value) => {
+  if (value === null || value === undefined || value === '') return null;
+  const number = Number(value);
+  return Number.isInteger(number) ? number : null;
+};
+
+const yearsOf = (record) => {
+  if (record.entityType === 'PROJETO') {
+    const start = integerOf(record.data?.ano_inicio);
+    const conclusion = integerOf(record.data?.ano_conclusao);
+    if (start === null) return conclusion === null ? [] : [String(conclusion)];
+    const currentYear = new Date().getFullYear();
+    const end = conclusion ?? Math.max(start, currentYear);
+    return Array.from({ length: Math.max(0, end - start + 1) }, (_, index) => String(start + index));
+  }
+  return [...new Set([
+    ...valuesOf(record, 'ano'),
+    ...valuesOf(record, 'anos_registrados'),
+  ])];
+};
+
+const uniqueOptions = (values) => [...new Set(values)]
+  .sort((left, right) => String(left).localeCompare(String(right), 'pt-BR', { numeric: true }));
+
+const displayValue = (value, field) => {
   if (value === null || value === undefined || value === '') return 'Não informado';
-  if (Array.isArray(value)) return value.length ? value.join(', ') : 'Não informado';
-  if (typeof value === 'object') return JSON.stringify(value);
+  if (typeof value === 'boolean') return value ? 'Sim' : 'Não';
+  if (Array.isArray(value)) return value.length ? value.map((item) => displayValue(item, field)).join(' • ') : 'Não informado';
+  if (typeof value === 'object') {
+    const visibleEntries = Object.entries(value).filter(([key]) => key !== 'nome_normalizado');
+    if (typeof value.nome === 'string') return formatPersonName(value.nome);
+    return visibleEntries.map(([key, item]) => `${fieldLabels[key] || fieldLabel(key)}: ${displayValue(item, key)}`).join('; ');
+  }
+  if (typeof value === 'string' && ['nome', 'orientando', 'orientador', 'autores', 'integrantes'].includes(field)) {
+    return formatPersonName(value);
+  }
+  if (typeof value === 'string' && valueLabels[value.toLocaleLowerCase('pt-BR')]) {
+    return valueLabels[value.toLocaleLowerCase('pt-BR')];
+  }
   return String(value);
 };
 
-const fieldLabel = (field) => field
-  .replaceAll('_', ' ')
-  .replace(/^./, (letter) => letter.toLocaleUpperCase('pt-BR'));
+const isRedundantNormalizedField = (field, data) => field.endsWith('_normalizado')
+  && Object.prototype.hasOwnProperty.call(data, field.replace(/_normalizado$/, ''));
+
+function fieldLabel(field) {
+  return fieldLabels[field] || field
+    .replaceAll('_', ' ')
+    .replace(/^./, (letter) => letter.toLocaleUpperCase('pt-BR'));
+}
+
+const hasInformation = (value) => {
+  if (value === null || value === undefined || value === '') return false;
+  if (Array.isArray(value)) return value.some(hasInformation);
+  if (typeof value === 'object') return Object.entries(value)
+    .some(([field, item]) => field !== 'nome_normalizado' && hasInformation(item));
+  return true;
+};
+
+const complementaryDetails = (record) => {
+  const summaryFields = new Set((fieldsByType[record.entityType] || []).map(({ key }) => key));
+  return Object.entries(record.data || {}).filter(([field, value]) => {
+    if (hiddenDetailFields.has(field) || summaryFields.has(field) || !hasInformation(value)) return false;
+    if (isRedundantNormalizedField(field, record.data || {})) return false;
+    if (field === 'anos_registrados') {
+      const years = Array.isArray(value) ? value : [value];
+      if (years.length === 1 && String(years[0]) === String(record.data?.ano)) return false;
+    }
+    return true;
+  });
+};
 
 const statusLabels = {
   PENDENTE: 'Pendente',
@@ -170,14 +298,14 @@ const SuggestionsPanel = ({ isCoordination, request, refreshToken, onRecordChang
         {suggestions.map((item) => (
           <article key={item.id}>
             <div className="suggestion-title">
-              <strong>{item.tipoEntidade} · {item.registroIdExterno}</strong>
+              <strong>{entityTypeLabels[item.tipoEntidade] || item.tipoEntidade}</strong>
               <span className={`status-pill status-${item.status.toLowerCase()}`}>{statusLabels[item.status] || item.status}</span>
             </div>
-            {item.autor && <p>Enviada por {item.autor.nome || item.autor.email}</p>}
+              {item.autor && <p>Enviada por {item.autor.nome ? formatPersonName(item.autor.nome) : item.autor.email}</p>}
             <p>{item.justificativa}</p>
             <dl className="changes-list">
               {Object.entries(item.alteracoes || {}).map(([field, value]) => (
-                <div key={field}><dt>{field}</dt><dd>{displayValue(value)}</dd></div>
+                <div key={field}><dt>{fieldLabel(field)}</dt><dd>{displayValue(value, field)}</dd></div>
               ))}
             </dl>
             {isCoordination && item.status === 'PENDENTE' && (
@@ -218,6 +346,9 @@ const RecordsWorkspace = ({ isCoordination, request }) => {
   const [records, setRecords] = useState([]);
   const [query, setQuery] = useState('');
   const [visibilityFilter, setVisibilityFilter] = useState('all');
+  const [facultyFilter, setFacultyFilter] = useState('all');
+  const [yearFilter, setYearFilter] = useState('all');
+  const [detailFilters, setDetailFilters] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [editing, setEditing] = useState(null);
@@ -240,10 +371,48 @@ const RecordsWorkspace = ({ isCoordination, request }) => {
 
   useEffect(() => { loadRecords(); }, [loadRecords, refreshToken]);
 
+  useEffect(() => {
+    setFacultyFilter('all');
+    setYearFilter('all');
+    setDetailFilters({});
+  }, [activeType]);
+
+  const facultyOptions = useMemo(() => records.flatMap((record) =>
+    (record.faculty || []).map(({ idExterno, nome }) => ({ value: idExterno, label: formatPersonName(nome) })))
+    .reduce((options, option) => {
+      if (!options.some(({ value }) => value === option.value)) options.push(option);
+      return options;
+    }, [])
+    .sort((left, right) => left.label.localeCompare(right.label, 'pt-BR')), [records]);
+
+  const yearOptions = useMemo(() => uniqueOptions(records.flatMap(yearsOf)).reverse(), [records]);
+
+  const detailFilterOptions = useMemo(() => Object.fromEntries(
+    (filtersByType[activeType] || []).map(({ key }) => [
+      key,
+      uniqueOptions(records.flatMap((record) => valuesOf(record, key))),
+    ]),
+  ), [activeType, records]);
+
   const visibleRecords = useMemo(() => records
     .filter((record) => !query || searchableText(record).includes(query.toLocaleLowerCase('pt-BR')))
     .filter((record) => visibilityFilter === 'all'
-      || (visibilityFilter === 'hidden' ? record.visibility.hidden : !record.visibility.hidden)), [records, query, visibilityFilter]);
+      || (visibilityFilter === 'hidden' ? record.visibility.hidden : !record.visibility.hidden))
+    .filter((record) => facultyFilter === 'all'
+      || record.faculty?.some(({ idExterno }) => idExterno === facultyFilter))
+    .filter((record) => yearFilter === 'all' || yearsOf(record).includes(yearFilter))
+    .filter((record) => Object.entries(detailFilters)
+      .every(([field, value]) => value === 'all' || valuesOf(record, field).includes(value))), [
+    records, query, visibilityFilter, facultyFilter, yearFilter, detailFilters,
+  ]);
+
+  const clearFilters = () => {
+    setQuery('');
+    setVisibilityFilter('all');
+    setFacultyFilter('all');
+    setYearFilter('all');
+    setDetailFilters({});
+  };
 
   const updateVisibility = async (record) => {
     const scope = isCoordination ? 'coordination' : 'faculty';
@@ -281,13 +450,55 @@ const RecordsWorkspace = ({ isCoordination, request }) => {
           </button>
         ))}
       </div>
-      <div className="record-filters">
-        <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar nos registros" aria-label="Buscar nos registros" />
-        <select value={visibilityFilter} onChange={(event) => setVisibilityFilter(event.target.value)} aria-label="Filtrar visibilidade">
-          <option value="all">Todos</option>
-          <option value="visible">Visíveis</option>
-          <option value="hidden">Ocultos</option>
-        </select>
+      <div className="record-filter-panel">
+        <div className="record-filters">
+          <label className="record-search-filter">
+            <span>Buscar</span>
+            <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Título, pessoa ou outra informação" />
+          </label>
+          {isCoordination && (
+            <label>
+              <span>Docente</span>
+              <select value={facultyFilter} onChange={(event) => setFacultyFilter(event.target.value)}>
+                <option value="all">Todos os docentes</option>
+                {facultyOptions.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
+              </select>
+            </label>
+          )}
+          <label>
+            <span>Ano</span>
+            <select value={yearFilter} onChange={(event) => setYearFilter(event.target.value)}>
+              <option value="all">Todos os anos</option>
+              {yearOptions.map((year) => <option key={year} value={year}>{year}</option>)}
+            </select>
+          </label>
+          {(filtersByType[activeType] || []).map(({ key, label, placeholder }) => (
+            <label key={key}>
+              <span>{label}</span>
+              <select
+                value={detailFilters[key] || 'all'}
+                onChange={(event) => setDetailFilters((current) => ({ ...current, [key]: event.target.value }))}
+              >
+                <option value="all">{placeholder}</option>
+                {(detailFilterOptions[key] || []).map((value) => (
+                  <option key={value} value={value}>{displayValue(value, key)}</option>
+                ))}
+              </select>
+            </label>
+          ))}
+          <label>
+            <span>Visibilidade</span>
+            <select value={visibilityFilter} onChange={(event) => setVisibilityFilter(event.target.value)}>
+              <option value="all">Todos os registros</option>
+              <option value="visible">Visíveis</option>
+              <option value="hidden">Ocultos</option>
+            </select>
+          </label>
+        </div>
+        <div className="record-filter-summary" aria-live="polite">
+          <span>{visibleRecords.length} de {records.length} registros</span>
+          <button type="button" className="filter-clear-button" onClick={clearFilters}>Limpar filtros</button>
+        </div>
       </div>
       {loading && <p>Carregando registros...</p>}
       {error && <p className="workspace-error" role="alert">{error}</p>}
@@ -297,7 +508,6 @@ const RecordsWorkspace = ({ isCoordination, request }) => {
           <article className={record.visibility.hidden ? 'record-card is-hidden' : 'record-card'} key={record.externalId}>
             <div className="record-card-heading">
               <div>
-                <span>{record.externalId}</span>
                 <h3>{titleOf(record)}</h3>
               </div>
               <span className={record.visibility.hidden ? 'visibility-pill hidden' : 'visibility-pill'}>
@@ -305,10 +515,10 @@ const RecordsWorkspace = ({ isCoordination, request }) => {
               </span>
             </div>
             <dl className="record-details">
-              {fieldsByType[record.entityType].filter(({ key }) => key !== 'titulo' && key !== 'orientando').map(({ key, label }) => (
-                <div key={key}><dt>{label}</dt><dd>{displayValue(record.data?.[key])}</dd></div>
+              {fieldsByType[record.entityType].filter(({ key }) => key !== 'titulo' && key !== 'orientando' && hasInformation(record.data?.[key])).map(({ key, label }) => (
+                <div key={key}><dt>{label}</dt><dd>{displayValue(record.data?.[key], key)}</dd></div>
               ))}
-              {record.faculty?.length > 0 && <div><dt>Docentes</dt><dd>{record.faculty.map((item) => item.nome).join(', ')}</dd></div>}
+              {record.faculty?.length > 0 && <div><dt>Docentes</dt><dd>{record.faculty.map((item) => formatPersonName(item.nome)).join(', ')}</dd></div>}
             </dl>
             <div className="flag-list" aria-label="Critérios de visibilidade">
               <span>{record.visibility.defaultVisible ? 'Exibição padrão' : 'Fora da exibição padrão'}</span>
@@ -319,14 +529,16 @@ const RecordsWorkspace = ({ isCoordination, request }) => {
               )}
               {!isCoordination && record.visibility.hiddenByCoordination && <span>Oculto pela coordenação</span>}
             </div>
-            <details className="all-record-details">
-              <summary>Ver todos os detalhes integrados</summary>
-              <dl>
-                {Object.entries(record.data || {}).map(([field, value]) => (
-                  <div key={field}><dt>{fieldLabel(field)}</dt><dd>{displayValue(value)}</dd></div>
-                ))}
-              </dl>
-            </details>
+            {complementaryDetails(record).length > 0 && (
+              <details className="all-record-details">
+                <summary>Ver informações complementares</summary>
+                <dl>
+                  {complementaryDetails(record).map(([field, value]) => (
+                    <div key={field}><dt>{fieldLabel(field)}</dt><dd>{displayValue(value, field)}</dd></div>
+                  ))}
+                </dl>
+              </details>
+            )}
             <div className="record-actions">
               <button type="button" onClick={() => setEditing(record)}>Sugerir correção</button>
               <button

@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { sanitizePersonalNames } from '../public/public-data.mapper';
 
 @Injectable()
 export class DashboardsService {
@@ -38,6 +39,6 @@ export class DashboardsService {
     ]);
 
     if (!docente) throw new NotFoundException('Docente não encontrado.');
-    return { faculty: docente.dadosOriginais, productions: producoes, advising: orientacoes, projects: projetos };
+    return { faculty: sanitizePersonalNames(docente.dadosOriginais), productions: producoes, advising: orientacoes, projects: projetos };
   }
 }

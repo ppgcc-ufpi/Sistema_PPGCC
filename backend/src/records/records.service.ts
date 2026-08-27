@@ -3,6 +3,7 @@ import { TipoEntidade as EntityType } from '@prisma/client';
 import { AuthenticatedUser } from '../auth/auth.types';
 import { CorrectionsService } from '../corrections/corrections.service';
 import { PrismaService } from '../prisma/prisma.service';
+import { sanitizePersonalNames } from '../public/public-data.mapper';
 
 const MANAGED_TYPES = new Set<EntityType>([
   EntityType.PRODUCAO,
@@ -11,13 +12,15 @@ const MANAGED_TYPES = new Set<EntityType>([
 ]);
 
 const DETAIL_FIELDS: Record<string, readonly string[]> = {
-  [EntityType.PRODUCAO]: ['id_producao', 'titulo', 'titulo_normalizado', 'titulos_alternativos', 'ano', 'anos_registrados', 'natureza', 'categorias_especificas', 'tipos', 'subtipos', 'autores', 'veiculos', 'locais_evento', 'editoras_ou_publicadores', 'observacoes', 'numeros_registro', 'instituicoes_registro', 'areas_concentracao', 'linhas_pesquisa', 'projetos_pesquisa', 'vinculada_tcc', 'docente_ids'],
-  [EntityType.ORIENTACAO]: ['id_orientacao', 'docente_ids', 'orientando', 'orientando_normalizado', 'nivel_normalizado', 'titulos', 'tipos', 'instituicoes', 'ano', 'anos_registrados', 'situacao_normalizada'],
-  [EntityType.PROJETO]: ['id_projeto', 'docente_ids', 'titulo', 'titulo_normalizado', 'ano_inicio', 'ano_conclusao', 'situacao_normalizada', 'naturezas', 'integrantes', 'financiamentos', 'areas_concentracao', 'linhas_pesquisa', 'descricoes'],
+  [EntityType.PRODUCAO]: ['titulo', 'titulo_normalizado', 'titulos_alternativos', 'ano', 'anos_registrados', 'natureza', 'categorias_especificas', 'tipos', 'subtipos', 'autores', 'veiculos', 'locais_evento', 'editoras_ou_publicadores', 'observacoes', 'numeros_registro', 'instituicoes_registro', 'areas_concentracao', 'linhas_pesquisa', 'projetos_pesquisa', 'vinculada_tcc'],
+  [EntityType.ORIENTACAO]: ['orientando', 'orientando_normalizado', 'nivel_normalizado', 'titulos', 'tipos', 'instituicoes', 'ano', 'anos_registrados', 'situacao_normalizada'],
+  [EntityType.PROJETO]: ['titulo', 'titulo_normalizado', 'ano_inicio', 'ano_conclusao', 'situacao_normalizada', 'naturezas', 'integrantes', 'financiamentos', 'areas_concentracao', 'linhas_pesquisa', 'descricoes'],
 };
 
 const sanitizeDetails = (type: EntityType, value: Record<string, unknown>) =>
-  Object.fromEntries(DETAIL_FIELDS[type].filter((field) => Object.hasOwn(value, field)).map((field) => [field, value[field]]));
+  sanitizePersonalNames(
+    Object.fromEntries(DETAIL_FIELDS[type].filter((field) => Object.hasOwn(value, field)).map((field) => [field, value[field]])),
+  ) as Record<string, unknown>;
 
 type SourceRecord = {
   idExterno: string;
@@ -105,7 +108,7 @@ export class RecordsService {
       entityType: type,
       externalId: record.idExterno,
       data: sanitizeDetails(type, effective[index]),
-      faculty: record.docentes.map(({ docente }) => docente),
+      faculty: record.docentes.map(({ docente }) => ({ ...docente, nome: docente.nome.toLocaleUpperCase('pt-BR') })),
       visibility: {
         eligible: record.elegivelCoordenacao,
         defaultVisible: record.exibirPorPadraoCoordenacao,

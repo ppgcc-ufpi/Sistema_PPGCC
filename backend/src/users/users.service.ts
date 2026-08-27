@@ -9,10 +9,15 @@ import { UpdateUserDto } from './dto/update-user.dto';
 @Injectable()
 export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
-  list(user: AuthenticatedUser) {
-    return this.prisma.usuario.findMany({ where: { programaId: user.programaId },
+  async list(user: AuthenticatedUser) {
+    const users = await this.prisma.usuario.findMany({ where: { programaId: user.programaId },
       select: { id: true, email: true, nome: true, perfil: true, ativo: true, docente: { select: { idExterno: true, nome: true } }, criadoEm: true },
       orderBy: { nome: 'asc' } });
+    return users.map((item) => ({
+      ...item,
+      nome: item.nome?.toLocaleUpperCase('pt-BR') ?? null,
+      docente: item.docente ? { ...item.docente, nome: item.docente.nome.toLocaleUpperCase('pt-BR') } : null,
+    }));
   }
   async create(user: AuthenticatedUser, dto: CreateUserDto) {
     const email = dto.email.trim().toLowerCase();
@@ -24,8 +29,9 @@ export class UsersService {
       if (await this.prisma.usuario.findUnique({ where: { docenteId: docente.id } })) throw new ConflictException('Docente já possui conta.');
       docenteId = docente.id;
     }
-    return this.prisma.usuario.create({ data: { programaId: user.programaId, email, nome: dto.name, perfil: dto.role, docenteId, senhaHash: await hash(dto.password, 12) },
+    const created = await this.prisma.usuario.create({ data: { programaId: user.programaId, email, nome: dto.name, perfil: dto.role, docenteId, senhaHash: await hash(dto.password, 12) },
       select: { id: true, email: true, nome: true, perfil: true, ativo: true, docenteId: true } });
+    return { ...created, nome: created.nome?.toLocaleUpperCase('pt-BR') ?? null };
   }
 
   async update(currentUser: AuthenticatedUser, id: string, dto: UpdateUserDto) {
@@ -37,6 +43,6 @@ export class UsersService {
     const updated = await this.prisma.usuario.update({ where: { id }, data: { nome: dto.name, ativo: dto.active },
       select: { id: true, email: true, nome: true, perfil: true, ativo: true, docenteId: true } });
     if (dto.active === false) await this.prisma.sessaoRefresh.updateMany({ where: { usuarioId: id, revogadaEm: null }, data: { revogadaEm: new Date() } });
-    return updated;
+    return { ...updated, nome: updated.nome?.toLocaleUpperCase('pt-BR') ?? null };
   }
 }

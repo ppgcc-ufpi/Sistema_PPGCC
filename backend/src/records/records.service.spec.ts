@@ -72,7 +72,7 @@ describe('registros privados', () => {
 
     expect(prisma.producao.findMany).toHaveBeenCalledTimes(1);
     expect(result[0]).toMatchObject({
-      faculty: [{ idExterno: 'doc-1', nome: 'Docente Um' }],
+      faculty: [{ idExterno: 'doc-1', nome: 'DOCENTE UM' }],
       visibility: { hidden: true, publicEligible: true, publicDefaultVisible: false, publicVisible: false },
     });
   });

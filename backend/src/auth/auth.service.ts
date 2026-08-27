@@ -38,7 +38,7 @@ export class AuthService {
         },
       });
       if (!user?.ativo) throw new Error('Usuário inativo');
-      return user;
+      return { ...user, nome: user.nome?.toLocaleUpperCase('pt-BR') ?? null };
     } catch {
       throw new UnauthorizedException('Token inválido ou expirado.');
     }
