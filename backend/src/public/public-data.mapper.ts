@@ -20,6 +20,8 @@ export const sanitizeFaculty = (value: unknown) =>
     'nome',
     'nome_normalizado',
     'vinculo_institucional',
+    'ano_ingresso_programa',
+    'vinculos_programa',
   ]);
 
 export const sanitizeProduction = (value: unknown) => ({
