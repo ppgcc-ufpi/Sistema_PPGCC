@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
 import Logo from '../img/brasao_ufpi.png';
@@ -12,6 +13,7 @@ const LoginPage = () => {
   const location = useLocation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
 
@@ -45,8 +47,22 @@ const LoginPage = () => {
           <input id="email" type="email" autoComplete="username" required value={email}
             onChange={(event) => setEmail(event.target.value)} />
           <label htmlFor="password">Senha</label>
-          <input id="password" type="password" autoComplete="current-password" required value={password}
-            onChange={(event) => setPassword(event.target.value)} />
+          <div className="password-field">
+            <input id="password" type={showPassword ? 'text' : 'password'} autoComplete="current-password" required value={password}
+              onChange={(event) => setPassword(event.target.value)} />
+            {password.length > 0 && (
+              <button
+                type="button"
+                className="password-toggle"
+                aria-pressed={showPassword}
+                aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                title={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                onClick={() => setShowPassword((visible) => !visible)}
+              >
+                {showPassword ? <FiEyeOff aria-hidden="true" /> : <FiEye aria-hidden="true" />}
+              </button>
+            )}
+          </div>
           {error && <p className="restricted-error" role="alert">{error}</p>}
           <button type="submit" disabled={submitting}>
             {submitting ? 'Entrando...' : 'Entrar'}

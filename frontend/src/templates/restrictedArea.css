@@ -36,6 +36,28 @@
   padding: 12px;
 }
 
+.password-field { position: relative; }
+.password-field input { box-sizing: border-box; padding-right: 48px; width: 100%; }
+.login-card .password-toggle {
+  align-items: center;
+  background: transparent;
+  color: #3f55a7;
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  margin: 0;
+  padding: 7px;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.login-card .password-toggle:hover { background: #edf0fa; }
+.login-card .password-toggle:focus-visible {
+  box-shadow: 0 0 0 3px rgba(63, 85, 167, 0.18);
+  outline: none;
+}
+
 .login-card input:focus {
   border-color: #3f55a7;
   box-shadow: 0 0 0 3px rgba(63, 85, 167, 0.14);
