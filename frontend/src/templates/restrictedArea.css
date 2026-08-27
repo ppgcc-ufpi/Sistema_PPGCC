@@ -156,7 +156,17 @@
 .record-tabs button { background: #edf0fa; color: #34467e; }
 .record-tabs button[aria-selected='true'] { background: #3f55a7; color: #fff; }
 
-.record-filters { display: grid; gap: 10px; grid-template-columns: 1fr 190px; margin-bottom: 20px; }
+.record-filter-panel {
+  background: #f7f8fc;
+  border: 1px solid #e1e5f0;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 14px;
+}
+.record-filters { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+.record-filters label { display: grid; gap: 6px; min-width: 0; }
+.record-filters label > span { color: #59647a; font-size: 12px; font-weight: 800; }
+.record-search-filter { grid-column: span 2; }
 .record-filters input,
 .record-filters select,
 .record-modal input,
@@ -166,6 +176,16 @@
   font: inherit;
   padding: 11px 12px;
 }
+.record-filters input, .record-filters select { background: #fff; box-sizing: border-box; min-width: 0; width: 100%; }
+.record-filters input:focus, .record-filters select:focus {
+  border-color: #3f55a7;
+  box-shadow: 0 0 0 3px rgba(63, 85, 167, 0.12);
+  outline: none;
+}
+.record-filter-summary { align-items: center; display: flex; justify-content: space-between; margin-top: 12px; }
+.record-filter-summary span { color: #687189; font-size: 13px; font-weight: 700; }
+.filter-clear-button { background: transparent; border: 0; color: #3f55a7; cursor: pointer; font: inherit; font-size: 13px; font-weight: 800; padding: 4px; }
+.filter-clear-button:hover { text-decoration: underline; }
 
 .records-grid { display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .record-card { border: 1px solid #dce1ee; border-radius: 12px; padding: 18px; }
@@ -261,6 +281,7 @@ button:disabled { cursor: not-allowed; opacity: 0.5; }
   .private-metrics { grid-template-columns: repeat(2, 1fr); }
   .records-grid { grid-template-columns: 1fr; }
   .record-filters { grid-template-columns: 1fr; }
+  .record-search-filter { grid-column: auto; }
   .record-tabs { overflow-x: auto; }
   .record-tabs button { flex: none; }
 }
