@@ -65,6 +65,8 @@ mas não sobrescreve ocultações, sugestões, decisões ou correções aprovada
 
 - `GET /api/dashboards/coordination`
 - `GET /api/dashboards/faculty`
+- `GET /api/records/coordination?type=PRODUCAO` — detalhes e flags da coordenação
+- `GET /api/records/faculty?type=PRODUCAO` — detalhes e flags do docente
 - `GET|POST /api/users` — coordenação
 - `PATCH /api/users/:id` — coordenação
 - `POST /api/suggestions`

@@ -56,9 +56,9 @@ export class SuggestionsService {
     let allowed = false;
     if (type === EntityType.DOCENTE) allowed = (await this.prisma.docente.count({ where: { id: user.docenteId, idExterno: externalId } })) > 0;
     if (type === EntityType.FORMACAO) allowed = (await this.prisma.formacao.count({ where: { docenteId: user.docenteId, idExterno: externalId } })) > 0;
-    if (type === EntityType.PRODUCAO) allowed = (await this.prisma.producaoDocente.count({ where: { docenteId: user.docenteId, producao: { idExterno: externalId } } })) > 0;
-    if (type === EntityType.ORIENTACAO) allowed = (await this.prisma.orientacaoDocente.count({ where: { docenteId: user.docenteId, orientacao: { idExterno: externalId } } })) > 0;
-    if (type === EntityType.PROJETO) allowed = (await this.prisma.projetoDocente.count({ where: { docenteId: user.docenteId, projeto: { idExterno: externalId } } })) > 0;
+    if (type === EntityType.PRODUCAO) allowed = (await this.prisma.producaoDocente.count({ where: { docenteId: user.docenteId, elegivelDocente: true, producao: { programaId: user.programaId, idExterno: externalId } } })) > 0;
+    if (type === EntityType.ORIENTACAO) allowed = (await this.prisma.orientacaoDocente.count({ where: { docenteId: user.docenteId, elegivelDocente: true, orientacao: { programaId: user.programaId, idExterno: externalId } } })) > 0;
+    if (type === EntityType.PROJETO) allowed = (await this.prisma.projetoDocente.count({ where: { docenteId: user.docenteId, elegivelDocente: true, projeto: { programaId: user.programaId, idExterno: externalId } } })) > 0;
     if (!allowed) throw new ForbiddenException('Você só pode sugerir alterações em seus registros.');
   }
 
@@ -78,8 +78,8 @@ export class SuggestionsService {
     const where = { programaId, idExterno: externalId };
     if (type === EntityType.DOCENTE) return (await this.prisma.docente.count({ where })) > 0;
     if (type === EntityType.FORMACAO) return (await this.prisma.formacao.count({ where })) > 0;
-    if (type === EntityType.PRODUCAO) return (await this.prisma.producao.count({ where })) > 0;
-    if (type === EntityType.ORIENTACAO) return (await this.prisma.orientacao.count({ where })) > 0;
-    return (await this.prisma.projeto.count({ where })) > 0;
+    if (type === EntityType.PRODUCAO) return (await this.prisma.producao.count({ where: { ...where, elegivelCoordenacao: true } })) > 0;
+    if (type === EntityType.ORIENTACAO) return (await this.prisma.orientacao.count({ where: { ...where, elegivelCoordenacao: true } })) > 0;
+    return (await this.prisma.projeto.count({ where: { ...where, elegivelCoordenacao: true } })) > 0;
   }
 }

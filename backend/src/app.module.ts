@@ -9,6 +9,7 @@ import { FacultyModule } from './faculty/faculty.module';
 import { HealthController } from './health/health.controller';
 import { PrismaModule } from './prisma/prisma.module';
 import { PublicDataModule } from './public/public-data.module';
+import { RecordsModule } from './records/records.module';
 import { SuggestionsModule } from './suggestions/suggestions.module';
 import { VisibilityModule } from './visibility/visibility.module';
 import { UsersModule } from './users/users.module';
@@ -24,6 +25,7 @@ import { validateEnvironment } from './config/env.validation';
     FacultyModule,
     DashboardsModule,
     PublicDataModule,
+    RecordsModule,
     SuggestionsModule,
     VisibilityModule,
     UsersModule,

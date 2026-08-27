@@ -9,7 +9,11 @@ type SourceRecord = { idExterno: string; dadosOriginais: unknown };
 export class CorrectionsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async materialize(programaId: string, tipo: TipoEntidade, records: SourceRecord[]) {
+  async materialize(
+    programaId: string,
+    tipo: TipoEntidade,
+    records: SourceRecord[],
+  ): Promise<Record<string, unknown>[]> {
     if (!records.length) return [];
     const corrections = await this.prisma.correcaoAprovada.findMany({
       where: {
@@ -25,7 +29,7 @@ export class CorrectionsService {
       byRecord.set(correction.registroIdExterno, changes);
     }
     return records.map((record) =>
-      (byRecord.get(record.idExterno) ?? []).reduce(
+      (byRecord.get(record.idExterno) ?? []).reduce<Record<string, unknown>>(
         (data, changes) => applyChanges(data, changes),
         applyChanges(record.dadosOriginais, {}),
       ),
