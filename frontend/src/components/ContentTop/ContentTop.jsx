@@ -12,8 +12,6 @@ const ContentTop = ({ showSearchButton = true }) => {
         switch (location.pathname) {
           case '/dashboard':
             return 'Home';
-          case '/graficos':
-            return 'Gráficos';
           case '/rede-coautoria':
             return 'Rede de Coautoria';
           case '/curriculos':
