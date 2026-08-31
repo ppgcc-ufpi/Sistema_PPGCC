@@ -5,7 +5,7 @@ import ContentMain from '../../components/ContentMain/ContentMain';
 const Content = () => {
   return (
     <div className='main-content'>
-      <ContentTop showSearchButton={true} />
+      <ContentTop />
       <ContentMain />
     </div>
   )

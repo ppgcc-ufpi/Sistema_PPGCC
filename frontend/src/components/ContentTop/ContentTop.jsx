@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { SidebarContext } from "../../context/sidebarContext";
 import { useLocation } from "react-router-dom";
 
-const ContentTop = ({ showSearchButton = true }) => {
+const ContentTop = () => {
     const { toggleSidebar } = useContext(SidebarContext);
     const location = useLocation()
 
@@ -32,13 +32,6 @@ const ContentTop = ({ showSearchButton = true }) => {
             <img src={iconsImgs.menu} alt="" />
           </button>
           <h3 className="content-top-title">{getTitle()}</h3>
-        </div>
-        <div className="content-top-btns">
-          {showSearchButton && (
-            <button type="button" className="search-btn content-top-btn">
-              <img src={iconsImgs.search} alt="" />
-            </button>
-          )}
         </div>
       </div>
     );
