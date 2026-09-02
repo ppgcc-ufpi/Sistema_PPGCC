@@ -1,4 +1,4 @@
-# Sistema PPGCC
+# Observatório PPG - PPGCC
 
 Sistema de visualização dos dados acadêmicos do Programa de Pós-Graduação em
 Ciência da Computação da UFPI.

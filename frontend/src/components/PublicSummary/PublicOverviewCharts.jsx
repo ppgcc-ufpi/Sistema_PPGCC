@@ -75,7 +75,7 @@ const PublicOverviewCharts = ({ data, sucupiraLastValidatedYear }) => {
       />
       <ChartCard
         title="Docentes — Mestrado"
-        subtitle={`Vínculos Sucupira; registros vigentes em ${sucupiraLastValidatedYear || 'seu último ano'} permanecem atuais.`}
+        subtitle={`Vínculo de docentes com o programa por ano. Último ano validado: ${sucupiraLastValidatedYear}.`}
         type="area"
         series={facultyMembership.series}
         options={areaOptions(facultyMembership.years)}
