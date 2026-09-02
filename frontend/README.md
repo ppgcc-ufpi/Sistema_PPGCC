@@ -1,4 +1,4 @@
-# Frontend do Sistema PPGCC
+# Frontend do Observatório PPG - PPGCC
 
 Aplicação React publicada no GitHub Pages. Todos os dados exibidos pelos
 dashboards são consultados nas APIs públicas hospedadas no Render.

@@ -26,7 +26,7 @@ const Sidebar = () => {
         <div className="info-img img-fit-cover">
           <img src={Logo} alt="brasao" />
         </div>
-        <span className="info-name">Sistema PPGCC</span>
+        <span className="info-name">Observatório PPG - PPGCC</span>
       </div>
 
       <nav className="navigation">

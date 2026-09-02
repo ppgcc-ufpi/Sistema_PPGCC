@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Navigate, Routes, Route } from "react-router-dom";
 import InitialPage from "./templates/InitialPage";
-import XLSXReader from "./XLSXTest";
 import Dashboard from "./templates/dashboard";
 import CurriculosPage from "./templates/curriculosPage";
 import RedeCoautoriaPage from "./templates/redeCoautoriaPage";
@@ -21,7 +20,6 @@ const AppRoutes = () => {
         <Router basename="/Sistema_PPGCC">
             <Routes>
                 <Route path="/" element={<InitialPage />}></Route>
-                <Route path="/graficos" element={<XLSXReader />}></Route>
                 <Route path="/dashboard" element={<Dashboard />}></Route>
                 <Route path="/curriculos" element={<CurriculosPage />}></Route>
                 <Route path="/producao-docente" element={<ProducaoDocentePage />}></Route>

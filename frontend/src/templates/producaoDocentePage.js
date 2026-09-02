@@ -8,7 +8,7 @@ function ProducaoDocentePage() {
     <div className="app">
       <Sidebar />
       <main className="main-content">
-        <ContentTop showSearchButton={false} />
+        <ContentTop />
         <VisaoGeralLattes />
       </main>
     </div>

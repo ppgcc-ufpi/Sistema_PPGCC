@@ -9,7 +9,7 @@ function CurriculosPage() {
       <div className='app'>
         <Sidebar />
         <div className='main-content'>
-          <ContentTop showSearchButton={false} />
+          <ContentTop />
           <CurriculoDocente />
         </div>
       </div>

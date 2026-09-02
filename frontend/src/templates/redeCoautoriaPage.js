@@ -7,11 +7,10 @@ const RedeCoautoriaPage = () => (
   <div className="app">
     <Sidebar />
     <div className="main-content">
-      <ContentTop showSearchButton={false} />
+      <ContentTop />
       <RedeCoautoria />
     </div>
   </div>
 );
 
 export default RedeCoautoriaPage;
-
