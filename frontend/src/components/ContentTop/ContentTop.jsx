@@ -21,7 +21,7 @@ const ContentTop = () => {
           case '/login':
             return 'Área restrita';
           default:
-            return 'Sistema PPGCC';
+            return 'Observatório PPG - PPGCC';
         }
       };
 

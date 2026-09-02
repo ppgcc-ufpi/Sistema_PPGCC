@@ -39,7 +39,7 @@ const LoginPage = () => {
       <section className="login-card" aria-labelledby="login-title">
         <img src={Logo} alt="Brasão da UFPI" />
         <div>
-          <h1 id="login-title">Acesso ao Sistema PPGCC</h1>
+          <h1 id="login-title">Acesso ao Observatório PPG</h1>
           <p>Entre com a conta fornecida pela coordenação do programa.</p>
         </div>
         <form onSubmit={handleSubmit}>
